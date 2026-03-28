@@ -1,0 +1,9 @@
+{
+  "name": "@micrographics/svelte",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": { ".": "./src/index.ts" },
+  "peerDependencies": { "svelte": ">=5" },
+  "dependencies": { "@micrographics/core": "workspace:*" }
+}
