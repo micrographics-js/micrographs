@@ -1,0 +1,16 @@
+{
+  "name": "@micrographics/react",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "dependencies": {
+    "@micrographics/core": "workspace:*"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "micrographics",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r --filter !test-app build",
+    "dev": "pnpm --filter test-app dev",
+    "type-check": "pnpm -r exec tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "@micrographics/core",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./utils/rng": "./src/utils/rng.ts",
+    "./utils/paths": "./src/utils/paths.ts",
+    "./utils/easing": "./src/utils/easing.ts",
+    "./animations/ticker": "./src/animations/ticker.ts",
+    "./animations/typewriter": "./src/animations/typewriter.ts",
+    "./animations/glitch": "./src/animations/glitch.ts"
+  }
+}
