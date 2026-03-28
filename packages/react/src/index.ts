@@ -52,6 +52,18 @@ export { DialGauge } from "./components/DialGauge.js";
 export { TankLevel } from "./components/TankLevel.js";
 export { FlowMeter } from "./components/FlowMeter.js";
 
+// Orbit & Editorial
+export { OrbitSystem } from "./components/OrbitSystem.js";
+export { TargetReticle } from "./components/TargetReticle.js";
+export { PriorityBadge } from "./components/PriorityBadge.js";
+export { RegistrationMark } from "./components/RegistrationMark.js";
+export { ArchiveTag } from "./components/ArchiveTag.js";
+export type { OrbitSystemProps, OrbitSatellite } from "./components/OrbitSystem.js";
+export type { TargetReticleProps } from "./components/TargetReticle.js";
+export type { PriorityBadgeProps } from "./components/PriorityBadge.js";
+export type { RegistrationMarkProps } from "./components/RegistrationMark.js";
+export type { ArchiveTagProps } from "./components/ArchiveTag.js";
+
 // Pack 7 — Interaction
 export { CopyButton } from "./components/CopyButton.js";
 export { RatingDots } from "./components/RatingDots.js";

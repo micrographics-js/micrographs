@@ -98,6 +98,9 @@ body {
   color: var(--fg-dimmer);
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .component-preview {
@@ -105,4 +108,104 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+}
+
+/* Prop editor */
+.edit-toggle {
+  background: none;
+  border: none;
+  color: var(--fg-dimmer);
+  cursor: pointer;
+  font-size: 10px;
+  padding: 0 2px;
+  opacity: 0.4;
+  transition: opacity 0.15s, color 0.15s;
+  line-height: 1;
+}
+.edit-toggle:hover,
+.edit-toggle.active {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.component-card.open {
+  border-color: var(--border-strong);
+}
+
+.props-panel {
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.prop-control {
+  display: grid;
+  grid-template-columns: 60px 1fr 28px;
+  align-items: center;
+  gap: 6px;
+}
+
+.prop-label {
+  font-size: 8px;
+  color: var(--fg-dimmer);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.prop-value {
+  font-size: 8px;
+  color: var(--accent);
+  text-align: right;
+  letter-spacing: 0.05em;
+}
+
+.prop-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2px;
+  background: var(--fg-dimmer);
+  outline: none;
+  width: 100%;
+}
+.prop-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.prop-toggle {
+  background: none;
+  border: 1px solid var(--fg-dimmer);
+  color: var(--fg-dimmer);
+  font-family: monospace;
+  font-size: 7px;
+  padding: 1px 3px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: border-color 0.1s, color 0.1s;
+}
+.prop-toggle.active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.prop-select {
+  background: var(--bg);
+  border: 1px solid var(--fg-dimmer);
+  color: var(--fg-dim);
+  font-family: monospace;
+  font-size: 8px;
+  padding: 1px 3px;
+  cursor: pointer;
+  grid-column: 2 / 4;
+  outline: none;
 }
