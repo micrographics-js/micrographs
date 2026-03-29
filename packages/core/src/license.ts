@@ -95,6 +95,14 @@ export function getTrialRemaining(): number | null {
 function _resolveKey(): string | null {
   if (_licenseKey) return _licenseKey;
 
+  // 1. Check global window/globalThis variable (works everywhere)
+  try {
+    const g = globalThis as any;
+    if (g.__MICROGRAPHICS_KEY) return g.__MICROGRAPHICS_KEY;
+    if (typeof window !== "undefined" && (window as any).__MICROGRAPHICS_KEY) return (window as any).__MICROGRAPHICS_KEY;
+  } catch {}
+
+  // 2. Check process.env (Node.js / SSR)
   try {
     const p = (globalThis as any).process;
     if (p?.env) {
@@ -102,6 +110,7 @@ function _resolveKey(): string | null {
     }
   } catch {}
 
+  // 3. Check import.meta.env (Vite)
   try {
     // @ts-ignore — Vite-specific
     if (typeof import.meta !== "undefined" && import.meta.env) {
