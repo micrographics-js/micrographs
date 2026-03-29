@@ -7,9 +7,10 @@
     "clean": "pnpm -r --filter './packages/*' clean",
     "dev": "pnpm --filter test-app dev",
     "type-check": "pnpm -r exec tsc --noEmit",
-    "publish:all": "pnpm build && pnpm -r --filter './packages/*' publish --no-git-checks",
-    "publish:public": "pnpm build && pnpm --filter @micrographics/core publish --no-git-checks && pnpm --filter @micrographics/tailwind publish --no-git-checks",
-    "publish:paid": "pnpm build && pnpm --filter @micrographics/react publish --no-git-checks && pnpm --filter @micrographics/vue publish --no-git-checks && pnpm --filter @micrographics/svelte publish --no-git-checks && pnpm --filter @micrographics/vanilla publish --no-git-checks"
+    "publish:all": "pnpm build && pnpm publish:free && pnpm publish:paid",
+    "publish:free": "pnpm --filter @micrographics/core publish --no-git-checks && pnpm --filter @micrographics/tailwind publish --no-git-checks",
+    "publish:paid": "pnpm --filter @micrographics/react publish --no-git-checks && pnpm --filter @micrographics/vue publish --no-git-checks && pnpm --filter @micrographics/svelte publish --no-git-checks && pnpm --filter @micrographics/vanilla publish --no-git-checks",
+    "publish:gh-free": "pnpm --filter @micrographics/core publish --no-git-checks --registry https://npm.pkg.github.com && pnpm --filter @micrographics/tailwind publish --no-git-checks --registry https://npm.pkg.github.com"
   },
   "devDependencies": {
     "typescript": "^5.4.0"

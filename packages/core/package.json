@@ -4,7 +4,7 @@
   "type": "module",
   "description": "Shared utilities for Micrographics — RNG, easing, tickers, glitch effects",
   "license": "MIT",
-  "repository": { "type": "git", "url": "https://github.com/RecursiveVoid/micrographs", "directory": "packages/core" },
+  "repository": { "type": "git", "url": "https://github.com/micrographics/micrographs", "directory": "packages/core" },
   "keywords": ["micrographics", "micro-ui", "animation", "utilities"],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -17,6 +17,7 @@
     "clean": "rm -rf dist"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   }
 }

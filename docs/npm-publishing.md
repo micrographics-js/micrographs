@@ -1,190 +1,258 @@
-# Micrographics — npm Publishing Guide
+# Micrographics — Publishing & Distribution Guide
 
-## How it works
+## Architecture
 
 ```
-@micrographics/core       → PUBLIC  (free, drives adoption)
-@micrographics/tailwind   → PUBLIC  (free, drives adoption)
-@micrographics/react      → RESTRICTED (requires npm token)
-@micrographics/vue        → RESTRICTED (requires npm token)
-@micrographics/svelte     → RESTRICTED (requires npm token)
-@micrographics/vanilla    → RESTRICTED (requires npm token)
+FREE (npmjs.org — public, no auth needed)
+├── @micrographics/core
+└── @micrographics/tailwind
+
+PAID (GitHub Packages — private, token-gated)
+├── @micrographics/react
+├── @micrographics/vue
+├── @micrographics/svelte
+└── @micrographics/vanilla
 ```
 
-**Token-based access:** After a customer purchases via LemonSqueezy, they receive a read-only npm token. They add it to their project's `.npmrc` to install restricted packages.
+**How it works:**
+- Free packages are on npmjs.org — anyone can `npm install @micrographics/core`
+- Paid packages are on GitHub Packages — requires a GitHub token
+- After LemonSqueezy purchase → customer gets a GitHub token → adds to `.npmrc` → installs normally
+- Core + tailwind are ALSO published to GitHub Packages so paid customers only need one registry config
 
 ---
 
 ## Initial Setup (one-time)
 
-### 1. Create the npm organization
+### 1. Create `micrographics` GitHub organization
+
+1. Go to https://github.com/organizations/plan
+2. Create org: `micrographics` (free plan is fine)
+3. Transfer repo: `RecursiveVoid/micrographs` → `micrographics/micrographs`
+   - Repo Settings → Danger Zone → Transfer ownership → `micrographics`
+
+### 2. Log in to both registries
 
 ```bash
-# Log in to npm
+# Log in to npmjs (for free packages)
 npm login
 
-# Create the @micrographics org (must be done on npmjs.com)
-# Go to: https://www.npmjs.com/org/create
-# Org name: micrographics
-# Plan: Teams ($7/month) — required for private/restricted packages
+# Log in to GitHub Packages (for paid packages)
+npm login --registry=https://npm.pkg.github.com
+# Username: your-github-username
+# Password: your GitHub PAT with `write:packages` scope
+# Email: your email
 ```
 
-### 2. Build all packages
+Or create a `.npmrc` in the repo root (for publishing only, don't commit this):
+
+```ini
+# For publishing to GitHub Packages
+//npm.pkg.github.com/:_authToken=ghp_YOUR_GITHUB_PAT_WITH_WRITE_PACKAGES
+```
+
+### 3. Build all packages
 
 ```bash
 pnpm build
 ```
 
-This compiles:
-- `packages/core/` → `packages/core/dist/`
-- `packages/react/` → `packages/react/dist/`
-- `packages/vanilla/` → `packages/vanilla/dist/`
-
-Vue, Svelte, and Tailwind publish source directly (no build step needed).
-
-### 3. Publish free packages first
+### 4. Publish
 
 ```bash
-# These are public — anyone can install them
-pnpm --filter @micrographics/core publish --access public --no-git-checks
-pnpm --filter @micrographics/tailwind publish --access public --no-git-checks
-```
+# Publish free packages to npmjs
+pnpm publish:free
 
-### 4. Publish paid packages
+# Publish paid packages to GitHub Packages
+pnpm publish:paid
 
-```bash
-# These are restricted — require org membership or token
-pnpm --filter @micrographics/react publish --access restricted --no-git-checks
-pnpm --filter @micrographics/vue publish --access restricted --no-git-checks
-pnpm --filter @micrographics/svelte publish --access restricted --no-git-checks
-pnpm --filter @micrographics/vanilla publish --access restricted --no-git-checks
-```
+# Also publish core+tailwind to GitHub Packages (so paid customers only need one registry)
+pnpm publish:gh-free
 
-Or all at once:
-```bash
-pnpm publish:all
+# Or do everything:
+pnpm publish:all && pnpm publish:gh-free
 ```
 
 ---
 
 ## Creating Customer Tokens
 
-### Option A: Shared read-only token (simple, good for start)
+After a LemonSqueezy purchase, you need to give the customer a GitHub token that can read packages.
 
-1. Go to https://www.npmjs.com/settings/YOUR_USERNAME/tokens
-2. Click "Generate New Token"
-3. Select **Granular Access Token**
-4. Settings:
-   - Name: `micrographics-customer-read`
-   - Expiration: No expiration (or 1 year)
-   - Permissions: **Read-only**
-   - Packages: Select all `@micrographics/*` packages
-5. Copy the token
-6. This is the token you distribute to all customers
+### Option A: Fine-grained PAT (recommended)
 
-### Option B: Per-customer tokens via npm API (advanced)
+1. Go to https://github.com/settings/tokens?type=beta
+2. Click "Generate new token"
+3. Settings:
+   - Name: `micrographics-customer-{order_id}`
+   - Expiration: No expiration
+   - Resource owner: `micrographics` (the org)
+   - Repository access: Only select repositories → `micrographics/micrographs`
+   - Permissions → Packages: **Read**
+4. Generate token
+5. Send to customer
+
+### Option B: Shared classic PAT (simpler for start)
+
+1. Go to https://github.com/settings/tokens
+2. Generate new token (classic)
+3. Select scope: `read:packages` only
+4. No expiration
+5. Use this ONE token for all customers
+6. To revoke a customer: revoke the token and create a new one (affects all customers)
+
+### Option C: Automate via LemonSqueezy webhook (advanced)
 
 ```ts
-// In your LemonSqueezy webhook handler
-const response = await fetch("https://registry.npmjs.org/-/npm/v1/tokens", {
-  method: "POST",
-  headers: {
-    "Authorization": `Bearer ${process.env.NPM_AUTOMATION_TOKEN}`,
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    password: process.env.NPM_PASSWORD,
-    readonly: true,
-  }),
-});
-const { token } = await response.json();
-// Store and email this token to the customer
+// api/lemon-webhook.ts (Vercel/Next.js API route)
+import crypto from "crypto";
+
+export async function POST(req: Request) {
+  const body = await req.text();
+  const sig = req.headers.get("x-signature");
+
+  // Verify webhook signature
+  const hmac = crypto.createHmac("sha256", process.env.LEMON_WEBHOOK_SECRET!);
+  hmac.update(body);
+  if (hmac.digest("hex") !== sig) return new Response("Invalid", { status: 401 });
+
+  const data = JSON.parse(body);
+  const email = data.data.attributes.user_email;
+  const name = data.data.attributes.user_name;
+  const variantId = data.data.attributes.first_order_item.variant_id;
+
+  // Look up which packages this variant includes
+  const packages = VARIANT_MAP[variantId];
+
+  // Send email with the shared token + install instructions
+  await sendEmail({
+    to: email,
+    subject: "Your Micrographics license is ready",
+    body: `Hi ${name},
+
+Your Micrographics packages are ready to install.
+
+Step 1 — Create .npmrc in your project root:
+
+  @micrographics:registry=https://npm.pkg.github.com
+  //npm.pkg.github.com/:_authToken=${process.env.CUSTOMER_READ_TOKEN}
+
+Step 2 — Install:
+
+  npm install ${packages.join(" ")}
+
+Docs: https://micrographics.dev
+Support: support@micrographics.dev`,
+  });
+
+  return new Response("OK");
+}
 ```
 
 ---
 
 ## Customer Installation Guide
 
-After purchase, customers receive this in their email:
+This is what the customer receives after purchase:
 
 ```
-TOKEN: npm_xxxxxxxxxxxxxxxxxxxx
+Your Micrographics packages are ready.
 
-Step 1: Create .npmrc in your project root:
+Step 1 — Create .npmrc in your project root:
 
-  echo "//registry.npmjs.org/:_authToken=npm_xxxxxxxxxxxxxxxxxxxx" > .npmrc
-  echo "@micrographics:registry=https://registry.npmjs.org/" >> .npmrc
+  @micrographics:registry=https://npm.pkg.github.com
+  //npm.pkg.github.com/:_authToken=ghp_xxxxxxxxxxxx
 
-Step 2: Add .npmrc to .gitignore:
+Step 2 — Add .npmrc to .gitignore:
 
   echo ".npmrc" >> .gitignore
 
-Step 3: Install:
+Step 3 — Install your packages:
 
   npm install @micrographics/react @micrographics/core
+
+  # or for Vue:
+  npm install @micrographics/vue @micrographics/core
+
+  # or for Svelte:
+  npm install @micrographics/svelte @micrographics/core
+
+  # or for Vanilla Web Components:
+  npm install @micrographics/vanilla @micrographics/core
+
+Optional — Tailwind integration:
+
+  npm install @micrographics/tailwind
+
+Docs & gallery: https://micrographics.dev
 ```
 
 ---
 
-## Version Bumping
+## Version Bumping & Republishing
 
 ```bash
-# Bump all packages to same version
-pnpm -r exec -- npm version patch  # 0.1.0 → 0.1.1
-pnpm -r exec -- npm version minor  # 0.1.0 → 0.2.0
-pnpm -r exec -- npm version major  # 0.1.0 → 1.0.0
+# Bump version across all packages
+pnpm -r --filter './packages/*' exec npm version patch
 
-# Then rebuild and republish
+# Rebuild and republish
 pnpm build
 pnpm publish:all
+pnpm publish:gh-free
 ```
 
 ---
 
 ## Revoking Access
 
-If you need to revoke a customer's access:
+### If using shared token
+1. Delete the token on GitHub: https://github.com/settings/tokens
+2. Create a new token
+3. Update `CUSTOMER_READ_TOKEN` in your webhook handler
+4. Email new token to all valid customers
 
-### Shared token approach
-1. Revoke the current token on npmjs.com
-2. Generate a new token
-3. Email new token to all valid customers
-4. (Not ideal — use per-customer tokens if possible)
-
-### Per-customer token approach
-1. Delete the specific customer's token via npm API
+### If using per-customer tokens
+1. Delete only that customer's token
 2. No other customers affected
 
 ---
 
-## Webhook Flow (LemonSqueezy → npm token → customer)
+## Pricing → Package Mapping
 
+```ts
+const VARIANT_MAP: Record<string, string[]> = {
+  // Framework bundles (most common purchase)
+  "react_bundle":   ["@micrographics/react", "@micrographics/core"],
+  "vue_bundle":     ["@micrographics/vue", "@micrographics/core"],
+  "svelte_bundle":  ["@micrographics/svelte", "@micrographics/core"],
+  "vanilla_bundle": ["@micrographics/vanilla", "@micrographics/core"],
+
+  // Full library
+  "full_library": [
+    "@micrographics/react", "@micrographics/vue",
+    "@micrographics/svelte", "@micrographics/vanilla",
+    "@micrographics/core"
+  ],
+
+  // Lifetime (same as full, just different license terms)
+  "lifetime": [
+    "@micrographics/react", "@micrographics/vue",
+    "@micrographics/svelte", "@micrographics/vanilla",
+    "@micrographics/core"
+  ],
+};
 ```
-Customer purchases on LemonSqueezy
-        ↓
-LemonSqueezy sends webhook to your API
-        ↓
-Webhook handler:
-  1. Validates signature (LEMON_WEBHOOK_SECRET)
-  2. Looks up variant_id in PACK_MAP
-  3. Creates/retrieves npm read token
-  4. Sends email with token + package names
-        ↓
-Customer adds token to .npmrc
-Customer runs: npm install @micrographics/react
-```
+
+> **Note:** Since we publish ONE package per framework (not per-pack), the variant mapping is simpler. All customers who buy any React pack get the full `@micrographics/react` package. The pricing tiers are about perceived value, not technical access control.
 
 ---
 
-## Package Contents
+## Cost Summary
 
-What gets published to npm:
-
-| Package | Published files | Size (approx) |
-|---------|----------------|---------------|
-| `@micrographics/core` | `dist/` (JS + d.ts) + `src/` | ~15 KB |
-| `@micrographics/react` | `dist/` (JS + d.ts) | ~120 KB |
-| `@micrographics/vue` | `src/` (.vue + .ts) | ~100 KB |
-| `@micrographics/svelte` | `src/` (.svelte + .ts) | ~90 KB |
-| `@micrographics/vanilla` | `dist/` (JS + d.ts) | ~80 KB |
-| `@micrographics/tailwind` | `src/` (JS) + README | ~8 KB |
+| Service | Cost |
+|---------|------|
+| npmjs (public packages) | $0 |
+| GitHub Packages (private) | $0 (free for orgs) |
+| GitHub org | $0 (free plan) |
+| LemonSqueezy | 5% + payment processing |
+| **Total infrastructure** | **$0/month** |
