@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="100" viewBox="0 0 240 100">
+  <rect width="240" height="100" fill="#13141f" rx="3"/>
+  <text x="14" y="20" fill="#555566" font-family="monospace" font-size="8" letter-spacing="1.5">RADAR SWEEP</text>
+  <!-- Radar -->
+  <circle cx="55" cy="52" r="28" fill="none" stroke="#555566" stroke-width="0.5"/>
+  <circle cx="55" cy="52" r="18" fill="none" stroke="#555566" stroke-width="0.5"/>
+  <circle cx="55" cy="52" r="9" fill="none" stroke="#555566" stroke-width="0.5"/>
+  <line x1="27" y1="52" x2="83" y2="52" stroke="#555566" stroke-width="0.4" opacity="0.4"/>
+  <line x1="55" y1="24" x2="55" y2="80" stroke="#555566" stroke-width="0.4" opacity="0.4"/>
+  <line x1="55" y1="52" x2="76" y2="36" stroke="#3ecf8e" stroke-width="1.5"/>
+  <circle cx="55" cy="52" r="2.5" fill="#3ecf8e"/>
+  <circle cx="67" cy="40" r="2" fill="#3ecf8e" opacity="0.6"/>
+  <circle cx="42" cy="62" r="2" fill="#3ecf8e" opacity="0.3"/>
+  <!-- Heat grid -->
+  <text x="100" y="20" fill="#555566" font-family="monospace" font-size="8" letter-spacing="1.5">HEAT GRID</text>
+  <rect x="100" y="28" width="12" height="8" fill="#3ecf8e" opacity="0.3"/>
+  <rect x="114" y="28" width="12" height="8" fill="#3ecf8e" opacity="0.6"/>
+  <rect x="128" y="28" width="12" height="8" fill="#f5a623" opacity="0.5"/>
+  <rect x="142" y="28" width="12" height="8" fill="#f5a623" opacity="0.8"/>
+  <rect x="156" y="28" width="12" height="8" fill="#e05252" opacity="0.4"/>
+  <rect x="170" y="28" width="12" height="8" fill="#e05252" opacity="0.7"/>
+  <rect x="184" y="28" width="12" height="8" fill="#3ecf8e" opacity="0.4"/>
+  <rect x="198" y="28" width="12" height="8" fill="#f5a623" opacity="0.3"/>
+  <rect x="100" y="38" width="12" height="8" fill="#f5a623" opacity="0.7"/>
+  <rect x="114" y="38" width="12" height="8" fill="#e05252" opacity="0.5"/>
+  <rect x="128" y="38" width="12" height="8" fill="#e05252" opacity="0.9"/>
+  <rect x="142" y="38" width="12" height="8" fill="#f5a623" opacity="0.6"/>
+  <rect x="156" y="38" width="12" height="8" fill="#3ecf8e" opacity="0.5"/>
+  <rect x="170" y="38" width="12" height="8" fill="#3ecf8e" opacity="0.8"/>
+  <rect x="184" y="38" width="12" height="8" fill="#f5a623" opacity="0.4"/>
+  <rect x="198" y="38" width="12" height="8" fill="#3ecf8e" opacity="0.6"/>
+  <rect x="100" y="48" width="12" height="8" fill="#3ecf8e" opacity="0.8"/>
+  <rect x="114" y="48" width="12" height="8" fill="#3ecf8e" opacity="0.4"/>
+  <rect x="128" y="48" width="12" height="8" fill="#f5a623" opacity="0.6"/>
+  <rect x="142" y="48" width="12" height="8" fill="#e05252" opacity="0.7"/>
+  <rect x="156" y="48" width="12" height="8" fill="#e05252" opacity="0.5"/>
+  <rect x="170" y="48" width="12" height="8" fill="#f5a623" opacity="0.9"/>
+  <rect x="184" y="48" width="12" height="8" fill="#e05252" opacity="0.3"/>
+  <rect x="198" y="48" width="12" height="8" fill="#3ecf8e" opacity="0.5"/>
+  <!-- Frequency bars -->
+  <text x="100" y="68" fill="#555566" font-family="monospace" font-size="8" letter-spacing="1.5">FREQ BARS</text>
+  <rect x="100" y="82" width="8" height="-8" fill="#3ecf8e" opacity="0.6"/>
+  <rect x="110" y="82" width="8" height="-14" fill="#3ecf8e" opacity="0.7"/>
+  <rect x="120" y="82" width="8" height="-10" fill="#3ecf8e" opacity="0.8"/>
+  <rect x="130" y="82" width="8" height="-18" fill="#3ecf8e" opacity="0.9"/>
+  <rect x="140" y="82" width="8" height="-12" fill="#3ecf8e" opacity="0.7"/>
+  <rect x="150" y="82" width="8" height="-6" fill="#3ecf8e" opacity="0.5"/>
+  <rect x="160" y="82" width="8" height="-16" fill="#3ecf8e" opacity="0.85"/>
+  <rect x="170" y="82" width="8" height="-9" fill="#3ecf8e" opacity="0.6"/>
+  <text x="14" y="90" fill="#555566" font-family="monospace" font-size="8" letter-spacing="1">PACK 2 — DATA VIZ · 11 COMPONENTS</text>
+</svg>

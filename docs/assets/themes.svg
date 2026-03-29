@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="40" viewBox="0 0 600 40">
+  <!-- Phosphor -->
+  <rect x="0" y="0" width="116" height="40" fill="#0d0e17" rx="3"/>
+  <rect x="8" y="10" width="6" height="6" fill="#3ecf8e" opacity="0.5"/>
+  <rect x="16" y="8" width="6" height="8" fill="#3ecf8e" opacity="0.65"/>
+  <rect x="24" y="5" width="6" height="11" fill="#3ecf8e" opacity="0.8"/>
+  <rect x="32" y="2" width="6" height="14" fill="#3ecf8e"/>
+  <text x="46" y="22" fill="#3ecf8e" font-family="monospace" font-size="10">Phosphor</text>
+  <text x="8" y="33" fill="#555566" font-family="monospace" font-size="7">DEFAULT</text>
+  <!-- Amber -->
+  <rect x="122" y="0" width="116" height="40" fill="#0f0c00" rx="3"/>
+  <rect x="130" y="10" width="6" height="6" fill="#f5a623" opacity="0.5"/>
+  <rect x="138" y="8" width="6" height="8" fill="#f5a623" opacity="0.65"/>
+  <rect x="146" y="5" width="6" height="11" fill="#f5a623" opacity="0.8"/>
+  <rect x="154" y="2" width="6" height="14" fill="#f5a623"/>
+  <text x="168" y="22" fill="#f5a623" font-family="monospace" font-size="10">Amber</text>
+  <!-- Ice -->
+  <rect x="244" y="0" width="116" height="40" fill="#050d17" rx="3"/>
+  <rect x="252" y="10" width="6" height="6" fill="#60cfff" opacity="0.5"/>
+  <rect x="260" y="8" width="6" height="8" fill="#60cfff" opacity="0.65"/>
+  <rect x="268" y="5" width="6" height="11" fill="#60cfff" opacity="0.8"/>
+  <rect x="276" y="2" width="6" height="14" fill="#60cfff"/>
+  <text x="290" y="22" fill="#60cfff" font-family="monospace" font-size="10">Ice</text>
+  <!-- Violet -->
+  <rect x="366" y="0" width="116" height="40" fill="#090717" rx="3"/>
+  <rect x="374" y="10" width="6" height="6" fill="#a78bfa" opacity="0.5"/>
+  <rect x="382" y="8" width="6" height="8" fill="#a78bfa" opacity="0.65"/>
+  <rect x="390" y="5" width="6" height="11" fill="#a78bfa" opacity="0.8"/>
+  <rect x="398" y="2" width="6" height="14" fill="#a78bfa"/>
+  <text x="412" y="22" fill="#a78bfa" font-family="monospace" font-size="10">Violet</text>
+  <!-- Crimson -->
+  <rect x="488" y="0" width="112" height="40" fill="#110010" rx="3"/>
+  <rect x="496" y="10" width="6" height="6" fill="#e05252" opacity="0.5"/>
+  <rect x="504" y="8" width="6" height="8" fill="#e05252" opacity="0.65"/>
+  <rect x="512" y="5" width="6" height="11" fill="#e05252" opacity="0.8"/>
+  <rect x="520" y="2" width="6" height="14" fill="#e05252"/>
+  <text x="534" y="22" fill="#e05252" font-family="monospace" font-size="10">Crimson</text>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="100" viewBox="0 0 240 100">
+  <rect width="240" height="100" fill="#13141f" rx="3"/>
+  <text x="14" y="20" fill="#555566" font-family="monospace" font-size="8" letter-spacing="1.5">ORBIT &amp; NAVIGATION</text>
+  <!-- Orbit system -->
+  <circle cx="60" cy="52" r="28" fill="none" stroke="#555566" stroke-width="0.5" stroke-dasharray="2 2"/>
+  <circle cx="60" cy="52" r="18" fill="none" stroke="#555566" stroke-width="0.5" stroke-dasharray="2 2"/>
+  <circle cx="60" cy="52" r="4" fill="#3ecf8e"/>
+  <text x="53" y="55" fill="#0d0e17" font-family="monospace" font-size="5" font-weight="bold">SYS</text>
+  <circle cx="82" cy="38" r="3" fill="#f5a623"/>
+  <circle cx="42" cy="64" r="3" fill="#3ecf8e" opacity="0.8"/>
+  <circle cx="72" cy="72" r="2.5" fill="#60cfff"/>
+  <!-- Crosshair target -->
+  <line x1="155" y1="32" x2="155" y2="44" stroke="#3ecf8e" stroke-width="0.75"/>
+  <line x1="155" y1="56" x2="155" y2="68" stroke="#3ecf8e" stroke-width="0.75"/>
+  <line x1="139" y1="50" x2="151" y2="50" stroke="#3ecf8e" stroke-width="0.75"/>
+  <line x1="159" y1="50" x2="171" y2="50" stroke="#3ecf8e" stroke-width="0.75"/>
+  <circle cx="155" cy="50" r="10" fill="none" stroke="#3ecf8e" stroke-width="0.75"/>
+  <circle cx="155" cy="50" r="3" fill="none" stroke="#3ecf8e" stroke-width="0.5"/>
+  <!-- Mission status -->
+  <rect x="185" y="30" width="44" height="12" fill="none" stroke="#555566" stroke-width="0.5"/>
+  <text x="189" y="39" fill="#555566" font-family="monospace" font-size="6">ECHO-7</text>
+  <rect x="185" y="46" width="44" height="10" fill="none" stroke="#3ecf8e" stroke-width="0.5"/>
+  <text x="192" y="54" fill="#3ecf8e" font-family="monospace" font-size="6">ACTIVE</text>
+  <rect x="185" y="62" width="44" height="6" fill="#13141f" stroke="#555566" stroke-width="0.5"/>
+  <rect x="185" y="62" width="27" height="6" fill="#3ecf8e" opacity="0.6"/>
+  <text x="189" y="76" fill="#555566" font-family="monospace" font-size="6">PHASE 3/5</text>
+  <text x="14" y="90" fill="#555566" font-family="monospace" font-size="8" letter-spacing="1">PACK 8 — ORBIT &amp; NAV · 8 COMPONENTS</text>
+</svg>
