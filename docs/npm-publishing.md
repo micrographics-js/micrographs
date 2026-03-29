@@ -79,27 +79,26 @@ pnpm publish:all && pnpm publish:gh-free
 
 After a LemonSqueezy purchase, you need to give the customer a GitHub token that can read packages.
 
-### Option A: Fine-grained PAT (recommended)
+### Option A: Shared Classic PAT (recommended for start)
 
-1. Go to https://github.com/settings/tokens?type=beta
-2. Click "Generate new token"
-3. Settings:
-   - Name: `micrographics-customer-{order_id}`
-   - Expiration: No expiration
-   - Resource owner: `micrographics` (the org)
-   - Repository access: Only select repositories → `micrographics/micrographs`
-   - Permissions → Packages: **Read**
-4. Generate token
-5. Send to customer
-
-### Option B: Shared classic PAT (simpler for start)
+> **Important:** Fine-grained PATs do NOT support package permissions. You must use a **Classic** token.
 
 1. Go to https://github.com/settings/tokens
-2. Generate new token (classic)
-3. Select scope: `read:packages` only
-4. No expiration
-5. Use this ONE token for all customers
-6. To revoke a customer: revoke the token and create a new one (affects all customers)
+2. Click **"Generate new token"** → **"Generate new token (classic)"**
+3. Settings:
+   - Note: `micrographics-customer-read`
+   - Expiration: **No expiration**
+   - Scopes: check **only** `read:packages`
+4. Click "Generate token"
+5. Copy the token — this is what ALL customers will use
+
+This single token grants read-only access to your GitHub Packages. All customers share it.
+
+**To revoke:** Delete the token → create a new one → email new token to valid customers.
+
+### Option B: Per-customer tokens (more control, more work)
+
+Create a separate Classic PAT per customer with `read:packages` scope. Name it with the order ID. This lets you revoke individual customers without affecting others.
 
 ### Option C: Automate via LemonSqueezy webhook (advanced)
 

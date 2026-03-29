@@ -27,18 +27,18 @@
 ## npm Package Names (publish before creating products)
 
 ```
-@micrographics/core               # always included, free peer dep
-@micrographics/tailwind            # Tailwind CSS plugin/preset (free, drives adoption)
+@micrographics-js/core               # always included, free peer dep
+@micrographics-js/tailwind            # Tailwind CSS plugin/preset (free, drives adoption)
 
 # Per-pack, per-framework packages
-@micrographics/react-signals       @micrographics/vue-signals       @micrographics/svelte-signals       @micrographics/vanilla-signals
-@micrographics/react-data          @micrographics/vue-data          @micrographics/svelte-data          @micrographics/vanilla-data
-@micrographics/react-text          @micrographics/vue-text          @micrographics/svelte-text          @micrographics/vanilla-text
-@micrographics/react-chrome        @micrographics/vue-chrome        @micrographics/svelte-chrome        @micrographics/vanilla-chrome
-@micrographics/react-clocks        @micrographics/vue-clocks        @micrographics/svelte-clocks        @micrographics/vanilla-clocks
-@micrographics/react-gauges        @micrographics/vue-gauges        @micrographics/svelte-gauges        @micrographics/vanilla-gauges
-@micrographics/react-interact      @micrographics/vue-interact      @micrographics/svelte-interact      @micrographics/vanilla-interact
-@micrographics/react-orbit         @micrographics/vue-orbit         @micrographics/svelte-orbit         @micrographics/vanilla-orbit
+@micrographics-js/react-signals       @micrographics-js/vue-signals       @micrographics-js/svelte-signals       @micrographics-js/vanilla-signals
+@micrographics-js/react-data          @micrographics-js/vue-data          @micrographics-js/svelte-data          @micrographics-js/vanilla-data
+@micrographics-js/react-text          @micrographics-js/vue-text          @micrographics-js/svelte-text          @micrographics-js/vanilla-text
+@micrographics-js/react-chrome        @micrographics-js/vue-chrome        @micrographics-js/svelte-chrome        @micrographics-js/vanilla-chrome
+@micrographics-js/react-clocks        @micrographics-js/vue-clocks        @micrographics-js/svelte-clocks        @micrographics-js/vanilla-clocks
+@micrographics-js/react-gauges        @micrographics-js/vue-gauges        @micrographics-js/svelte-gauges        @micrographics-js/vanilla-gauges
+@micrographics-js/react-interact      @micrographics-js/vue-interact      @micrographics-js/svelte-interact      @micrographics-js/vanilla-interact
+@micrographics-js/react-orbit         @micrographics-js/vue-orbit         @micrographics-js/svelte-orbit         @micrographics-js/vanilla-orbit
 ```
 
 ---
@@ -156,7 +156,7 @@
 
 | Variant      | Price | npm packages delivered                      |
 |--------------|-------|---------------------------------------------|
-| React Bundle | $79   | all 8 `@micrographics/react-*` packages     |
+| React Bundle | $79   | all 8 `@micrographics-js/react-*` packages     |
 
 > Saves ~$98 vs buying individual packs ($177 total separately).
 
@@ -167,7 +167,7 @@
 
 | Variant    | Price | npm packages delivered                    |
 |------------|-------|-------------------------------------------|
-| Vue Bundle | $79   | all 8 `@micrographics/vue-*` packages     |
+| Vue Bundle | $79   | all 8 `@micrographics-js/vue-*` packages     |
 
 ---
 
@@ -176,7 +176,7 @@
 
 | Variant       | Price | npm packages delivered                       |
 |---------------|-------|----------------------------------------------|
-| Svelte Bundle | $79   | all 8 `@micrographics/svelte-*` packages     |
+| Svelte Bundle | $79   | all 8 `@micrographics-js/svelte-*` packages     |
 
 ---
 
@@ -185,7 +185,7 @@
 
 | Variant        | Price | npm packages delivered                        |
 |----------------|-------|-----------------------------------------------|
-| Vanilla Bundle | $59   | all 8 `@micrographics/vanilla-*` packages     |
+| Vanilla Bundle | $59   | all 8 `@micrographics-js/vanilla-*` packages     |
 
 ---
 
@@ -226,8 +226,8 @@
 ## Free Tier (drives adoption)
 
 These are always free on npm:
-- `@micrographics/core` — shared utilities (RNG, easing, tickers)
-- `@micrographics/tailwind` — Tailwind CSS plugin + preset
+- `@micrographics-js/core` — shared utilities (RNG, easing, tickers)
+- `@micrographics-js/tailwind` — Tailwind CSS plugin + preset
 
 ---
 
@@ -238,67 +238,67 @@ Copy this into your webhook handler `PACK_MAP`:
 ```ts
 const PACK_MAP: Record<string, string[]> = {
   // Individual packs (variant_id → npm packages)
-  "signals_react":    ["@micrographics/react-signals", "@micrographics/core"],
-  "signals_vue":      ["@micrographics/vue-signals", "@micrographics/core"],
-  "signals_svelte":   ["@micrographics/svelte-signals", "@micrographics/core"],
-  "signals_vanilla":  ["@micrographics/vanilla-signals", "@micrographics/core"],
-  "signals_all":      ["@micrographics/react-signals", "@micrographics/vue-signals", "@micrographics/svelte-signals", "@micrographics/vanilla-signals", "@micrographics/core"],
+  "signals_react":    ["@micrographics-js/react-signals", "@micrographics-js/core"],
+  "signals_vue":      ["@micrographics-js/vue-signals", "@micrographics-js/core"],
+  "signals_svelte":   ["@micrographics-js/svelte-signals", "@micrographics-js/core"],
+  "signals_vanilla":  ["@micrographics-js/vanilla-signals", "@micrographics-js/core"],
+  "signals_all":      ["@micrographics-js/react-signals", "@micrographics-js/vue-signals", "@micrographics-js/svelte-signals", "@micrographics-js/vanilla-signals", "@micrographics-js/core"],
 
-  "data_react":       ["@micrographics/react-data", "@micrographics/core"],
-  "data_vue":         ["@micrographics/vue-data", "@micrographics/core"],
-  "data_svelte":      ["@micrographics/svelte-data", "@micrographics/core"],
-  "data_vanilla":     ["@micrographics/vanilla-data", "@micrographics/core"],
-  "data_all":         ["@micrographics/react-data", "@micrographics/vue-data", "@micrographics/svelte-data", "@micrographics/vanilla-data", "@micrographics/core"],
+  "data_react":       ["@micrographics-js/react-data", "@micrographics-js/core"],
+  "data_vue":         ["@micrographics-js/vue-data", "@micrographics-js/core"],
+  "data_svelte":      ["@micrographics-js/svelte-data", "@micrographics-js/core"],
+  "data_vanilla":     ["@micrographics-js/vanilla-data", "@micrographics-js/core"],
+  "data_all":         ["@micrographics-js/react-data", "@micrographics-js/vue-data", "@micrographics-js/svelte-data", "@micrographics-js/vanilla-data", "@micrographics-js/core"],
 
-  "text_react":       ["@micrographics/react-text", "@micrographics/core"],
-  "text_vue":         ["@micrographics/vue-text", "@micrographics/core"],
-  "text_svelte":      ["@micrographics/svelte-text", "@micrographics/core"],
-  "text_vanilla":     ["@micrographics/vanilla-text", "@micrographics/core"],
-  "text_all":         ["@micrographics/react-text", "@micrographics/vue-text", "@micrographics/svelte-text", "@micrographics/vanilla-text", "@micrographics/core"],
+  "text_react":       ["@micrographics-js/react-text", "@micrographics-js/core"],
+  "text_vue":         ["@micrographics-js/vue-text", "@micrographics-js/core"],
+  "text_svelte":      ["@micrographics-js/svelte-text", "@micrographics-js/core"],
+  "text_vanilla":     ["@micrographics-js/vanilla-text", "@micrographics-js/core"],
+  "text_all":         ["@micrographics-js/react-text", "@micrographics-js/vue-text", "@micrographics-js/svelte-text", "@micrographics-js/vanilla-text", "@micrographics-js/core"],
 
-  "chrome_react":     ["@micrographics/react-chrome", "@micrographics/core"],
-  "chrome_vue":       ["@micrographics/vue-chrome", "@micrographics/core"],
-  "chrome_svelte":    ["@micrographics/svelte-chrome", "@micrographics/core"],
-  "chrome_vanilla":   ["@micrographics/vanilla-chrome", "@micrographics/core"],
-  "chrome_all":       ["@micrographics/react-chrome", "@micrographics/vue-chrome", "@micrographics/svelte-chrome", "@micrographics/vanilla-chrome", "@micrographics/core"],
+  "chrome_react":     ["@micrographics-js/react-chrome", "@micrographics-js/core"],
+  "chrome_vue":       ["@micrographics-js/vue-chrome", "@micrographics-js/core"],
+  "chrome_svelte":    ["@micrographics-js/svelte-chrome", "@micrographics-js/core"],
+  "chrome_vanilla":   ["@micrographics-js/vanilla-chrome", "@micrographics-js/core"],
+  "chrome_all":       ["@micrographics-js/react-chrome", "@micrographics-js/vue-chrome", "@micrographics-js/svelte-chrome", "@micrographics-js/vanilla-chrome", "@micrographics-js/core"],
 
-  "clocks_react":     ["@micrographics/react-clocks", "@micrographics/core"],
-  "clocks_vue":       ["@micrographics/vue-clocks", "@micrographics/core"],
-  "clocks_svelte":    ["@micrographics/svelte-clocks", "@micrographics/core"],
-  "clocks_vanilla":   ["@micrographics/vanilla-clocks", "@micrographics/core"],
-  "clocks_all":       ["@micrographics/react-clocks", "@micrographics/vue-clocks", "@micrographics/svelte-clocks", "@micrographics/vanilla-clocks", "@micrographics/core"],
+  "clocks_react":     ["@micrographics-js/react-clocks", "@micrographics-js/core"],
+  "clocks_vue":       ["@micrographics-js/vue-clocks", "@micrographics-js/core"],
+  "clocks_svelte":    ["@micrographics-js/svelte-clocks", "@micrographics-js/core"],
+  "clocks_vanilla":   ["@micrographics-js/vanilla-clocks", "@micrographics-js/core"],
+  "clocks_all":       ["@micrographics-js/react-clocks", "@micrographics-js/vue-clocks", "@micrographics-js/svelte-clocks", "@micrographics-js/vanilla-clocks", "@micrographics-js/core"],
 
-  "gauges_react":     ["@micrographics/react-gauges", "@micrographics/core"],
-  "gauges_vue":       ["@micrographics/vue-gauges", "@micrographics/core"],
-  "gauges_svelte":    ["@micrographics/svelte-gauges", "@micrographics/core"],
-  "gauges_vanilla":   ["@micrographics/vanilla-gauges", "@micrographics/core"],
-  "gauges_all":       ["@micrographics/react-gauges", "@micrographics/vue-gauges", "@micrographics/svelte-gauges", "@micrographics/vanilla-gauges", "@micrographics/core"],
+  "gauges_react":     ["@micrographics-js/react-gauges", "@micrographics-js/core"],
+  "gauges_vue":       ["@micrographics-js/vue-gauges", "@micrographics-js/core"],
+  "gauges_svelte":    ["@micrographics-js/svelte-gauges", "@micrographics-js/core"],
+  "gauges_vanilla":   ["@micrographics-js/vanilla-gauges", "@micrographics-js/core"],
+  "gauges_all":       ["@micrographics-js/react-gauges", "@micrographics-js/vue-gauges", "@micrographics-js/svelte-gauges", "@micrographics-js/vanilla-gauges", "@micrographics-js/core"],
 
-  "interact_react":   ["@micrographics/react-interact", "@micrographics/core"],
-  "interact_vue":     ["@micrographics/vue-interact", "@micrographics/core"],
-  "interact_svelte":  ["@micrographics/svelte-interact", "@micrographics/core"],
-  "interact_vanilla": ["@micrographics/vanilla-interact", "@micrographics/core"],
-  "interact_all":     ["@micrographics/react-interact", "@micrographics/vue-interact", "@micrographics/svelte-interact", "@micrographics/vanilla-interact", "@micrographics/core"],
+  "interact_react":   ["@micrographics-js/react-interact", "@micrographics-js/core"],
+  "interact_vue":     ["@micrographics-js/vue-interact", "@micrographics-js/core"],
+  "interact_svelte":  ["@micrographics-js/svelte-interact", "@micrographics-js/core"],
+  "interact_vanilla": ["@micrographics-js/vanilla-interact", "@micrographics-js/core"],
+  "interact_all":     ["@micrographics-js/react-interact", "@micrographics-js/vue-interact", "@micrographics-js/svelte-interact", "@micrographics-js/vanilla-interact", "@micrographics-js/core"],
 
-  "orbit_react":      ["@micrographics/react-orbit", "@micrographics/core"],
-  "orbit_vue":        ["@micrographics/vue-orbit", "@micrographics/core"],
-  "orbit_svelte":     ["@micrographics/svelte-orbit", "@micrographics/core"],
-  "orbit_vanilla":    ["@micrographics/vanilla-orbit", "@micrographics/core"],
-  "orbit_all":        ["@micrographics/react-orbit", "@micrographics/vue-orbit", "@micrographics/svelte-orbit", "@micrographics/vanilla-orbit", "@micrographics/core"],
+  "orbit_react":      ["@micrographics-js/react-orbit", "@micrographics-js/core"],
+  "orbit_vue":        ["@micrographics-js/vue-orbit", "@micrographics-js/core"],
+  "orbit_svelte":     ["@micrographics-js/svelte-orbit", "@micrographics-js/core"],
+  "orbit_vanilla":    ["@micrographics-js/vanilla-orbit", "@micrographics-js/core"],
+  "orbit_all":        ["@micrographics-js/react-orbit", "@micrographics-js/vue-orbit", "@micrographics-js/svelte-orbit", "@micrographics-js/vanilla-orbit", "@micrographics-js/core"],
 
   // Framework bundles
-  "bundle_react":   ["@micrographics/react-signals", "@micrographics/react-data", "@micrographics/react-text", "@micrographics/react-chrome", "@micrographics/react-clocks", "@micrographics/react-gauges", "@micrographics/react-interact", "@micrographics/react-orbit", "@micrographics/core"],
-  "bundle_vue":     ["@micrographics/vue-signals", "@micrographics/vue-data", "@micrographics/vue-text", "@micrographics/vue-chrome", "@micrographics/vue-clocks", "@micrographics/vue-gauges", "@micrographics/vue-interact", "@micrographics/vue-orbit", "@micrographics/core"],
-  "bundle_svelte":  ["@micrographics/svelte-signals", "@micrographics/svelte-data", "@micrographics/svelte-text", "@micrographics/svelte-chrome", "@micrographics/svelte-clocks", "@micrographics/svelte-gauges", "@micrographics/svelte-interact", "@micrographics/svelte-orbit", "@micrographics/core"],
-  "bundle_vanilla": ["@micrographics/vanilla-signals", "@micrographics/vanilla-data", "@micrographics/vanilla-text", "@micrographics/vanilla-chrome", "@micrographics/vanilla-clocks", "@micrographics/vanilla-gauges", "@micrographics/vanilla-interact", "@micrographics/vanilla-orbit", "@micrographics/core"],
+  "bundle_react":   ["@micrographics-js/react-signals", "@micrographics-js/react-data", "@micrographics-js/react-text", "@micrographics-js/react-chrome", "@micrographics-js/react-clocks", "@micrographics-js/react-gauges", "@micrographics-js/react-interact", "@micrographics-js/react-orbit", "@micrographics-js/core"],
+  "bundle_vue":     ["@micrographics-js/vue-signals", "@micrographics-js/vue-data", "@micrographics-js/vue-text", "@micrographics-js/vue-chrome", "@micrographics-js/vue-clocks", "@micrographics-js/vue-gauges", "@micrographics-js/vue-interact", "@micrographics-js/vue-orbit", "@micrographics-js/core"],
+  "bundle_svelte":  ["@micrographics-js/svelte-signals", "@micrographics-js/svelte-data", "@micrographics-js/svelte-text", "@micrographics-js/svelte-chrome", "@micrographics-js/svelte-clocks", "@micrographics-js/svelte-gauges", "@micrographics-js/svelte-interact", "@micrographics-js/svelte-orbit", "@micrographics-js/core"],
+  "bundle_vanilla": ["@micrographics-js/vanilla-signals", "@micrographics-js/vanilla-data", "@micrographics-js/vanilla-text", "@micrographics-js/vanilla-chrome", "@micrographics-js/vanilla-clocks", "@micrographics-js/vanilla-gauges", "@micrographics-js/vanilla-interact", "@micrographics-js/vanilla-orbit", "@micrographics-js/core"],
 
   // Full library + lifetime (all 32 per-pack packages)
   "full_library": [
-    "@micrographics/react-signals", "@micrographics/react-data", "@micrographics/react-text", "@micrographics/react-chrome", "@micrographics/react-clocks", "@micrographics/react-gauges", "@micrographics/react-interact", "@micrographics/react-orbit",
-    "@micrographics/vue-signals", "@micrographics/vue-data", "@micrographics/vue-text", "@micrographics/vue-chrome", "@micrographics/vue-clocks", "@micrographics/vue-gauges", "@micrographics/vue-interact", "@micrographics/vue-orbit",
-    "@micrographics/svelte-signals", "@micrographics/svelte-data", "@micrographics/svelte-text", "@micrographics/svelte-chrome", "@micrographics/svelte-clocks", "@micrographics/svelte-gauges", "@micrographics/svelte-interact", "@micrographics/svelte-orbit",
-    "@micrographics/vanilla-signals", "@micrographics/vanilla-data", "@micrographics/vanilla-text", "@micrographics/vanilla-chrome", "@micrographics/vanilla-clocks", "@micrographics/vanilla-gauges", "@micrographics/vanilla-interact", "@micrographics/vanilla-orbit",
-    "@micrographics/core"
+    "@micrographics-js/react-signals", "@micrographics-js/react-data", "@micrographics-js/react-text", "@micrographics-js/react-chrome", "@micrographics-js/react-clocks", "@micrographics-js/react-gauges", "@micrographics-js/react-interact", "@micrographics-js/react-orbit",
+    "@micrographics-js/vue-signals", "@micrographics-js/vue-data", "@micrographics-js/vue-text", "@micrographics-js/vue-chrome", "@micrographics-js/vue-clocks", "@micrographics-js/vue-gauges", "@micrographics-js/vue-interact", "@micrographics-js/vue-orbit",
+    "@micrographics-js/svelte-signals", "@micrographics-js/svelte-data", "@micrographics-js/svelte-text", "@micrographics-js/svelte-chrome", "@micrographics-js/svelte-clocks", "@micrographics-js/svelte-gauges", "@micrographics-js/svelte-interact", "@micrographics-js/svelte-orbit",
+    "@micrographics-js/vanilla-signals", "@micrographics-js/vanilla-data", "@micrographics-js/vanilla-text", "@micrographics-js/vanilla-chrome", "@micrographics-js/vanilla-clocks", "@micrographics-js/vanilla-gauges", "@micrographics-js/vanilla-interact", "@micrographics-js/vanilla-orbit",
+    "@micrographics-js/core"
   ],
   "lifetime": [], // same as full_library — update when new packs ship
 };
@@ -315,23 +315,48 @@ const PACK_MAP: Record<string, string[]> = {
 ```
 Hi {name},
 
-Your npm access token for Micrographics is ready.
+Your Micrographics license is ready. Here's how to install:
 
-TOKEN: npm_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+STEP 1 — Create .npmrc in your project root:
 
-Add this to your project's .npmrc file:
+  @micrographics-js:registry=https://npm.pkg.github.com
+  //npm.pkg.github.com/:_authToken={CUSTOMER_READ_TOKEN}
 
-  //registry.npmjs.org/:_authToken=npm_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+STEP 2 — Add .npmrc to .gitignore:
 
-Then install your pack(s):
+  echo ".npmrc" >> .gitignore
+
+STEP 3 — Install your packages:
 
   npm install {packages}
 
-Docs & gallery: https://micrographics.dev
+Optional — Tailwind integration (free, no token needed):
+
+  npm install @micrographics-js/tailwind
+
+Docs: https://github.com/micrographics-js/micrographs
 Support: support@micrographics.dev
 
 —Micrographics
 ```
+
+---
+
+## Token Distribution
+
+Packages are hosted on **GitHub Packages** (free). Customers get a Classic GitHub PAT with `read:packages` scope.
+
+### Creating the customer token
+
+1. Go to https://github.com/settings/tokens
+2. **"Generate new token (classic)"** (NOT fine-grained — those don't support packages)
+3. Note: `micrographics-customer-read`
+4. Expiration: No expiration
+5. Scopes: check **only** `read:packages`
+6. Generate → copy the `ghp_xxx...` token
+7. This token goes in the email template above as `{CUSTOMER_READ_TOKEN}`
+
+> **Note:** All customers share the same read token. To revoke, delete + recreate + re-distribute.
 
 ---
 

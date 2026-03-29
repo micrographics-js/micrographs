@@ -10,11 +10,15 @@ When starting a conversation about Micrographics, paste this context block or re
 
 ```
 I'm integrating Micrographics — a commercial micro-animation component library.
-Repo: https://github.com/RecursiveVoid/micrographs
+Repo: https://github.com/micrographics-js/micrographs
+npm scope: @micrographics-js (hosted on GitHub Packages)
 Monorepo: pnpm workspaces. Packages: core, react, vue, svelte, vanilla, tailwind.
 84 SVG-based animated components across 8 packs.
 Tech: TypeScript, CSS custom properties, zero runtime deps.
 Components accept `color`, `width`, `height` props. Colors use CSS vars like `var(--accent)`.
+Install: npm install @micrographics-js/react @micrographics-js/core
+Requires .npmrc with GitHub Packages token for paid packages.
+Free packages: @micrographics-js/core, @micrographics-js/tailwind
 ```
 
 ---
