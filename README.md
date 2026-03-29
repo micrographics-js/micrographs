@@ -236,15 +236,11 @@ apps/
 
 ## Purchase
 
-| Tier | Price | What you get |
-|------|-------|-------------|
-| Single framework | $79 | All 84 components for React, Vue, Svelte, or Vanilla |
-| Full Library | $149 | All 84 components, all 4 frameworks |
-| Lifetime | $199 | Everything now + all future components forever |
+**$49** — one-time payment, lifetime access. All 84 components, all 4 frameworks, all future updates.
 
-**Free tier:** `@micrographics-js/core` and `@micrographics-js/tailwind` are MIT licensed and free forever.
+`@micrographics-js/core` and `@micrographics-js/tailwind` are free and MIT licensed.
 
-[Purchase on LemonSqueezy](https://micrographics.lemonsqueezy.com)
+[Get Micrographics — $49](https://recursivevoid.lemonsqueezy.com)
 
 ---
 

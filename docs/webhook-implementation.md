@@ -44,26 +44,7 @@ Create `app/api/lemon-webhook/route.ts` (App Router) or `pages/api/lemon-webhook
 ```ts
 import crypto from "crypto";
 
-// Map LemonSqueezy product names to install instructions
-const PRODUCT_MAP: Record<string, { packages: string; framework: string }> = {
-  // Bundles (main products)
-  "React Bundle":    { packages: "@micrographics-js/react @micrographics-js/core", framework: "React" },
-  "Vue Bundle":      { packages: "@micrographics-js/vue @micrographics-js/core", framework: "Vue 3" },
-  "Svelte Bundle":   { packages: "@micrographics-js/svelte @micrographics-js/core", framework: "Svelte 5" },
-  "Vanilla Bundle":  { packages: "@micrographics-js/vanilla @micrographics-js/core", framework: "Vanilla" },
-  "Full Library":    { packages: "@micrographics-js/react @micrographics-js/vue @micrographics-js/svelte @micrographics-js/vanilla @micrographics-js/core", framework: "All Frameworks" },
-  "Lifetime":        { packages: "@micrographics-js/react @micrographics-js/vue @micrographics-js/svelte @micrographics-js/vanilla @micrographics-js/core", framework: "All Frameworks (Lifetime)" },
-
-  // Individual packs (all map to the same framework package since GitHub Packages is all-or-nothing)
-  "Signals Pack":     { packages: "@micrographics-js/react @micrographics-js/core", framework: "React" },
-  "Data Viz Pack":    { packages: "@micrographics-js/react @micrographics-js/core", framework: "React" },
-  "Text Pack":        { packages: "@micrographics-js/react @micrographics-js/core", framework: "React" },
-  "Chrome Pack":      { packages: "@micrographics-js/react @micrographics-js/core", framework: "React" },
-  "Clocks Pack":      { packages: "@micrographics-js/react @micrographics-js/core", framework: "React" },
-  "Gauges Pack":      { packages: "@micrographics-js/react @micrographics-js/core", framework: "React" },
-  "Interaction Pack": { packages: "@micrographics-js/react @micrographics-js/core", framework: "React" },
-  "Orbit & Nav Pack": { packages: "@micrographics-js/react @micrographics-js/core", framework: "React" },
-};
+// Single product — all customers get everything
 
 export async function POST(req: Request) {
   // 1. Read raw body
@@ -97,16 +78,7 @@ export async function POST(req: Request) {
   const customerEmail = data.user_email;
   const orderId = payload.data.id;
 
-  // 5. Get product name from first line item
-  const firstItem = data.first_order_item;
-  const productName = firstItem?.product_name || "Unknown";
-  const variantName = firstItem?.variant_name || "";
-
-  // 6. Look up packages
-  const product = PRODUCT_MAP[productName] || PRODUCT_MAP["React Bundle"];
-  const installPackages = product.packages;
-
-  // 7. Send email with install instructions
+  // 5. Send email with install instructions
   const token = process.env.CUSTOMER_GITHUB_TOKEN!;
 
   await sendEmail({
@@ -114,47 +86,49 @@ export async function POST(req: Request) {
     subject: "Your Micrographics license is ready",
     body: `Hi ${customerName},
 
-Thank you for purchasing Micrographics (${productName})!
+Thank you for purchasing Micrographics!
 
-Your install token and setup instructions are below.
+Here's how to install all 84 components:
 
 
 STEP 1 — Create .npmrc in your project root:
 
-@micrographics-js:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=${token}
+  @micrographics-js:registry=https://npm.pkg.github.com
+  //npm.pkg.github.com/:_authToken=${token}
 
 
 STEP 2 — Add .npmrc to .gitignore:
 
-echo ".npmrc" >> .gitignore
+  echo ".npmrc" >> .gitignore
 
 
-STEP 3 — Install:
+STEP 3 — Install for your framework:
 
-npm install ${installPackages}
+  # React
+  npm install @micrographics-js/react @micrographics-js/core
+
+  # Vue 3
+  npm install @micrographics-js/vue @micrographics-js/core
+
+  # Svelte 5
+  npm install @micrographics-js/svelte @micrographics-js/core
+
+  # Vanilla Web Components
+  npm install @micrographics-js/vanilla @micrographics-js/core
+
+  # Tailwind plugin (optional)
+  npm install @micrographics-js/tailwind
 
 
-STEP 4 (optional) — Tailwind integration (free, no token needed):
-
-npm install @micrographics-js/tailwind
-
-
-DOCS & EXAMPLES:
-https://github.com/micrographics-js/micrographs/blob/main/docs/documentation.md
-
-SUPPORT:
-Reply to this email or visit https://github.com/micrographics-js/micrographs
-
+DOCS: https://github.com/micrographics-js/micrographs/blob/main/docs/documentation.md
+SUPPORT: Reply to this email
 
 Order ID: ${orderId}
-Product: ${productName}${variantName ? " — " + variantName : ""}
 
 — Micrographics`,
   });
 
-  // 8. Log (optional — store in your DB)
-  console.log(`[micrographics] Order ${orderId}: ${customerEmail} purchased ${productName}`);
+  console.log(`[micrographics] Order ${orderId}: ${customerEmail}`);
 
   return new Response("OK", { status: 200 });
 }
