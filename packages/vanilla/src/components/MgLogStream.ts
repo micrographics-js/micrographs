@@ -1,4 +1,4 @@
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 
 const DEFAULT_ENTRIES = [
   "[INFO]  kernel: loaded modules ok",

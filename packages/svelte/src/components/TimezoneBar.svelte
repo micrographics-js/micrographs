@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 const DEFAULT_ZONES = [
   { label: "UTC", offset: 0 },
   { label: "NYC", offset: -5 },

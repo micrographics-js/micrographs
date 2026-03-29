@@ -14,10 +14,10 @@ importers:
 
   apps/test-app:
     dependencies:
-      '@micrographics/core':
+      '@micrographics-js/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@micrographics/react':
+      '@micrographics-js/react':
         specifier: workspace:*
         version: link:../../packages/react
       react:
@@ -47,7 +47,7 @@ importers:
 
   packages/react:
     dependencies:
-      '@micrographics/core':
+      '@micrographics-js/core':
         specifier: workspace:*
         version: link:../core
       react:
@@ -66,7 +66,7 @@ importers:
 
   packages/svelte:
     dependencies:
-      '@micrographics/core':
+      '@micrographics-js/core':
         specifier: workspace:*
         version: link:../core
       svelte:
@@ -81,13 +81,13 @@ importers:
 
   packages/vanilla:
     dependencies:
-      '@micrographics/core':
+      '@micrographics-js/core':
         specifier: workspace:*
         version: link:../core
 
   packages/vue:
     dependencies:
-      '@micrographics/core':
+      '@micrographics-js/core':
         specifier: workspace:*
         version: link:../core
       vue:

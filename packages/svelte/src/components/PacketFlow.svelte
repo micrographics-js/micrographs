@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 let { width = 80, height = 12, color = "var(--accent)", packets = 4, speed = 40 } = $props();
 let pkts = $state(
   Array.from({ length: packets }, (_, i) => ({

@@ -1,4 +1,4 @@
-import { createTicker, seeded } from "@micrographics/core";
+import { createTicker, seeded } from "@micrographics-js/core";
 
 export class MgBarSparkline extends HTMLElement {
   private cleanup?: () => void;

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 let { status = "ok", speed = 1000 } = $props();
 const COLORS: Record<string,string> = { ok:"var(--accent)", warn:"var(--accent-amber)", error:"var(--accent-red)", idle:"var(--fg-dimmer)" };
 let on = $state(true);

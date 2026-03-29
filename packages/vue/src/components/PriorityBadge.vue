@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 
 const props = withDefaults(defineProps<{ level?: string; label?: string; blink?: boolean; speed?: number }>(),
   { level: "A", label: "PRIORITY", blink: false, speed: 800 });

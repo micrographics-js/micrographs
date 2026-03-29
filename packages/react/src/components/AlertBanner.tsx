@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 
 export interface AlertBannerProps {
   message?: string;

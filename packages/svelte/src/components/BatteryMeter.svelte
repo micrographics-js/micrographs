@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 let { level = 0.75, charging = false, width = 28, height = 14 } = $props();
 let animLevel = $state(charging ? 0 : level);
 $effect(() => {

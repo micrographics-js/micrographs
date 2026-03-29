@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from "vue";
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 
 const DEFAULT_EVENTS = ["SYS_INIT", "PKT_RECV", "AUTH_OK", "SYNC", "PROC_RUN"];
 

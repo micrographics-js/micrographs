@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { pixelDiamondPath } from "@micrographics/core";
+import { pixelDiamondPath } from "@micrographics-js/core";
 
 const props = withDefaults(defineProps<{ size?: number; color?: string; glow?: boolean }>(),
   { size: 2, color: "var(--accent)", glow: true });

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 let { direction = "right" as "right" | "left", speed = 150, color = "var(--accent)", count = 5 } = $props();
 let offset = $state(0);
 $effect(() => {

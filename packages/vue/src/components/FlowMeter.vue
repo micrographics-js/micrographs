@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 
 const props = withDefaults(defineProps<{ direction?: string; speed?: number; color?: string; count?: number }>(),
   { direction: "right", speed: 150, color: "var(--accent)", count: 5 });

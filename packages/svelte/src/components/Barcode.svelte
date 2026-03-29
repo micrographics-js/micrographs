@@ -1,5 +1,5 @@
 <script lang="ts">
-import { seeded } from "@micrographics/core";
+import { seeded } from "@micrographics-js/core";
 let { seed = 42, width = 60, height = 20, color = "var(--fg-dim)" } = $props();
 const bars = $derived(Array.from({ length: Math.floor(width / 2) }, (_, i) => ({
   x: i * 2,

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTicker, glitchText } from "@micrographics/core";
+import { createTicker, glitchText } from "@micrographics-js/core";
 let { text = "MICROGRAPHICS", intensity = 0.15, speed = 200, color = "var(--fg)" } = $props();
 let displayed = $state(text);
 

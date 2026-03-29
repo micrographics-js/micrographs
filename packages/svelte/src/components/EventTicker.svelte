@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 const DEFAULT_EVENTS = ["SYS_INIT", "PKT_RECV", "AUTH_OK", "SYNC", "PROC_RUN"];
 let { events = DEFAULT_EVENTS, speed = 1800, color = "var(--fg)", width = 100 } = $props();
 let index = $state(0);

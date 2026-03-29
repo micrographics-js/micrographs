@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { createTicker, seeded } from "@micrographics/core";
+import { createTicker, seeded } from "@micrographics-js/core";
 
 const props = withDefaults(defineProps<{ rows?: number; cols?: number; speed?: number; color?: string; seed?: number }>(),
   { rows: 4, cols: 8, speed: 200, color: "var(--fg-dimmer)", seed: 42 });

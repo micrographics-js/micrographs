@@ -1,4 +1,4 @@
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 
 const STATUS_COLORS: Record<string, string> = {
   ok: "var(--accent)",

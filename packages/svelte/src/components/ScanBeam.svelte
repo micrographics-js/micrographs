@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 let { width = 80, height = 4, color = "var(--accent)", speed = 50 } = $props();
 let pos = $state(0);
 $effect(() => { return createTicker(speed, () => { pos = (pos + 1) % (width + 20); }); });

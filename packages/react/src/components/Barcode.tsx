@@ -1,4 +1,4 @@
-import { seeded } from "@micrographics/core";
+import { seeded } from "@micrographics-js/core";
 
 export interface BarcodeProps {
   seed?: number;

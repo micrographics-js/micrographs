@@ -1,10 +1,10 @@
 {
-  "name": "@micrographics/vanilla",
+  "name": "@micrographics-js/vanilla",
   "version": "0.1.0",
   "type": "module",
   "description": "52 animated micro-UI Web Components — signals, gauges, radar, terminal text, HUD elements. No framework required.",
   "license": "SEE LICENSE IN LICENSE.md",
-  "repository": { "type": "git", "url": "https://github.com/micrographics/micrographs", "directory": "packages/vanilla" },
+  "repository": { "type": "git", "url": "https://github.com/micrographics-js/micrographs", "directory": "packages/vanilla" },
   "keywords": ["micrographics", "web-components", "custom-elements", "svg", "animation", "dashboard", "terminal"],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,7 +16,7 @@
     "build": "tsc",
     "clean": "rm -rf dist"
   },
-  "dependencies": { "@micrographics/core": "workspace:*" },
+  "dependencies": { "@micrographics-js/core": "workspace:*" },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   }

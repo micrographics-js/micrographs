@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 let { cols = 8, rows = 5, speed = 120, color = "var(--fg-dimmer)" } = $props();
 let grid = $state<string[][]>(Array.from({ length: rows }, () => Array.from({ length: cols }, () => (Math.random() > 0.5 ? "1" : "0"))));
 $effect(() => {

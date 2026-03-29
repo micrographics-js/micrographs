@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 let { value = 60, max = 100, size = 80, color = "var(--accent)", unit = "km/h", animated = false } = $props();
 let current = $state(value);
 let dir = 1;

@@ -1,4 +1,4 @@
-import { pixelDiamondPath } from "@micrographics/core";
+import { pixelDiamondPath } from "@micrographics-js/core";
 
 export class MgPixelDiamond extends HTMLElement {
   static get observedAttributes() {

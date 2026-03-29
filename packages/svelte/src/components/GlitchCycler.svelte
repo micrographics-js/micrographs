@@ -1,5 +1,5 @@
 <script lang="ts">
-import { typeIn, scramble } from "@micrographics/core";
+import { typeIn, scramble } from "@micrographics-js/core";
 const DEFAULT_SENTENCES = [
   "LOADING SUBSYSTEMS...",
   "SIGNAL ACQUIRED",

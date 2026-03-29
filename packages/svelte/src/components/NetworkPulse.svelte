@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 let { upKbps = 128, downKbps = 512, speed = 500 } = $props();
 let up = $state(upKbps), down = $state(downKbps);
 $effect(() => {

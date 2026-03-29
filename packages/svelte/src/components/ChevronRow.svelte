@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 let { direction = "right" as "right" | "left", color = "var(--fg-dimmer)", count = 6, speed = 200 } = $props();
 let phase = $state(0);
 $effect(() => { return createTicker(speed, () => { phase = (phase + 1) % count; }); });

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 let { from = 300, color = "var(--accent)", alertAt = 60, onEnd }: { from?: number; color?: string; alertAt?: number; onEnd?: () => void } = $props();
 let remaining = $state(from);
 $effect(() => { remaining = from; });

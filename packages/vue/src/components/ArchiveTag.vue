@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { seeded } from "@micrographics/core";
+import { seeded } from "@micrographics-js/core";
 
 const props = withDefaults(defineProps<{ id?: string | number; label?: string; date?: string; color?: string; seed?: number }>(),
   { id: "NAS-001", label: "INTERNAL", color: "var(--fg-dim)", seed: 42 });

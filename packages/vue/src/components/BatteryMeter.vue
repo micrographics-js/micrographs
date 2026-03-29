@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 
 const props = withDefaults(defineProps<{ level?: number; charging?: boolean; width?: number; height?: number }>(),
   { level: 0.75, charging: false, width: 28, height: 14 });

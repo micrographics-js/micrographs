@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 
 const props = withDefaults(defineProps<{ upKbps?: number; downKbps?: number; speed?: number }>(),
   { upKbps: 128, downKbps: 512, speed: 500 });

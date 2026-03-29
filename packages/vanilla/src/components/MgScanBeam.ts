@@ -1,4 +1,4 @@
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 
 export class MgScanBeam extends HTMLElement {
   private cleanup?: () => void;

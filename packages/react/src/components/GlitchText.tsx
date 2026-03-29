@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { createTicker, glitchText } from "@micrographics/core";
+import { createTicker, glitchText } from "@micrographics-js/core";
 
 export interface GlitchTextProps {
   text?: string;

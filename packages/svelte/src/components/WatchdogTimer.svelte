@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 let { interval = 5000, color = "var(--accent)", onBark }: { interval?: number; color?: string; onBark?: () => void } = $props();
 let remaining = $state(interval);
 let pulse = $state(false);

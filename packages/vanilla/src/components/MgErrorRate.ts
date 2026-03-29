@@ -1,4 +1,4 @@
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 
 export class MgErrorRate extends HTMLElement {
   private cleanup?: () => void;

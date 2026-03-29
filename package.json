@@ -8,9 +8,9 @@
     "dev": "pnpm --filter test-app dev",
     "type-check": "pnpm -r exec tsc --noEmit",
     "publish:all": "pnpm build && pnpm publish:free && pnpm publish:paid",
-    "publish:free": "pnpm --filter @micrographics/core publish --no-git-checks && pnpm --filter @micrographics/tailwind publish --no-git-checks",
-    "publish:paid": "pnpm --filter @micrographics/react publish --no-git-checks && pnpm --filter @micrographics/vue publish --no-git-checks && pnpm --filter @micrographics/svelte publish --no-git-checks && pnpm --filter @micrographics/vanilla publish --no-git-checks",
-    "publish:gh-free": "pnpm --filter @micrographics/core publish --no-git-checks --registry https://npm.pkg.github.com && pnpm --filter @micrographics/tailwind publish --no-git-checks --registry https://npm.pkg.github.com"
+    "publish:free": "pnpm --filter @micrographics-js/core publish --no-git-checks && pnpm --filter @micrographics-js/tailwind publish --no-git-checks",
+    "publish:paid": "pnpm --filter @micrographics-js/react publish --no-git-checks && pnpm --filter @micrographics-js/vue publish --no-git-checks && pnpm --filter @micrographics-js/svelte publish --no-git-checks && pnpm --filter @micrographics-js/vanilla publish --no-git-checks",
+    "publish:gh-free": "pnpm --filter @micrographics-js/core publish --no-git-checks --registry https://npm.pkg.github.com && pnpm --filter @micrographics-js/tailwind publish --no-git-checks --registry https://npm.pkg.github.com"
   },
   "devDependencies": {
     "typescript": "^5.4.0"

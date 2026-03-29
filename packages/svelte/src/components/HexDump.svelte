@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTicker, seeded } from "@micrographics/core";
+import { createTicker, seeded } from "@micrographics-js/core";
 let { rows = 4, cols = 8, speed = 200, color = "var(--fg-dimmer)", seed = 42 } = $props();
 let cells = $state<string[][]>(
   Array.from({ length: rows }, (_, ri) =>

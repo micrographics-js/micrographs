@@ -1,10 +1,10 @@
 {
-  "name": "@micrographics/vue",
+  "name": "@micrographics-js/vue",
   "version": "0.1.0",
   "type": "module",
   "description": "84 animated micro-UI components for Vue 3 — signals, gauges, radar, terminal text, HUD elements",
   "license": "SEE LICENSE IN LICENSE.md",
-  "repository": { "type": "git", "url": "https://github.com/micrographics/micrographs", "directory": "packages/vue" },
+  "repository": { "type": "git", "url": "https://github.com/micrographics-js/micrographs", "directory": "packages/vue" },
   "keywords": ["micrographics", "vue", "vue3", "components", "svg", "animation", "dashboard", "terminal"],
   "main": "./src/index.ts",
   "types": "./src/index.ts",
@@ -13,7 +13,7 @@
   },
   "files": ["src"],
   "peerDependencies": { "vue": ">=3.3" },
-  "dependencies": { "@micrographics/core": "workspace:*" },
+  "dependencies": { "@micrographics-js/core": "workspace:*" },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { typeIn, scramble } from "@micrographics/core";
+import { typeIn, scramble } from "@micrographics-js/core";
 
 const props = withDefaults(defineProps<{ sentences?: string[]; pauseMs?: number; color?: string }>(),
   { sentences: () => ["LOADING SUBSYSTEMS...", "SIGNAL ACQUIRED", "READY FOR TRANSMISSION", "AWAITING FURTHER ORDERS"], pauseMs: 2000, color: "var(--accent)" });

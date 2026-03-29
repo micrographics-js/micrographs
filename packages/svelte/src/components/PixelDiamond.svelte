@@ -1,5 +1,5 @@
 <script lang="ts">
-import { pixelDiamondPath } from "@micrographics/core";
+import { pixelDiamondPath } from "@micrographics-js/core";
 let { size = 2, color = "var(--accent)", glow = true } = $props();
 const margin = $derived(size * 4);
 const svgSize = $derived(size * 6 + margin * 2);

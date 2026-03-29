@@ -26,7 +26,7 @@ import {
   // Pack 7 — Interaction
   CopyButton, RatingDots,
   ToggleSwitch, NumericStepper, SegmentedBar,
-} from "@micrographics/react";
+} from "@micrographics-js/react";
 
 // ─── Theme System ────────────────────────────────────────────────────────────
 
@@ -579,7 +579,7 @@ const packs: Pack[] = [
   {
     name: "Pack 7 — Interaction",
     components: [
-      { name: "CopyButton", render: () => <CopyButton text="npm install @micrographics/react" />, defaultProps: {} },
+      { name: "CopyButton", render: () => <CopyButton text="npm install @micrographics-js/react" />, defaultProps: {} },
       {
         name: "RatingDots",
         render: (p) => <RatingDots value={(p.value as number) ?? 3} max={5} />,

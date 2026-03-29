@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 
 const DEFAULT_ENTRIES = ["[INFO]  kernel: loaded modules ok","[INFO]  net: interface eth0 up","[WARN]  disk: usage at 87%","[INFO]  svc: auth service started","[DEBUG] req: GET /health 200 2ms","[INFO]  cron: job triggered","[WARN]  mem: gc pressure detected","[INFO]  sync: upstream ok"];
 const props = withDefaults(defineProps<{ entries?: string[]; speed?: number; color?: string; maxLines?: number }>(),

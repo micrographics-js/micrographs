@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 let { value = 0, bits = 8, color = "var(--accent)", speed = 400, animated = false } = $props();
 let current = $state(value);
 const maxVal = $derived(Math.pow(2, bits) - 1);

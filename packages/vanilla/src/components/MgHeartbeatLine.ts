@@ -1,4 +1,4 @@
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 
 export class MgHeartbeatLine extends HTMLElement {
   private cleanup?: () => void;

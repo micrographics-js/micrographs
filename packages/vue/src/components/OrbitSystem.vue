@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 
 interface Satellite { label: string; radius: number; speed: number; color?: string; size?: number; startAngle?: number; }
 const props = withDefaults(defineProps<{ center?: string; satellites?: Satellite[]; size?: number; showRings?: boolean; showLabels?: boolean; glowCenter?: boolean; color?: string }>(),

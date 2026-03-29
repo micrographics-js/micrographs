@@ -1,4 +1,4 @@
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 
 const LEVEL_COLORS: Record<string, string> = {
   A: "var(--accent-red)",

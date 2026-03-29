@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from "vue";
-import { createTicker, seeded } from "@micrographics/core";
+import { createTicker, seeded } from "@micrographics-js/core";
 
 const props = withDefaults(defineProps<{ width?: number; seed?: number; color?: string; height?: number; speed?: number }>(),
   { width: 9, seed: 42, color: "var(--accent)", height: 32, speed: 180 });

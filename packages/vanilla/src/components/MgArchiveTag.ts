@@ -1,4 +1,4 @@
-import { seeded } from "@micrographics/core";
+import { seeded } from "@micrographics-js/core";
 
 export class MgArchiveTag extends HTMLElement {
   static get observedAttributes() {

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 let { cols = 8, rows = 4, cellSize = 6, speed = 120 } = $props();
 const total = $derived(cols * rows);
 let tick = $state(0);

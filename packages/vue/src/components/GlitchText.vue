@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { createTicker, glitchText } from "@micrographics/core";
+import { createTicker, glitchText } from "@micrographics-js/core";
 
 const props = withDefaults(defineProps<{ text?: string; intensity?: number; speed?: number; color?: string }>(),
   { text: "MICROGRAPHICS", intensity: 0.15, speed: 200, color: "var(--fg)" });

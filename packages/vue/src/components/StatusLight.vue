@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 
 const props = withDefaults(defineProps<{ status?: string; speed?: number }>(), { status: "ok", speed: 1000 });
 const STATUS_COLORS: Record<string, string> = { ok: "var(--accent)", warn: "var(--accent-amber)", error: "var(--accent-red)", idle: "var(--fg-dimmer)" };

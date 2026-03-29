@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTicker, seeded } from "@micrographics/core";
+import { createTicker, seeded } from "@micrographics-js/core";
 let { bars = 12, color = "var(--accent)", height = 32, speed = 200, seed = 7 } = $props();
 let values = $state(Array.from({length:bars}, (_,i) => seeded(seed+i)));
 $effect(() => { return createTicker(speed, () => { values = [...values.slice(1), Math.random()]; }); });

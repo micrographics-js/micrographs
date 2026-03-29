@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 const DEFAULT_ENTRIES = [
   "[INFO]  kernel: loaded modules ok",
   "[INFO]  net: interface eth0 up",

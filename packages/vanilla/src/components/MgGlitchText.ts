@@ -1,4 +1,4 @@
-import { createTicker, glitchText } from "@micrographics/core";
+import { createTicker, glitchText } from "@micrographics-js/core";
 
 export class MgGlitchText extends HTMLElement {
   private cleanup?: () => void;

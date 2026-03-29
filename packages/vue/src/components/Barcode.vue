@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { seeded } from "@micrographics/core";
+import { seeded } from "@micrographics-js/core";
 
 const props = withDefaults(defineProps<{ seed?: number; width?: number; height?: number; color?: string }>(),
   { seed: 42, width: 60, height: 20, color: "var(--fg-dim)" });

@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
-import { typeIn, scramble } from "@micrographics/core";
+import { typeIn, scramble } from "@micrographics-js/core";
 
 const DEFAULT_SENTENCES = [
   "LOADING SUBSYSTEMS...",

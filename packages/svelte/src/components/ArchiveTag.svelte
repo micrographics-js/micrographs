@@ -1,5 +1,5 @@
 <script lang="ts">
-import { seeded } from "@micrographics/core";
+import { seeded } from "@micrographics-js/core";
 let { id = "NAS-001", label = "INTERNAL", date = undefined as string | undefined, color = "var(--fg-dim)", seed = 42 } = $props();
 const fakeDate = $derived(date ?? `${2024 + Math.floor(seeded(seed) * 2)}.${String(Math.floor(seeded(seed + 1) * 12) + 1).padStart(2, "0")}`);
 const vol = $derived(String(Math.floor(seeded(seed + 2) * 9) + 1));
