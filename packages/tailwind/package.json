@@ -1,6 +1,6 @@
 {
   "name": "@micrographics-js/tailwind",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "description": "Tailwind CSS plugin and preset for Micrographics — dark terminal theme tokens, utilities, animations",
   "license": "MIT",
