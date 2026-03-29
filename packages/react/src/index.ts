@@ -100,3 +100,89 @@ export type { TankLevelProps } from "./components/TankLevel.js";
 export type { FlowMeterProps } from "./components/FlowMeter.js";
 export type { CopyButtonProps } from "./components/CopyButton.js";
 export type { RatingDotsProps } from "./components/RatingDots.js";
+
+// New Signal/Status
+export { SpinDial } from "./components/SpinDial.js";
+export { ScanBeam } from "./components/ScanBeam.js";
+export { SystemLoad } from "./components/SystemLoad.js";
+export { EventTicker } from "./components/EventTicker.js";
+export { SignalQuality } from "./components/SignalQuality.js";
+export { WatchdogTimer } from "./components/WatchdogTimer.js";
+
+// New Data Viz
+export { WaveformLine } from "./components/WaveformLine.js";
+export { RadarSweep } from "./components/RadarSweep.js";
+export { PacketFlow } from "./components/PacketFlow.js";
+export { HeatGrid } from "./components/HeatGrid.js";
+export { ThermalBar } from "./components/ThermalBar.js";
+
+// New Text/Chrome
+export { KanaTag } from "./components/KanaTag.js";
+export { MicroStrip } from "./components/MicroStrip.js";
+export { WeatherStrip } from "./components/WeatherStrip.js";
+export { ScrollingText } from "./components/ScrollingText.js";
+export { BinaryCounter } from "./components/BinaryCounter.js";
+export { SectorBadge } from "./components/SectorBadge.js";
+export { RulerTick } from "./components/RulerTick.js";
+export { CoordLabel } from "./components/CoordLabel.js";
+export { WireFrame } from "./components/WireFrame.js";
+export { HexGrid } from "./components/HexGrid.js";
+
+// New Clocks
+export { CountdownTimer } from "./components/CountdownTimer.js";
+export { StopwatchDisplay } from "./components/StopwatchDisplay.js";
+export { TimezoneBar } from "./components/TimezoneBar.js";
+
+// New Gauges
+export { PressureGauge } from "./components/PressureGauge.js";
+export { VoltageDisplay } from "./components/VoltageDisplay.js";
+export { TemperatureBar } from "./components/TemperatureBar.js";
+export { CompassRose } from "./components/CompassRose.js";
+export { Speedometer } from "./components/Speedometer.js";
+
+// New Interaction
+export { ToggleSwitch } from "./components/ToggleSwitch.js";
+export { NumericStepper } from "./components/NumericStepper.js";
+export { SegmentedBar } from "./components/SegmentedBar.js";
+
+// New Orbit/Navigation
+export { RadarReticle } from "./components/RadarReticle.js";
+export { CrosshairTarget } from "./components/CrosshairTarget.js";
+export { MissionStatus } from "./components/MissionStatus.js";
+
+// Type exports for new components
+export type { SpinDialProps } from "./components/SpinDial.js";
+export type { ScanBeamProps } from "./components/ScanBeam.js";
+export type { KanaTagProps } from "./components/KanaTag.js";
+export type { MicroStripProps } from "./components/MicroStrip.js";
+export type { WeatherStripProps } from "./components/WeatherStrip.js";
+export type { WaveformLineProps } from "./components/WaveformLine.js";
+export type { RadarSweepProps } from "./components/RadarSweep.js";
+export type { PacketFlowProps } from "./components/PacketFlow.js";
+export type { HeatGridProps } from "./components/HeatGrid.js";
+export type { ThermalBarProps } from "./components/ThermalBar.js";
+export type { SystemLoadProps } from "./components/SystemLoad.js";
+export type { EventTickerProps } from "./components/EventTicker.js";
+export type { CountdownTimerProps } from "./components/CountdownTimer.js";
+export type { StopwatchDisplayProps } from "./components/StopwatchDisplay.js";
+export type { TimezoneBarProps } from "./components/TimezoneBar.js";
+export type { PressureGaugeProps } from "./components/PressureGauge.js";
+export type { VoltageDisplayProps } from "./components/VoltageDisplay.js";
+export type { TemperatureBarProps } from "./components/TemperatureBar.js";
+export type { CompassRoseProps } from "./components/CompassRose.js";
+export type { SpeedometerProps } from "./components/Speedometer.js";
+export type { ToggleSwitchProps } from "./components/ToggleSwitch.js";
+export type { NumericStepperProps } from "./components/NumericStepper.js";
+export type { SegmentedBarProps } from "./components/SegmentedBar.js";
+export type { RadarReticleProps } from "./components/RadarReticle.js";
+export type { CrosshairTargetProps } from "./components/CrosshairTarget.js";
+export type { MissionStatusProps } from "./components/MissionStatus.js";
+export type { ScrollingTextProps } from "./components/ScrollingText.js";
+export type { BinaryCounterProps } from "./components/BinaryCounter.js";
+export type { SectorBadgeProps } from "./components/SectorBadge.js";
+export type { RulerTickProps } from "./components/RulerTick.js";
+export type { CoordLabelProps } from "./components/CoordLabel.js";
+export type { WireFrameProps } from "./components/WireFrame.js";
+export type { HexGridProps } from "./components/HexGrid.js";
+export type { SignalQualityProps } from "./components/SignalQuality.js";
+export type { WatchdogTimerProps } from "./components/WatchdogTimer.js";

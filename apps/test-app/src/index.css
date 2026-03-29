@@ -9,6 +9,8 @@
   --accent:        #3ecf8e;
   --accent-amber:  #f5a623;
   --accent-red:    #e05252;
+  /* theme transition */
+  transition: background-color 0.3s, color 0.3s;
 }
 
 * {

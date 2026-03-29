@@ -1,24 +1,120 @@
 import { useState, useCallback } from "react";
 import {
-  // Pack 1
+  // Pack 1 — Signal & Status
   SignalMeter, PulseTag, StatusLight, HeartbeatLine, LoadBar, BootSequence,
   BatteryMeter, Uptime, PingIndicator, ConnectionStatus, AlertBanner,
   ReadyBadge, ScanLine, NetworkPulse, CPUSparkline, ErrorRate, MemoryBar,
-  // Pack 2
+  SpinDial, ScanBeam, SystemLoad, EventTicker, SignalQuality, WatchdogTimer,
+  // Pack 2 — Data Micro-Viz
   DotChart, BarSparkline, FrequencyBars, BinaryStream, VUMeter, HexDump,
-  // Pack 3
+  WaveformLine, RadarSweep, PacketFlow, HeatGrid, ThermalBar,
+  // Pack 3 — Terminal Text
   GlitchCycler, Typewriter, GlitchText, LogStream, CounterUp, BootLog, MatrixRain,
-  // Pack 4
+  KanaTag, MicroStrip, WeatherStrip, ScrollingText, BinaryCounter,
+  // Pack 4 — Decorative Chrome
   CornerOrnament, Barcode, PanelTitle, PixelDiamond, ChevronRow, DataLabel,
-  // Pack 5
+  SectorBadge, RulerTick, CoordLabel, WireFrame, HexGrid,
+  // Pack 5 — Time & Clocks
   PixelClock, UnixTimestamp, DayProgress,
-  // Pack 6
+  CountdownTimer, StopwatchDisplay, TimezoneBar,
+  // Pack 6 — Industrial Gauges
   DialGauge, TankLevel, FlowMeter,
+  PressureGauge, VoltageDisplay, TemperatureBar, CompassRose, Speedometer,
   // Orbit & Editorial
   OrbitSystem, TargetReticle, PriorityBadge, RegistrationMark, ArchiveTag,
-  // Pack 7
+  RadarReticle, CrosshairTarget, MissionStatus,
+  // Pack 7 — Interaction
   CopyButton, RatingDots,
+  ToggleSwitch, NumericStepper, SegmentedBar,
 } from "@micrographics/react";
+
+// ─── Theme System ────────────────────────────────────────────────────────────
+
+const THEMES = {
+  "Phosphor":  { "--accent": "#3ecf8e", "--accent-amber": "#f5a623", "--accent-red": "#e05252", "--bg": "#0d0e17", "--fg": "#e8e8e8" },
+  "Amber":     { "--accent": "#f5a623", "--accent-amber": "#e05252", "--accent-red": "#e05252", "--bg": "#0f0c00", "--fg": "#f0d080" },
+  "Crimson":   { "--accent": "#e05252", "--accent-amber": "#f5a623", "--accent-red": "#ff2244", "--bg": "#110010", "--fg": "#e8d0d0" },
+  "Ice":       { "--accent": "#60cfff", "--accent-amber": "#f5a623", "--accent-red": "#e05252", "--bg": "#050d17", "--fg": "#d0e8f5" },
+  "Violet":    { "--accent": "#a78bfa", "--accent-amber": "#f5a623", "--accent-red": "#e05252", "--bg": "#090717", "--fg": "#e0d8f0" },
+  "Mono":      { "--accent": "#cccccc", "--accent-amber": "#aaaaaa", "--accent-red": "#888888", "--bg": "#0a0a0a", "--fg": "#dddddd" },
+} as const;
+
+type ThemeName = keyof typeof THEMES;
+
+function ThemeCustomizer({ onThemeChange }: { onThemeChange: (vars: Record<string, string>) => void }) {
+  const [active, setActive] = useState<ThemeName>("Phosphor");
+  const [customAccent, setCustomAccent] = useState("#3ecf8e");
+  const [open, setOpen] = useState(false);
+
+  function applyTheme(name: ThemeName) {
+    setActive(name);
+    setCustomAccent(THEMES[name]["--accent"]);
+    onThemeChange(THEMES[name]);
+  }
+
+  function applyCustomAccent(v: string) {
+    setCustomAccent(v);
+    onThemeChange({ ...THEMES[active], "--accent": v });
+  }
+
+  return (
+    <div style={{ position: "relative" }}>
+      <button
+        onClick={() => setOpen(v => !v)}
+        style={{
+          background: "none", border: "1px solid var(--border-strong)",
+          color: "var(--fg-dim)", fontFamily: "monospace", fontSize: "9px",
+          letterSpacing: "0.1em", padding: "3px 8px", cursor: "pointer",
+          display: "flex", alignItems: "center", gap: "6px",
+        }}
+      >
+        <span style={{ width: 8, height: 8, background: "var(--accent)", display: "inline-block", flexShrink: 0 }} />
+        THEME: {active}
+        <span style={{ color: "var(--fg-dimmer)" }}>{open ? "▲" : "▼"}</span>
+      </button>
+      {open && (
+        <div style={{
+          position: "absolute", top: "calc(100% + 4px)", right: 0,
+          background: "var(--bg-secondary)", border: "1px solid var(--border-strong)",
+          padding: "12px", zIndex: 100, minWidth: "200px", display: "flex", flexDirection: "column", gap: "8px",
+        }}>
+          <div style={{ fontSize: "8px", color: "var(--fg-dimmer)", letterSpacing: "0.15em", marginBottom: "4px" }}>PRESET THEMES</div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
+            {(Object.keys(THEMES) as ThemeName[]).map(name => (
+              <button
+                key={name}
+                onClick={() => applyTheme(name)}
+                style={{
+                  background: active === name ? "var(--accent)" : "none",
+                  color: active === name ? "var(--bg)" : "var(--fg-dim)",
+                  border: `1px solid ${active === name ? "var(--accent)" : "var(--border-strong)"}`,
+                  fontFamily: "monospace", fontSize: "8px", letterSpacing: "0.08em",
+                  padding: "2px 6px", cursor: "pointer",
+                  display: "flex", alignItems: "center", gap: "4px",
+                }}
+              >
+                <span style={{ width: 6, height: 6, background: THEMES[name]["--accent"], display: "inline-block", flexShrink: 0 }} />
+                {name}
+              </button>
+            ))}
+          </div>
+          <div style={{ borderTop: "1px solid var(--border)", paddingTop: "8px" }}>
+            <div style={{ fontSize: "8px", color: "var(--fg-dimmer)", letterSpacing: "0.15em", marginBottom: "4px" }}>CUSTOM ACCENT</div>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <input
+                type="color"
+                value={customAccent}
+                onChange={e => applyCustomAccent(e.target.value)}
+                style={{ width: 28, height: 20, border: "none", background: "none", cursor: "pointer", padding: 0 }}
+              />
+              <span style={{ fontFamily: "monospace", fontSize: "9px", color: "var(--fg-dim)" }}>{customAccent}</span>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 // ─── Editable Prop System ────────────────────────────────────────────────────
 
@@ -281,6 +377,12 @@ const packs: Pack[] = [
         defaultProps: { used: 6.4 },
         editableProps: [{ key: "used", type: "number", label: "used GB", min: 0, max: 16, step: 0.1, default: 6.4 }],
       },
+      { name: "SpinDial", render: (p) => <SpinDial done={(p.done as boolean) ?? false} size={(p.size as number) ?? 16} />, defaultProps: { done: false, size: 16 }, editableProps: [{ key: "done", type: "boolean", label: "done", default: false }, { key: "size", type: "number", label: "size", min: 12, max: 32, step: 2, default: 16 }] },
+      { name: "ScanBeam", render: (p) => <ScanBeam width={(p.width as number) ?? 80} height={(p.height as number) ?? 4} />, defaultProps: { width: 80, height: 4 }, editableProps: [{ key: "width", type: "number", label: "width", min: 40, max: 160, step: 10, default: 80 }, { key: "height", type: "number", label: "height", min: 2, max: 12, step: 1, default: 4 }] },
+      { name: "SystemLoad", render: (p) => <SystemLoad cores={(p.cores as number) ?? 4} />, defaultProps: { cores: 4 }, editableProps: [{ key: "cores", type: "number", label: "cores", min: 2, max: 8, step: 1, default: 4 }] },
+      { name: "EventTicker", render: () => <EventTicker />, defaultProps: {} },
+      { name: "SignalQuality", render: (p) => <SignalQuality quality={(p.quality as number) ?? 4} />, defaultProps: { quality: 4 }, editableProps: [{ key: "quality", type: "number", label: "quality", min: 0, max: 5, step: 1, default: 4 }] },
+      { name: "WatchdogTimer", render: (p) => <WatchdogTimer interval={(p.interval as number) ?? 5000} />, defaultProps: { interval: 5000 }, editableProps: [{ key: "interval", type: "number", label: "interval ms", min: 2000, max: 10000, step: 500, default: 5000 }] },
     ],
   },
   {
@@ -332,6 +434,11 @@ const packs: Pack[] = [
           { key: "cols", type: "number", label: "cols", min: 4, max: 12, step: 1, default: 6 },
         ],
       },
+      { name: "WaveformLine", render: (p) => <WaveformLine width={(p.width as number) ?? 80} height={(p.height as number) ?? 30} amplitude={(p.amplitude as number) ?? 0.35} />, defaultProps: { width: 80, height: 30, amplitude: 0.35 }, editableProps: [{ key: "width", type: "number", label: "width", min: 40, max: 160, step: 10, default: 80 }, { key: "amplitude", type: "number", label: "amp", min: 0.1, max: 0.9, step: 0.05, default: 0.35 }] },
+      { name: "RadarSweep", render: (p) => <RadarSweep size={(p.size as number) ?? 60} />, defaultProps: { size: 60 }, editableProps: [{ key: "size", type: "number", label: "size", min: 40, max: 100, step: 10, default: 60 }] },
+      { name: "PacketFlow", render: () => <PacketFlow />, defaultProps: {} },
+      { name: "HeatGrid", render: (p) => <HeatGrid cols={(p.cols as number) ?? 8} rows={(p.rows as number) ?? 4} />, defaultProps: { cols: 8, rows: 4 }, editableProps: [{ key: "cols", type: "number", label: "cols", min: 4, max: 16, step: 1, default: 8 }, { key: "rows", type: "number", label: "rows", min: 2, max: 8, step: 1, default: 4 }] },
+      { name: "ThermalBar", render: (p) => <ThermalBar value={(p.value as number) ?? 65} />, defaultProps: { value: 65 }, editableProps: [{ key: "value", type: "number", label: "value", min: 0, max: 100, step: 1, default: 65 }] },
     ],
   },
   {
@@ -362,6 +469,11 @@ const packs: Pack[] = [
           { key: "rows", type: "number", label: "rows", min: 3, max: 10, step: 1, default: 5 },
         ],
       },
+      { name: "KanaTag", render: (p) => <KanaTag section={(p.section as string) ?? "about"} />, defaultProps: { section: "about" }, editableProps: [{ key: "section", type: "select", label: "section", options: ["about", "projects", "blog", "contact", "home", "status", "docs"], default: "about" }] },
+      { name: "MicroStrip", render: (p) => <MicroStrip section={(p.section as string) ?? "home"} done={(p.done as boolean) ?? false} />, defaultProps: { section: "home", done: false }, editableProps: [{ key: "section", type: "select", label: "section", options: ["home", "about", "projects", "blog", "contact"], default: "home" }, { key: "done", type: "boolean", label: "done", default: false }] },
+      { name: "WeatherStrip", render: (p) => <WeatherStrip done={(p.done as boolean) ?? true} temp={22} condition="CLEAR" />, defaultProps: { done: true }, editableProps: [{ key: "done", type: "boolean", label: "done", default: true }] },
+      { name: "ScrollingText", render: (p) => <ScrollingText text={(p.text as string) ?? "MICROGRAPHICS · SYSTEM ONLINE · ALL STATIONS NOMINAL"} width={(p.width as number) ?? 120} />, defaultProps: { text: "MICROGRAPHICS · SYSTEM ONLINE · ALL STATIONS NOMINAL", width: 120 }, editableProps: [{ key: "width", type: "number", label: "width", min: 60, max: 200, step: 10, default: 120 }] },
+      { name: "BinaryCounter", render: (p) => <BinaryCounter bits={(p.bits as number) ?? 8} animated />, defaultProps: { bits: 8 }, editableProps: [{ key: "bits", type: "number", label: "bits", min: 4, max: 16, step: 1, default: 8 }] },
     ],
   },
   {
@@ -398,6 +510,11 @@ const packs: Pack[] = [
       { name: "ChevronRow →", render: () => <ChevronRow direction="right" />, defaultProps: {} },
       { name: "ChevronRow ←", render: () => <ChevronRow direction="left" color="var(--accent-amber)" />, defaultProps: {} },
       { name: "DataLabel", render: () => <DataLabel label="MODE" value="ACTIVE" />, defaultProps: {} },
+      { name: "SectorBadge", render: () => <SectorBadge sector="A7" zone={3} />, defaultProps: {} },
+      { name: "RulerTick", render: (p) => <RulerTick width={(p.width as number) ?? 120} divisions={(p.divisions as number) ?? 10} />, defaultProps: { width: 120, divisions: 10 }, editableProps: [{ key: "width", type: "number", label: "width", min: 60, max: 200, step: 10, default: 120 }, { key: "divisions", type: "number", label: "divs", min: 4, max: 20, step: 1, default: 10 }] },
+      { name: "CoordLabel", render: (p) => <CoordLabel x={(p.x as number) ?? 1.23} y={(p.y as number) ?? 45.67} z={(p.z as number) ?? -2.1} />, defaultProps: { x: 1.23, y: 45.67, z: -2.1 }, editableProps: [{ key: "x", type: "number", label: "X", min: -99, max: 99, step: 0.5, default: 1.23 }, { key: "y", type: "number", label: "Y", min: -99, max: 99, step: 0.5, default: 45.67 }] },
+      { name: "WireFrame", render: (p) => <WireFrame width={(p.width as number) ?? 40} height={(p.height as number) ?? 30} animated={(p.animated as boolean) ?? true} />, defaultProps: { width: 40, height: 30, animated: true }, editableProps: [{ key: "animated", type: "boolean", label: "animated", default: true }] },
+      { name: "HexGrid", render: (p) => <HexGrid cols={(p.cols as number) ?? 5} rows={(p.rows as number) ?? 3} animated={(p.animated as boolean) ?? true} />, defaultProps: { cols: 5, rows: 3, animated: true }, editableProps: [{ key: "cols", type: "number", label: "cols", min: 3, max: 10, step: 1, default: 5 }, { key: "animated", type: "boolean", label: "animated", default: true }] },
     ],
   },
   {
@@ -413,6 +530,9 @@ const packs: Pack[] = [
       { name: "DayProgress day", render: () => <DayProgress unit="day" />, defaultProps: {} },
       { name: "DayProgress year", render: () => <DayProgress unit="year" />, defaultProps: {} },
       { name: "DayProgress month", render: () => <DayProgress unit="month" />, defaultProps: {} },
+      { name: "CountdownTimer", render: (p) => <CountdownTimer from={(p.from as number) ?? 300} />, defaultProps: { from: 300 }, editableProps: [{ key: "from", type: "number", label: "seconds", min: 10, max: 600, step: 10, default: 300 }] },
+      { name: "StopwatchDisplay", render: (p) => <StopwatchDisplay running={(p.running as boolean) ?? true} />, defaultProps: { running: true }, editableProps: [{ key: "running", type: "boolean", label: "running", default: true }] },
+      { name: "TimezoneBar", render: () => <TimezoneBar />, defaultProps: {} },
     ],
   },
   {
@@ -449,6 +569,11 @@ const packs: Pack[] = [
         editableProps: [{ key: "speed", type: "number", label: "speed ms", min: 60, max: 600, step: 20, default: 150 }],
       },
       { name: "FlowMeter ←", render: () => <FlowMeter direction="left" color="var(--accent-amber)" />, defaultProps: {} },
+      { name: "PressureGauge", render: (p) => <PressureGauge value={(p.value as number) ?? 50} size={(p.size as number) ?? 60} />, defaultProps: { value: 50, size: 60 }, editableProps: [{ key: "value", type: "number", label: "value", min: 0, max: 100, step: 1, default: 50 }] },
+      { name: "VoltageDisplay", render: (p) => <VoltageDisplay voltage={(p.voltage as number) ?? 4.2} />, defaultProps: { voltage: 4.2 }, editableProps: [{ key: "voltage", type: "number", label: "volts", min: 0, max: 12, step: 0.1, default: 4.2 }] },
+      { name: "TemperatureBar", render: (p) => <TemperatureBar value={(p.value as number) ?? 65} />, defaultProps: { value: 65 }, editableProps: [{ key: "value", type: "number", label: "value", min: 0, max: 100, step: 1, default: 65 }] },
+      { name: "CompassRose", render: (p) => <CompassRose heading={(p.heading as number) ?? 45} size={(p.size as number) ?? 60} animated={(p.animated as boolean) ?? true} />, defaultProps: { heading: 45, size: 60, animated: true }, editableProps: [{ key: "heading", type: "number", label: "heading", min: 0, max: 359, step: 5, default: 45 }, { key: "animated", type: "boolean", label: "animated", default: true }] },
+      { name: "Speedometer", render: (p) => <Speedometer value={(p.value as number) ?? 60} size={(p.size as number) ?? 80} animated={(p.animated as boolean) ?? true} />, defaultProps: { value: 60, size: 80, animated: true }, editableProps: [{ key: "value", type: "number", label: "value", min: 0, max: 100, step: 5, default: 60 }, { key: "animated", type: "boolean", label: "animated", default: true }] },
     ],
   },
   {
@@ -461,6 +586,19 @@ const packs: Pack[] = [
         defaultProps: { value: 3 },
         editableProps: [{ key: "value", type: "number", label: "value", min: 0, max: 5, step: 1, default: 3 }],
       },
+      { name: "ToggleSwitch", render: (p) => <ToggleSwitch on={(p.on as boolean) ?? false} label="ACTIVE" />, defaultProps: { on: false }, editableProps: [{ key: "on", type: "boolean", label: "on", default: false }] },
+      { name: "NumericStepper", render: (p) => <NumericStepper value={(p.value as number) ?? 42} min={0} max={999} />, defaultProps: { value: 42 }, editableProps: [{ key: "value", type: "number", label: "value", min: 0, max: 999, step: 1, default: 42 }] },
+      { name: "SegmentedBar", render: (p) => <SegmentedBar value={(p.value as number) ?? 60} segments={(p.segments as number) ?? 10} />, defaultProps: { value: 60, segments: 10 }, editableProps: [{ key: "value", type: "number", label: "value", min: 0, max: 100, step: 5, default: 60 }, { key: "segments", type: "number", label: "segments", min: 4, max: 20, step: 1, default: 10 }] },
+    ],
+  },
+  {
+    name: "Pack 8 — Radar & Navigation",
+    components: [
+      { name: "RadarReticle", render: (p) => <RadarReticle size={(p.size as number) ?? 80} targets={(p.targets as number) ?? 3} />, defaultProps: { size: 80, targets: 3 }, editableProps: [{ key: "size", type: "number", label: "size", min: 50, max: 120, step: 10, default: 80 }, { key: "targets", type: "number", label: "targets", min: 0, max: 6, step: 1, default: 3 }] },
+      { name: "CrosshairTarget", render: (p) => <CrosshairTarget size={(p.size as number) ?? 40} animated={(p.animated as boolean) ?? true} locked={(p.locked as boolean) ?? false} />, defaultProps: { size: 40, animated: true, locked: false }, editableProps: [{ key: "size", type: "number", label: "size", min: 24, max: 80, step: 4, default: 40 }, { key: "animated", type: "boolean", label: "animated", default: true }, { key: "locked", type: "boolean", label: "locked", default: false }] },
+      { name: "CrosshairTarget (locked)", render: () => <CrosshairTarget size={40} animated locked color="var(--accent-red)" />, defaultProps: {} },
+      { name: "MissionStatus", render: (p) => <MissionStatus mission="ECHO-7" status={(p.status as "active" | "standby" | "complete" | "failed") ?? "active"} phase={(p.phase as number) ?? 3} total={5} />, defaultProps: { status: "active", phase: 3 }, editableProps: [{ key: "status", type: "select", label: "status", options: ["active", "standby", "complete", "failed"], default: "active" }, { key: "phase", type: "number", label: "phase", min: 0, max: 5, step: 1, default: 3 }] },
+      { name: "MissionStatus (failed)", render: () => <MissionStatus mission="DELTA-3" status="failed" phase={2} total={4} />, defaultProps: {} },
     ],
   },
 ];
@@ -468,6 +606,17 @@ const packs: Pack[] = [
 const total = packs.reduce((n, p) => n + p.components.length, 0);
 
 export default function App() {
+  function applyThemeVars(vars: Record<string, string>) {
+    const root = document.documentElement;
+    Object.entries(vars).forEach(([k, v]) => root.style.setProperty(k, v));
+    // Also set un-prefixed aliases used by components
+    if (vars["--accent"]) root.style.setProperty("--accent", vars["--accent"]);
+    if (vars["--bg"]) root.style.setProperty("--bg", vars["--bg"]);
+    if (vars["--fg"]) root.style.setProperty("--fg", vars["--fg"]);
+    if (vars["--accent-amber"]) root.style.setProperty("--accent-amber", vars["--accent-amber"]);
+    if (vars["--accent-red"]) root.style.setProperty("--accent-red", vars["--accent-red"]);
+  }
+
   return (
     <div className="gallery">
       <div className="gallery-header">
@@ -478,7 +627,8 @@ export default function App() {
               Component Gallery · {total} components · click ⚙ to edit props live
             </div>
           </div>
-          <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+          <div style={{ display: "flex", gap: "16px", alignItems: "center", flexWrap: "wrap" }}>
+            <ThemeCustomizer onThemeChange={applyThemeVars} />
             <PulseTag label="v0.1.0" />
             <PixelClock showSeconds={false} />
           </div>
