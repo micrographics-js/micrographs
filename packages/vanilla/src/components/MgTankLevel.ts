@@ -12,7 +12,7 @@ export class MgTankLevel extends HTMLElement {
   private get color() { return this.getAttribute("color") || "var(--accent)"; }
   private get width() { return parseInt(this.getAttribute("width") || "24"); }
   private get height() { return parseInt(this.getAttribute("height") || "48"); }
-  private get label() { return this.getAttribute("label") || "FUEL"; }
+  private get _label() { return this.getAttribute("label") || "FUEL"; }
   private get animated() { return this.getAttribute("animated") !== "false"; }
 
   connectedCallback() {
@@ -37,7 +37,7 @@ export class MgTankLevel extends HTMLElement {
   }
 
   private render() {
-    const level = this.level, color = this.color, w = this.width, h = this.height, label = this.label;
+    const level = this.level, color = this.color, w = this.width, h = this.height, label = this._label;
     const fillH = Math.round(level * (h - 4));
     const waveOffset = Math.sin(this.wave) * 2;
     this.innerHTML = `<div style="display:inline-flex;flex-direction:column;align-items:center;gap:2px">

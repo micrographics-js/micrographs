@@ -2,14 +2,21 @@
   "name": "@micrographics/core",
   "version": "0.1.0",
   "type": "module",
-  "main": "./src/index.ts",
+  "description": "Shared utilities for Micrographics — RNG, easing, tickers, glitch effects",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/RecursiveVoid/micrographs", "directory": "packages/core" },
+  "keywords": ["micrographics", "micro-ui", "animation", "utilities"],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./src/index.ts",
-    "./utils/rng": "./src/utils/rng.ts",
-    "./utils/paths": "./src/utils/paths.ts",
-    "./utils/easing": "./src/utils/easing.ts",
-    "./animations/ticker": "./src/animations/ticker.ts",
-    "./animations/typewriter": "./src/animations/typewriter.ts",
-    "./animations/glitch": "./src/animations/glitch.ts"
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" }
+  },
+  "files": ["dist", "src"],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -2,7 +2,22 @@
   "name": "@micrographics/vanilla",
   "version": "0.1.0",
   "type": "module",
-  "main": "./src/index.ts",
-  "exports": { ".": "./src/index.ts" },
-  "dependencies": { "@micrographics/core": "workspace:*" }
+  "description": "52 animated micro-UI Web Components — signals, gauges, radar, terminal text, HUD elements. No framework required.",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "repository": { "type": "git", "url": "https://github.com/RecursiveVoid/micrographs", "directory": "packages/vanilla" },
+  "keywords": ["micrographics", "web-components", "custom-elements", "svg", "animation", "dashboard", "terminal"],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": { "@micrographics/core": "workspace:*" },
+  "publishConfig": {
+    "access": "restricted"
+  }
 }

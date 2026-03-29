@@ -2,15 +2,20 @@
   "name": "@micrographics/tailwind",
   "version": "0.1.0",
   "type": "module",
+  "description": "Tailwind CSS plugin and preset for Micrographics — dark terminal theme tokens, utilities, animations",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/RecursiveVoid/micrographs", "directory": "packages/tailwind" },
+  "keywords": ["micrographics", "tailwindcss", "tailwind", "plugin", "preset", "dark-theme", "terminal"],
   "main": "./src/index.js",
   "exports": {
     ".": "./src/index.js",
     "./preset": "./src/preset.js"
   },
+  "files": ["src", "README.md"],
   "peerDependencies": {
     "tailwindcss": ">=3.0.0"
   },
-  "devDependencies": {
-    "tailwindcss": "^3.4.0"
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -3,9 +3,9 @@ export class MgPanelTitle extends HTMLElement {
     return ["title", "color", "accent"];
   }
 
-  private get title() { return this.getAttribute("title") || "PANEL"; }
-  private get color() { return this.getAttribute("color") || "var(--fg-dim)"; }
-  private get accent() { return this.getAttribute("accent") || "var(--accent)"; }
+  private get _title() { return this.getAttribute("title") || "PANEL"; }
+  private get _color() { return this.getAttribute("color") || "var(--fg-dim)"; }
+  private get _accent() { return this.getAttribute("accent") || "var(--accent)"; }
 
   connectedCallback() {
     this.render();
@@ -16,10 +16,10 @@ export class MgPanelTitle extends HTMLElement {
   }
 
   private render() {
-    const color = this.color, accent = this.accent;
+    const color = this._color, accent = this._accent;
     this.innerHTML = `<div style="font-family:monospace;font-size:10px;color:${color};display:flex;align-items:center;gap:6px;user-select:none">
       <span style="flex:1;height:1px;background:${color};opacity:0.4"></span>
-      <span style="color:${accent};letter-spacing:0.15em">${this.title}</span>
+      <span style="color:${accent};letter-spacing:0.15em">${this._title}</span>
       <span style="flex:1;height:1px;background:${color};opacity:0.4"></span>
     </div>`;
   }

@@ -2,9 +2,38 @@
   "name": "@micrographics/react",
   "version": "0.1.0",
   "type": "module",
-  "main": "./src/index.ts",
+  "description": "84 animated micro-UI components for React — signals, gauges, radar, terminal text, HUD elements",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RecursiveVoid/micrographs",
+    "directory": "packages/react"
+  },
+  "keywords": [
+    "micrographics",
+    "react",
+    "components",
+    "svg",
+    "animation",
+    "dashboard",
+    "terminal",
+    "hud",
+    "gauge"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist"
   },
   "peerDependencies": {
     "react": ">=18",
@@ -12,5 +41,12 @@
   },
   "dependencies": {
     "@micrographics/core": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.28",
+    "@types/react-dom": "^18.3.7"
   }
 }

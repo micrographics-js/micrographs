@@ -11,8 +11,8 @@ export class MgTargetReticle extends HTMLElement {
 
   private get size() { return parseInt(this.getAttribute("size") || "64"); }
   private get color() { return this.getAttribute("color") || "var(--accent)"; }
-  private get label() { return this.getAttribute("label") || ""; }
-  private get animate() { return this.getAttribute("animate") !== "false"; }
+  private get _label() { return this.getAttribute("label") || ""; }
+  private get _animate() { return this.getAttribute("animate") !== "false"; }
   private get rings() { return parseInt(this.getAttribute("rings") || "2"); }
   private get crosshair() { return this.getAttribute("crosshair") !== "false"; }
   private get speed() { return parseInt(this.getAttribute("speed") || "3000"); }
@@ -21,7 +21,7 @@ export class MgTargetReticle extends HTMLElement {
     this.rotation = 0;
     this.pulse = 1;
     this.render();
-    if (this.animate) {
+    if (this._animate) {
       const speed = this.speed;
       this.cleanup = createTicker(40, () => {
         this.rotation = (this.rotation + (360 / speed) * 40) % 360;
@@ -40,7 +40,7 @@ export class MgTargetReticle extends HTMLElement {
     this.rotation = 0;
     this.pulse = 1;
     this.render();
-    if (this.animate) {
+    if (this._animate) {
       const speed = this.speed;
       this.cleanup = createTicker(40, () => {
         this.rotation = (this.rotation + (360 / speed) * 40) % 360;
@@ -81,8 +81,8 @@ export class MgTargetReticle extends HTMLElement {
       <line x1="${cx}" y1="${cy + gap}" x2="${cx}" y2="${cy * 2 - 2}" stroke="${color}" stroke-width="0.75" opacity="0.6" />
     ` : "";
 
-    const labelSvg = this.label
-      ? `<text x="${cx * 2 - 2}" y="${cy + 3}" text-anchor="end" fill="${color}" font-size="6" font-family="monospace" letter-spacing="0.1em" opacity="0.7">${this.label}</text>`
+    const labelSvg = this._label
+      ? `<text x="${cx * 2 - 2}" y="${cy + 3}" text-anchor="end" fill="${color}" font-size="6" font-family="monospace" letter-spacing="0.1em" opacity="0.7">${this._label}</text>`
       : "";
 
     this.innerHTML = `<svg width="${size}" height="${size}" style="display:block;overflow:visible">

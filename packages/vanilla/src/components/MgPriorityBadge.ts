@@ -17,7 +17,7 @@ export class MgPriorityBadge extends HTMLElement {
   }
 
   private get level() { return this.getAttribute("level") || "A"; }
-  private get label() { return this.getAttribute("label") || "PRIORITY"; }
+  private get _label() { return this.getAttribute("label") || "PRIORITY"; }
   private get blink() { return this.hasAttribute("blink") && this.getAttribute("blink") !== "false"; }
   private get speed() { return parseInt(this.getAttribute("speed") || "800"); }
 
@@ -43,7 +43,7 @@ export class MgPriorityBadge extends HTMLElement {
   }
 
   private render() {
-    const level = this.level, label = this.label, blink = this.blink;
+    const level = this.level, label = this._label, blink = this.blink;
     const color = LEVEL_COLORS[level] ?? "var(--fg-dim)";
     const opacity = blink ? (this.on ? 1 : 0.3) : 1;
     this.innerHTML = `<div style="font-family:monospace;display:inline-flex;border:1px solid ${color};opacity:${opacity};transition:opacity 0.1s;user-select:none">

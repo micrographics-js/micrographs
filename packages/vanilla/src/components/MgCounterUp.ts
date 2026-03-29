@@ -9,7 +9,7 @@ export class MgCounterUp extends HTMLElement {
   private get target() { return parseInt(this.getAttribute("target") || "1337"); }
   private get duration() { return parseInt(this.getAttribute("duration") || "1500"); }
   private get color() { return this.getAttribute("color") || "var(--fg)"; }
-  private get prefix() { return this.getAttribute("prefix") || ""; }
+  private get _prefix() { return this.getAttribute("prefix") || ""; }
   private get suffix() { return this.getAttribute("suffix") || ""; }
 
   connectedCallback() {
@@ -41,7 +41,7 @@ export class MgCounterUp extends HTMLElement {
 
   private render() {
     const color = this.color;
-    this.innerHTML = `<span style="font-family:monospace;font-size:14px;color:${color};letter-spacing:0.05em">${this.prefix}${this.value.toLocaleString()}${this.suffix}</span>`;
+    this.innerHTML = `<span style="font-family:monospace;font-size:14px;color:${color};letter-spacing:0.05em">${this._prefix}${this.value.toLocaleString()}${this.suffix}</span>`;
   }
 }
 

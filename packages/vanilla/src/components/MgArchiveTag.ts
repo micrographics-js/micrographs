@@ -6,7 +6,7 @@ export class MgArchiveTag extends HTMLElement {
   }
 
   private get archiveId() { return this.getAttribute("id") || "NAS-001"; }
-  private get label() { return this.getAttribute("label") || "INTERNAL"; }
+  private get _label() { return this.getAttribute("label") || "INTERNAL"; }
   private get date() { return this.getAttribute("date") || ""; }
   private get color() { return this.getAttribute("color") || "var(--fg-dim)"; }
   private get seed() { return parseInt(this.getAttribute("seed") || "42"); }
@@ -29,7 +29,7 @@ export class MgArchiveTag extends HTMLElement {
       <div style="font-size:7px;color:var(--fg-dimmer);letter-spacing:0.15em">ARCHIVE</div>
       <div style="font-size:14px;color:${color};font-weight:bold;letter-spacing:0.05em">${this.archiveId}</div>
       <div style="display:flex;justify-content:space-between;gap:8px">
-        <span style="font-size:8px;color:var(--fg-dimmer)">${this.label}</span>
+        <span style="font-size:8px;color:var(--fg-dimmer)">${this._label}</span>
         <span style="font-size:8px;color:var(--fg-dimmer)">${fakeDate}</span>
       </div>
       <div style="display:flex;gap:4px;margin-top:1px">

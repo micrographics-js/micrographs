@@ -2,8 +2,20 @@
   "name": "@micrographics/svelte",
   "version": "0.1.0",
   "type": "module",
+  "description": "84 animated micro-UI components for Svelte 5 — signals, gauges, radar, terminal text, HUD elements",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "repository": { "type": "git", "url": "https://github.com/RecursiveVoid/micrographs", "directory": "packages/svelte" },
+  "keywords": ["micrographics", "svelte", "svelte5", "components", "svg", "animation", "dashboard", "terminal"],
+  "svelte": "./src/index.ts",
   "main": "./src/index.ts",
-  "exports": { ".": "./src/index.ts" },
+  "types": "./src/index.ts",
+  "exports": {
+    ".": { "svelte": "./src/index.ts", "default": "./src/index.ts" }
+  },
+  "files": ["src"],
   "peerDependencies": { "svelte": ">=5" },
-  "dependencies": { "@micrographics/core": "workspace:*" }
+  "dependencies": { "@micrographics/core": "workspace:*" },
+  "publishConfig": {
+    "access": "restricted"
+  }
 }

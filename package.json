@@ -3,9 +3,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "pnpm -r --filter !test-app build",
+    "build": "pnpm -r --filter './packages/*' build",
+    "clean": "pnpm -r --filter './packages/*' clean",
     "dev": "pnpm --filter test-app dev",
-    "type-check": "pnpm -r exec tsc --noEmit"
+    "type-check": "pnpm -r exec tsc --noEmit",
+    "publish:all": "pnpm build && pnpm -r --filter './packages/*' publish --no-git-checks",
+    "publish:public": "pnpm build && pnpm --filter @micrographics/core publish --no-git-checks && pnpm --filter @micrographics/tailwind publish --no-git-checks",
+    "publish:paid": "pnpm build && pnpm --filter @micrographics/react publish --no-git-checks && pnpm --filter @micrographics/vue publish --no-git-checks && pnpm --filter @micrographics/svelte publish --no-git-checks && pnpm --filter @micrographics/vanilla publish --no-git-checks"
   },
   "devDependencies": {
     "typescript": "^5.4.0"

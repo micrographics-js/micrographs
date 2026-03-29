@@ -6,7 +6,7 @@ export class MgDialGauge extends HTMLElement {
   private get value() { return parseFloat(this.getAttribute("value") || "65"); }
   private get min() { return parseFloat(this.getAttribute("min") || "0"); }
   private get max() { return parseFloat(this.getAttribute("max") || "100"); }
-  private get label() { return this.getAttribute("label") || "RPM"; }
+  private get _label() { return this.getAttribute("label") || "RPM"; }
   private get color() { return this.getAttribute("color") || "var(--accent)"; }
   private get width() { return parseInt(this.getAttribute("width") || "80"); }
   private get height() { return parseInt(this.getAttribute("height") || "50"); }
@@ -21,7 +21,7 @@ export class MgDialGauge extends HTMLElement {
 
   private render() {
     const value = this.value, min = this.min, max = this.max;
-    const label = this.label, color = this.color;
+    const label = this._label, color = this.color;
     const w = this.width, h = this.height;
     const cx = w / 2, cy = h - 8;
     const r = Math.min(cx - 4, cy - 4);

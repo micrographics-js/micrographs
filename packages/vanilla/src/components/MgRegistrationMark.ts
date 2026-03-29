@@ -5,7 +5,7 @@ export class MgRegistrationMark extends HTMLElement {
 
   private get size() { return parseInt(this.getAttribute("size") || "24"); }
   private get color() { return this.getAttribute("color") || "var(--fg-dimmer)"; }
-  private get label() { return this.getAttribute("label") || ""; }
+  private get _label() { return this.getAttribute("label") || ""; }
 
   connectedCallback() {
     this.render();
@@ -19,7 +19,7 @@ export class MgRegistrationMark extends HTMLElement {
     const size = this.size, color = this.color;
     const cx = size / 2, cy = size / 2;
     const r = size * 0.35;
-    const label = this.label;
+    const label = this._label;
     const labelHtml = label
       ? `<span style="font-family:monospace;font-size:7px;color:${color};letter-spacing:0.1em">${label}</span>`
       : "";
