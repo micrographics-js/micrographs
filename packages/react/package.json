@@ -1,6 +1,6 @@
 {
   "name": "@micrographics-js/react",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "description": "84 animated micro-UI components for React — signals, gauges, radar, terminal text, HUD elements",
   "license": "SEE LICENSE IN LICENSE.md",
