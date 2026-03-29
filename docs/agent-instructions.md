@@ -32,18 +32,30 @@ CREATE INDEX idx_micrographics_orders_license ON micrographics_orders(license_ke
 
 ---
 
-## Step 2: Add Environment Variables
+## Step 2: Environment Variables
 
-Add these to `.env.local` (or your hosting provider's env config):
+These env vars **already exist** in the project's `.env.local`:
 
 ```env
+# Already present:
+NEXT_PUBLIC_SUPABASE_URL=https://ewqwzjdorazlaovmmrxo.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=<already set>
+RESEND_API_KEY=<already set>
+EMAIL_FROM=contact@erginturk.com
+EMAIL_SALES_ALIAS=sales@erginturk.com
+
+# Micrographics-specific (already added):
 LEMON_WEBHOOK_SECRET=3b348d6084b3f08b829f683a02531f75b9bb3ee6
-LEMON_API_KEY=<the LemonSqueezy API key — get from https://app.lemonsqueezy.com/settings/api>
-RESEND_API_KEY=<get from https://resend.com — free tier = 3000 emails/month>
-EMAIL_FROM=Micrographics <support@erginturk.com>
+LEMON_API_KEY=<already set>
 ```
 
-`SUPABASE_URL` and `SUPABASE_SERVICE_KEY` should already exist in the project since it uses Supabase.
+**Important env var names in this project:**
+- Supabase URL: `NEXT_PUBLIC_SUPABASE_URL` (not `SUPABASE_URL`)
+- Supabase service key: `SUPABASE_SERVICE_ROLE_KEY` (not `SUPABASE_SERVICE_KEY`)
+- Email from: use `EMAIL_FROM` (`contact@erginturk.com`) or `EMAIL_SALES_ALIAS` (`sales@erginturk.com`)
+- Site URL: `NEXT_PUBLIC_SITE_URL` = `https://erginturk.com`
+
+No new env vars need to be added — everything is already configured.
 
 ---
 
@@ -56,8 +68,8 @@ import crypto from "crypto";
 import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
-  process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY!
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
 export async function POST(req: Request) {
@@ -205,7 +217,7 @@ Order: ${orderId}
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: process.env.EMAIL_FROM || "Micrographics <noreply@erginturk.com>",
+        from: `Micrographics <${process.env.EMAIL_SALES_ALIAS || process.env.EMAIL_FROM || "contact@erginturk.com"}>`,
         to: [customerEmail],
         subject: "Your Micrographics license key",
         text: emailBody,
@@ -287,26 +299,24 @@ Works!
 
 ## Supabase Env Variable Names
 
-The project might use different names for Supabase env vars. Check which exists:
+This project uses:
 
 ```ts
-// Common patterns:
-process.env.SUPABASE_URL              // standard
-process.env.NEXT_PUBLIC_SUPABASE_URL  // Next.js client-side
-process.env.SUPABASE_SERVICE_KEY      // service role
-process.env.SUPABASE_SERVICE_ROLE_KEY // alternative name
+process.env.NEXT_PUBLIC_SUPABASE_URL    // "https://ewqwzjdorazlaovmmrxo.supabase.co"
+process.env.SUPABASE_SERVICE_ROLE_KEY   // service role key (for server-side writes)
 ```
 
-The webhook handler uses the **service role key** (not the anon key) because it needs to write to the database without RLS restrictions.
+The webhook handler uses the **service role key** (not the anon key) because it needs to write to the database without RLS restrictions. The anon key is `NEXT_PUBLIC_SUPABASE_ANON_KEY` — do NOT use that for the webhook.
 
 ---
 
 ## Quick Agent Prompt
 
 ```
-Read /path/to/micrographs/docs/agent-instructions.md and implement everything:
+Read /Users/erginturk/Desktop/loeve-projects/micrographs/docs/agent-instructions.md and implement everything:
 1. Create Supabase table micrographics_orders (SQL in the doc)
 2. Create app/api/lemon-webhook/route.ts (full code in the doc)
-3. Add env vars: LEMON_WEBHOOK_SECRET, LEMON_API_KEY, RESEND_API_KEY, EMAIL_FROM
-4. Test with: create 100% discount on LemonSqueezy, buy $0, check Supabase + email
+3. All env vars are already in .env.local (LEMON_WEBHOOK_SECRET, LEMON_API_KEY, SUPABASE_SERVICE_ROLE_KEY, RESEND_API_KEY, EMAIL_FROM, EMAIL_SALES_ALIAS)
+4. Also debug email delivery — emails from Resend may not be arriving. Check Resend dashboard, DNS records for erginturk.com (SPF/DKIM), and verify the FROM address (contact@erginturk.com or sales@erginturk.com) is verified in Resend.
+5. Test with: create 100% discount on LemonSqueezy, buy $0, check Supabase + email
 ```
