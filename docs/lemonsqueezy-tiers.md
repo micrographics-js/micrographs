@@ -1,88 +1,145 @@
-# Micrographics — LemonSqueezy Product
+# Micrographics — LemonSqueezy Product Setup
 
-## One Product. One Price. Everything Included.
+## Product Details
 
----
-
-## Product: Micrographics
-
-**Name:** Micrographics — 84 Animated Micro-UI Components
+**Name:** `Micrographics — 84 Animated Micro-UI Components`
 
 **Price:** $49 (one-time, lifetime access)
 
-**What the customer gets:**
-- All 84 components
-- All 4 frameworks: React, Vue 3, Svelte 5, Vanilla Web Components
-- Tailwind CSS plugin (also free separately)
-- TypeScript types
-- All future updates
-- npm install via GitHub Packages token
+**URL:** https://recursivevoid.lemonsqueezy.com
 
 ---
 
-## Store Setup
+## Thumbnail Image
 
-**Store:** recursivevoid.lemonsqueezy.com (ID: 328112)
-**Currency:** USD
-**Tax:** Digital goods (auto-handled by LemonSqueezy)
-
----
-
-## npm Packages (all included in the $49 purchase)
+Upload as the main product image:
 
 ```
-@micrographics-js/core        # shared utilities (also free on its own)
-@micrographics-js/react       # 84 React components
-@micrographics-js/vue         # 84 Vue 3 components
-@micrographics-js/svelte      # 84 Svelte 5 components
-@micrographics-js/vanilla     # 52 Vanilla Web Components
-@micrographics-js/tailwind    # Tailwind CSS plugin (also free on its own)
+docs/assets/products/png/micrographics-product.png
 ```
 
 ---
 
-## Free Tier (always available, no purchase needed)
+## Media Gallery
 
-```
-@micrographics-js/core        # MIT — install from GitHub Packages
-@micrographics-js/tailwind    # MIT — install from GitHub Packages
-```
+Upload these in order — they showcase each pack visually:
 
----
+| Order | File | What it shows |
+|-------|------|---------------|
+| 1 | `micrographics-product.png` | Hero — all component types, $49, framework badges |
+| 2 | `pack-signals.png` | Signal bars, waveform, heartbeat, status dots |
+| 3 | `pack-data.png` | Radar sweep, heat grid, frequency bars |
+| 4 | `pack-gauges.png` | Dial gauge, speedometer, compass rose |
+| 5 | `pack-orbit.png` | Orbit system, crosshair, radar reticle, mission status |
+| 6 | `pack-text.png` | Typewriter, glitch text, matrix rain, binary |
+| 7 | `pack-chrome.png` | Barcode, corner ornaments, data labels, diamond |
+| 8 | `pack-clocks.png` | Pixel clock, countdown, stopwatch, timezones |
+| 9 | `pack-interaction.png` | Toggle switch, stepper, progress bar, ratings |
 
-## Webhook Flow
+All PNGs are in: `docs/assets/products/png/`
 
-```
-Customer pays $49 on LemonSqueezy
-        ↓
-LemonSqueezy sends order_created to erginturk.com/api/lemon-webhook
-        ↓
-Webhook handler sends email with:
-  - GitHub Packages read token
-  - .npmrc setup instructions
-  - npm install commands for all frameworks
-        ↓
-Customer installs whichever framework they use
-```
+Open folder: `open docs/assets/products/png`
 
 ---
 
-## Webhook Config
+## Description
 
-- **Endpoint:** `https://erginturk.com/api/lemon-webhook`
-- **Signing secret:** `3b348d6084b3f08b829f683a02531f75b9bb3ee6`
-- **Event:** `order_created`
+Copy everything below the line and paste into LemonSqueezy's description editor:
 
 ---
 
-## Customer Email (sent after purchase)
+84 animated micro-UI components for React, Vue 3, Svelte 5 & Vanilla Web Components.
+
+Dark industrial terminal aesthetic. Pure SVG. Fully themeable. Zero dependencies. TypeScript included.
+
+ONE PURCHASE — EVERYTHING INCLUDED:
+
+• All 84 components across 8 packs
+• All 4 frameworks (React, Vue 3, Svelte 5, Vanilla Web Components)
+• Tailwind CSS plugin + preset
+• Full TypeScript types
+• Lifetime updates — all future components included free
+• Installed via npm (GitHub Packages token sent after purchase)
+• Next.js App Router compatible ("use client" included)
+
+COMPONENTS:
+
+Signals (23) — SignalMeter, PulseTag, StatusLight, HeartbeatLine, BatteryMeter, LoadBar, BootSequence, Uptime, PingIndicator, ConnectionStatus, AlertBanner, ReadyBadge, ScanLine, NetworkPulse, CPUSparkline, ErrorRate, MemoryBar, SpinDial, ScanBeam, SystemLoad, EventTicker, SignalQuality, WatchdogTimer
+
+Data Viz (11) — DotChart, BarSparkline, FrequencyBars, BinaryStream, VUMeter, HexDump, WaveformLine, RadarSweep, PacketFlow, HeatGrid, ThermalBar
+
+Text Effects (12) — GlitchCycler, Typewriter, GlitchText, LogStream, CounterUp, BootLog, MatrixRain, KanaTag, MicroStrip, WeatherStrip, ScrollingText, BinaryCounter
+
+Decorative Chrome (11) — CornerOrnament, Barcode, PanelTitle, PixelDiamond, ChevronRow, DataLabel, SectorBadge, RulerTick, CoordLabel, WireFrame, HexGrid
+
+Clocks (6) — PixelClock, UnixTimestamp, DayProgress, CountdownTimer, StopwatchDisplay, TimezoneBar
+
+Industrial Gauges (8) — DialGauge, TankLevel, FlowMeter, PressureGauge, VoltageDisplay, TemperatureBar, CompassRose, Speedometer
+
+Interaction (5) — CopyButton, RatingDots, ToggleSwitch, NumericStepper, SegmentedBar
+
+Orbit & Navigation (8) — OrbitSystem, TargetReticle, PriorityBadge, RegistrationMark, ArchiveTag, RadarReticle, CrosshairTarget, MissionStatus
+
+HOW IT WORKS:
+
+1. Purchase → you receive an email with your npm token
+2. Add token to your project's .npmrc file
+3. npm install @micrographics-js/react (or vue, svelte, vanilla)
+4. Import and use — that's it
+
+THEMING:
+
+All components use CSS custom properties. Change one variable to retheme everything:
+
+  --accent: #3ecf8e    (default green)
+  --accent: #8b5cf6    (violet)
+  --accent: #f5a623    (amber)
+  --accent: #e05252    (red)
+
+6 built-in theme presets: Phosphor, Amber, Ice, Violet, Crimson, Mono.
+
+BUILT FOR:
+
+• Dashboards & monitoring panels
+• Developer tools & admin interfaces
+• Creative portfolios & landing pages
+• SaaS products & analytics
+• Gaming & sci-fi themed UIs
+• IoT & industrial control panels
+
+FREE BONUS:
+
+@micrographics-js/core (shared utilities) and @micrographics-js/tailwind (Tailwind CSS plugin) are free and MIT licensed — no purchase needed.
+
+Docs & source: https://github.com/micrographics-js/micrographs
+
+---
+
+## Webhook Setup
+
+1. Settings → Webhooks → Add endpoint
+2. URL: `https://erginturk.com/api/lemon-webhook`
+3. Signing secret: `3b348d6084b3f08b829f683a02531f75b9bb3ee6`
+4. Events: `order_created`
+
+---
+
+## Customer Token
+
+1. https://github.com/settings/tokens
+2. "Generate new token (classic)" — NOT fine-grained
+3. Check only: `read:packages`
+4. No expiration
+5. Store as `CUSTOMER_GITHUB_TOKEN` env var
+
+---
+
+## Customer Email (sent automatically by webhook)
 
 ```
 Hi {name},
 
 Thank you for purchasing Micrographics!
-
-Here's how to install:
 
 STEP 1 — Create .npmrc in your project root:
 
@@ -110,21 +167,16 @@ STEP 3 — Install for your framework:
   # Tailwind plugin (optional, also free)
   npm install @micrographics-js/tailwind
 
-DOCS: https://github.com/micrographics-js/micrographs
-SUPPORT: reply to this email
+Docs: https://github.com/micrographics-js/micrographs
 
 — Micrographics
 ```
 
 ---
 
-## Token Distribution
+## Testing
 
-All customers share the same GitHub Classic PAT (`read:packages` scope).
-One token for everyone. Simple.
-
-To create the token:
-1. https://github.com/settings/tokens
-2. "Generate new token (classic)"
-3. Check only: `read:packages`
-4. No expiration
+1. Create a 100% discount code on LemonSqueezy
+2. Purchase with the code ($0)
+3. Verify webhook fires → email received → token works
+4. Test: create new project → add .npmrc → npm install @micrographics-js/react
