@@ -44,15 +44,17 @@ Full component list: [documentation](https://github.com/micrographics-js/microgr
 
 ## Setup
 
-1. Purchase at [micrographics.lemonsqueezy.com](https://micrographics.lemonsqueezy.com)
-2. Create `.npmrc`:
+1. Purchase at [recursivevoid.lemonsqueezy.com](https://recursivevoid.lemonsqueezy.com)
+2. Add your license key to `.env`:
 
-```ini
-@micrographics-js:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=YOUR_TOKEN
+```bash
+MICROGRAPHICS_KEY=your-license-key
+
+# Next.js: NEXT_PUBLIC_MICROGRAPHICS_KEY=your-license-key
+# Vite: VITE_MICROGRAPHICS_KEY=your-license-key
 ```
 
-3. `npm install @micrographics-js/svelte @micrographics-js/core`
+3. Install (no tokens, no .npmrc needed):
 
 ## Tech
 

@@ -1,6 +1,6 @@
 {
   "name": "@micrographics-js/vue",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "type": "module",
   "description": "84 animated micro-UI components for Vue 3 — signals, gauges, radar, terminal text, HUD elements",
   "license": "SEE LICENSE IN LICENSE.md",
@@ -35,6 +35,7 @@
     "@micrographics-js/core": "workspace:*"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   }
 }

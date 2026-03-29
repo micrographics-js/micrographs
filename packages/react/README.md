@@ -123,17 +123,17 @@ export default function Page() {
 
 ## Setup
 
-1. Purchase a license at [micrographics.lemonsqueezy.com](https://micrographics.lemonsqueezy.com)
-2. You'll receive a GitHub token via email
-3. Create `.npmrc` in your project root:
+1. Purchase at [recursivevoid.lemonsqueezy.com](https://recursivevoid.lemonsqueezy.com)
+2. Add your license key to `.env`:
 
-```ini
-@micrographics-js:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=YOUR_TOKEN
+```bash
+MICROGRAPHICS_KEY=your-license-key
+
+# Next.js: NEXT_PUBLIC_MICROGRAPHICS_KEY=your-license-key
+# Vite: VITE_MICROGRAPHICS_KEY=your-license-key
 ```
 
-4. Add `.npmrc` to `.gitignore`
-5. Install: `npm install @micrographics-js/react @micrographics-js/core`
+3. Install (no tokens, no .npmrc needed):
 
 ## Design Principles
 

@@ -71,15 +71,19 @@ npm install @micrographics-js/vanilla @micrographics-js/core
 npm install @micrographics-js/tailwind
 ```
 
-> Framework packages require a license. See [Purchase](#purchase) below.
+> After purchasing, add your license key to `.env` — that's it. No tokens, no `.npmrc`.
 
-### Setup `.npmrc`
+### Add License Key
 
-After purchasing, create `.npmrc` in your project root:
+```bash
+# .env (or .env.local)
+MICROGRAPHICS_KEY=your-license-key
 
-```ini
-@micrographics-js:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=YOUR_TOKEN
+# Next.js
+NEXT_PUBLIC_MICROGRAPHICS_KEY=your-license-key
+
+# Vite
+VITE_MICROGRAPHICS_KEY=your-license-key
 ```
 
 ---

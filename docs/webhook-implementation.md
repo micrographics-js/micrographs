@@ -1,50 +1,93 @@
-# Micrographics — Webhook Implementation Guide
+# Micrographics — Webhook & License Implementation Guide
 
-Instructions for a Claude Code agent to implement the LemonSqueezy webhook handler on erginturk.com.
-
----
-
-## Overview
-
-When a customer purchases on LemonSqueezy, a webhook fires to `erginturk.com/api/lemon-webhook`. The handler verifies the signature, identifies what was purchased, and sends the customer an email with their GitHub Packages install token.
+Instructions for implementing the LemonSqueezy webhook on erginturk.com with Supabase.
 
 ---
 
-## Endpoint
+## Architecture
 
 ```
-POST https://erginturk.com/api/lemon-webhook
+Customer buys on LemonSqueezy ($49)
+        ↓
+LemonSqueezy auto-generates a license key
+        ↓
+LemonSqueezy sends POST to erginturk.com/api/lemon-webhook
+        ↓
+Webhook handler:
+  1. Verifies signature
+  2. Stores order + license key in Supabase
+  3. Sends email with license key + install instructions
+        ↓
+Customer adds MICROGRAPHICS_KEY=xxx to .env
+        ↓
+npm install @micrographics-js/react (public npm, no token needed)
+        ↓
+Components auto-validate the key against LemonSqueezy API
 ```
 
-**Trigger:** LemonSqueezy `order_created` event
-
-**Signing secret:** `3b348d6084b3f08b829f683a02531f75b9bb3ee6`
-
-Store this as env var: `LEMON_WEBHOOK_SECRET=3b348d6084b3f08b829f683a02531f75b9bb3ee6`
+**No GitHub tokens, no .npmrc, no private registry.** Packages are public on npm. License key validates at runtime.
 
 ---
 
-## Environment Variables Needed
+## Environment Variables (erginturk.com)
 
 ```env
 LEMON_WEBHOOK_SECRET=3b348d6084b3f08b829f683a02531f75b9bb3ee6
-CUSTOMER_GITHUB_TOKEN=ghp_xxxxxxxxxxxxx   # Classic PAT with read:packages scope
-RESEND_API_KEY=re_xxxxxxxxxxxxx           # or any email service (Resend, SendGrid, etc.)
-EMAIL_FROM=support@micrographics.dev      # or noreply@erginturk.com
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_SERVICE_KEY=eyJ...                    # service role key (NOT anon)
+RESEND_API_KEY=re_xxxxxxxxxxxxx                # or any email service
+EMAIL_FROM=Micrographics <support@erginturk.com>
 ```
 
 ---
 
-## Implementation
+## Supabase Schema
 
-### 1. Webhook Handler (Next.js API Route)
+Create this table in Supabase SQL editor:
 
-Create `app/api/lemon-webhook/route.ts` (App Router) or `pages/api/lemon-webhook.ts` (Pages Router):
+```sql
+CREATE TABLE micrographics_orders (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  created_at TIMESTAMPTZ DEFAULT now(),
+
+  -- LemonSqueezy data
+  order_id TEXT NOT NULL UNIQUE,
+  customer_name TEXT,
+  customer_email TEXT NOT NULL,
+  product_name TEXT,
+  variant_name TEXT,
+  total_cents INTEGER,
+  currency TEXT DEFAULT 'USD',
+
+  -- License key (from LemonSqueezy)
+  license_key TEXT,
+
+  -- Status
+  email_sent BOOLEAN DEFAULT false,
+
+  -- Raw webhook payload (for debugging)
+  raw_payload JSONB
+);
+
+-- Index for lookups
+CREATE INDEX idx_orders_email ON micrographics_orders(customer_email);
+CREATE INDEX idx_orders_license ON micrographics_orders(license_key);
+```
+
+---
+
+## Webhook Handler
+
+Create `app/api/lemon-webhook/route.ts`:
 
 ```ts
 import crypto from "crypto";
+import { createClient } from "@supabase/supabase-js";
 
-// Single product — all customers get everything
+const supabase = createClient(
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_KEY!
+);
 
 export async function POST(req: Request) {
   // 1. Read raw body
@@ -58,9 +101,9 @@ export async function POST(req: Request) {
 
   const hmac = crypto.createHmac("sha256", process.env.LEMON_WEBHOOK_SECRET!);
   hmac.update(rawBody);
-  const expectedSignature = hmac.digest("hex");
+  const expected = hmac.digest("hex");
 
-  if (signature !== expectedSignature) {
+  if (signature !== expected) {
     return new Response("Invalid signature", { status: 401 });
   }
 
@@ -69,76 +112,150 @@ export async function POST(req: Request) {
   const eventName = payload.meta?.event_name;
 
   if (eventName !== "order_created") {
-    return new Response("Ignored event: " + eventName, { status: 200 });
+    return new Response("OK", { status: 200 });
   }
 
-  // 4. Extract customer info
+  // 4. Extract data
   const data = payload.data.attributes;
   const customerName = data.user_name || "Customer";
   const customerEmail = data.user_email;
-  const orderId = payload.data.id;
+  const orderId = String(payload.data.id);
+  const firstItem = data.first_order_item;
+  const productName = firstItem?.product_name || "";
+  const variantName = firstItem?.variant_name || "";
+  const totalCents = data.total || 0;
+  const currency = data.currency || "USD";
 
-  // 5. Send email with install instructions
-  const token = process.env.CUSTOMER_GITHUB_TOKEN!;
+  // 5. Get license key from the order
+  // LemonSqueezy includes license key info in the webhook payload
+  // It's in: data.attributes.urls.license_key or we fetch it via API
+  const licenseKey = await fetchLicenseKey(orderId);
 
-  await sendEmail({
-    to: customerEmail,
-    subject: "Your Micrographics license is ready",
-    body: `Hi ${customerName},
+  // 6. Store in Supabase
+  const { error: dbError } = await supabase
+    .from("micrographics_orders")
+    .upsert({
+      order_id: orderId,
+      customer_name: customerName,
+      customer_email: customerEmail,
+      product_name: productName,
+      variant_name: variantName,
+      total_cents: totalCents,
+      currency,
+      license_key: licenseKey,
+      raw_payload: payload,
+    }, { onConflict: "order_id" });
 
-Thank you for purchasing Micrographics!
+  if (dbError) {
+    console.error("[micrographics] DB error:", dbError);
+  }
 
-Here's how to install all 84 components:
+  // 7. Send email
+  if (licenseKey) {
+    await sendEmail({
+      to: customerEmail,
+      subject: "Your Micrographics license key",
+      body: buildEmailBody(customerName, licenseKey, orderId),
+    });
 
+    // Mark email as sent
+    await supabase
+      .from("micrographics_orders")
+      .update({ email_sent: true })
+      .eq("order_id", orderId);
+  }
 
-STEP 1 — Create .npmrc in your project root:
-
-  @micrographics-js:registry=https://npm.pkg.github.com
-  //npm.pkg.github.com/:_authToken=${token}
-
-
-STEP 2 — Add .npmrc to .gitignore:
-
-  echo ".npmrc" >> .gitignore
-
-
-STEP 3 — Install for your framework:
-
-  # React
-  npm install @micrographics-js/react @micrographics-js/core
-
-  # Vue 3
-  npm install @micrographics-js/vue @micrographics-js/core
-
-  # Svelte 5
-  npm install @micrographics-js/svelte @micrographics-js/core
-
-  # Vanilla Web Components
-  npm install @micrographics-js/vanilla @micrographics-js/core
-
-  # Tailwind plugin (optional)
-  npm install @micrographics-js/tailwind
-
-
-DOCS: https://github.com/micrographics-js/micrographs/blob/main/docs/documentation.md
-SUPPORT: Reply to this email
-
-Order ID: ${orderId}
-
-— Micrographics`,
-  });
-
-  console.log(`[micrographics] Order ${orderId}: ${customerEmail}`);
+  console.log(`[micrographics] Order ${orderId}: ${customerEmail} — license: ${licenseKey ? "sent" : "pending"}`);
 
   return new Response("OK", { status: 200 });
 }
-```
 
-### 2. Email Sending Function
+// --- Helper: Fetch license key from LemonSqueezy API ---
 
-Using **Resend** (recommended, free tier = 3,000 emails/month):
+async function fetchLicenseKey(orderId: string): Promise<string | null> {
+  // LemonSqueezy creates the license key asynchronously
+  // We need to fetch it via the API using the order ID
+  // The license-keys endpoint filters by order_id
 
-```ts
+  try {
+    const res = await fetch(
+      `https://api.lemonsqueezy.com/v1/license-keys?filter[order_id]=${orderId}`,
+      {
+        headers: {
+          "Authorization": `Bearer ${process.env.LEMON_API_KEY}`,
+          "Accept": "application/vnd.api+json",
+        },
+      }
+    );
+
+    if (!res.ok) return null;
+
+    const data = await res.json();
+    const keys = data.data;
+
+    if (keys && keys.length > 0) {
+      return keys[0].attributes.key;
+    }
+
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+// --- Helper: Build email body ---
+
+function buildEmailBody(name: string, licenseKey: string, orderId: string): string {
+  return `Hi ${name},
+
+Thank you for purchasing Micrographics!
+
+Your license key:
+
+  ${licenseKey}
+
+
+HOW TO INSTALL:
+
+Step 1 — Install the package (no special config needed):
+
+  npm install @micrographics-js/react @micrographics-js/core
+
+  # Or for other frameworks:
+  # npm install @micrographics-js/vue @micrographics-js/core
+  # npm install @micrographics-js/svelte @micrographics-js/core
+  # npm install @micrographics-js/vanilla @micrographics-js/core
+
+Step 2 — Add your license key to .env:
+
+  MICROGRAPHICS_KEY=${licenseKey}
+
+  # For Next.js:
+  NEXT_PUBLIC_MICROGRAPHICS_KEY=${licenseKey}
+
+  # For Vite:
+  VITE_MICROGRAPHICS_KEY=${licenseKey}
+
+Step 3 — Use components:
+
+  import { SignalMeter, DialGauge, RadarSweep } from "@micrographics-js/react";
+
+That's it! The license validates automatically.
+
+Optional — Tailwind plugin (free):
+  npm install @micrographics-js/tailwind
+
+
+DOCS: https://github.com/micrographics-js/micrographs
+SUPPORT: Reply to this email
+
+Order: ${orderId}
+
+— Micrographics`;
+}
+
+// --- Helper: Send email via Resend ---
+
 async function sendEmail({ to, subject, body }: { to: string; subject: string; body: string }) {
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -155,155 +272,164 @@ async function sendEmail({ to, subject, body }: { to: string; subject: string; b
   });
 
   if (!res.ok) {
-    console.error("[micrographics] Email failed:", await res.text());
+    console.error("[micrographics] Email error:", await res.text());
   }
 }
 ```
 
-Or using **SendGrid**:
+---
 
-```ts
-async function sendEmail({ to, subject, body }: { to: string; subject: string; body: string }) {
-  await fetch("https://api.sendgrid.com/v3/mail/send", {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${process.env.SENDGRID_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      personalizations: [{ to: [{ email: to }] }],
-      from: { email: process.env.EMAIL_FROM || "noreply@erginturk.com" },
-      subject,
-      content: [{ type: "text/plain", value: body }],
-    }),
-  });
-}
-```
+## Additional Environment Variable
 
-Or using **Nodemailer** with any SMTP:
+You also need the LemonSqueezy API key to fetch license keys:
 
-```ts
-import nodemailer from "nodemailer";
-
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: 587,
-  auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
-});
-
-async function sendEmail({ to, subject, body }: { to: string; subject: string; body: string }) {
-  await transporter.sendMail({
-    from: process.env.EMAIL_FROM,
-    to,
-    subject,
-    text: body,
-  });
-}
+```env
+LEMON_API_KEY=eyJ...   # your LemonSqueezy API key
 ```
 
 ---
 
-## 3. Testing
+## LemonSqueezy Product Setup
 
-### Test locally
+1. Go to your product settings
+2. Enable **"License keys"**
+3. Set activation limit: **5** (allows 5 projects per customer)
+4. License key length: perpetual (no expiration)
+
+---
+
+## How License Validation Works (client-side)
+
+The `@micrographics-js/core` package includes a license checker:
+
+```ts
+// In customer's app — automatic (reads from env):
+import { SignalMeter } from "@micrographics-js/react";
+// → core auto-checks MICROGRAPHICS_KEY env var on first import
+// → shows console warning if missing/invalid
+
+// Or explicit:
+import { initLicense } from "@micrographics-js/core";
+initLicense("your-license-key");
+```
+
+The validation flow:
+1. Component is imported → core checks `MICROGRAPHICS_KEY` env var
+2. Sends `POST https://api.lemonsqueezy.com/v1/licenses/validate`
+3. If valid → works silently
+4. If invalid → console warning (components still render, just a warning)
+5. If offline → allows usage (no network = no block)
+
+---
+
+## Customer Experience
 
 ```bash
-# Simulate a webhook (replace with your local dev URL)
-curl -X POST http://localhost:3000/api/lemon-webhook \
-  -H "Content-Type: application/json" \
-  -H "X-Signature: $(echo -n '{"meta":{"event_name":"order_created"},"data":{"id":"12345","attributes":{"user_name":"Test User","user_email":"test@example.com","first_order_item":{"product_name":"React Bundle","variant_name":"React Bundle"}}}}' | openssl dgst -sha256 -hmac '3b348d6084b3f08b829f683a02531f75b9bb3ee6' | awk '{print $2}')" \
-  -d '{"meta":{"event_name":"order_created"},"data":{"id":"12345","attributes":{"user_name":"Test User","user_email":"test@example.com","first_order_item":{"product_name":"React Bundle","variant_name":"React Bundle"}}}}'
-```
+# 1. Install (no .npmrc, no tokens, just npm install)
+npm install @micrographics-js/react @micrographics-js/core
 
-### Test on LemonSqueezy
+# 2. Add license key to .env
+echo "NEXT_PUBLIC_MICROGRAPHICS_KEY=your-key-here" >> .env.local
 
-1. Create a $0 test product
-2. Purchase it yourself
-3. Check your email for the install instructions
-4. Verify the token works: create a test project, add `.npmrc`, run `npm install @micrographics-js/react`
-
----
-
-## 4. LemonSqueezy Webhook Config
-
-1. Go to https://app.lemonsqueezy.com/settings/webhooks
-2. Click "Add endpoint"
-3. URL: `https://erginturk.com/api/lemon-webhook`
-4. Signing secret: `3b348d6084b3f08b829f683a02531f75b9bb3ee6`
-5. Events: check `order_created`
-6. Save
-
----
-
-## 5. File Structure
-
-```
-your-project/
-├── app/
-│   └── api/
-│       └── lemon-webhook/
-│           └── route.ts        ← the webhook handler
-├── .env.local                  ← secrets (never commit)
-│   LEMON_WEBHOOK_SECRET=3b348d6084b3f08b829f683a02531f75b9bb3ee6
-│   CUSTOMER_GITHUB_TOKEN=ghp_xxxxxxxxxxxxx
-│   RESEND_API_KEY=re_xxxxxxxxxxxxx
-│   EMAIL_FROM=support@micrographics.dev
+# 3. Use
+import { SignalMeter } from "@micrographics-js/react";
 ```
 
 ---
 
-## 6. Security Checklist
+## Supabase Dashboard Queries
 
-- [ ] Webhook secret stored in env vars, NOT in code
-- [ ] Signature verified before processing ANY data
-- [ ] `.env.local` is in `.gitignore`
-- [ ] GitHub token is a Classic PAT with ONLY `read:packages` scope
-- [ ] Email "from" address has proper DNS (SPF/DKIM) to avoid spam folder
-- [ ] Rate limiting on the endpoint (LemonSqueezy retries on failure)
-
----
-
-## 7. What Happens on Purchase
-
+### View all orders
+```sql
+SELECT order_id, customer_name, customer_email, license_key, email_sent, created_at
+FROM micrographics_orders
+ORDER BY created_at DESC;
 ```
-Customer clicks "Buy" on LemonSqueezy
-        ↓
-LemonSqueezy processes payment
-        ↓
-LemonSqueezy sends POST to erginturk.com/api/lemon-webhook
-  Headers: X-Signature: <hmac-sha256 of body>
-  Body: { meta: { event_name: "order_created" }, data: { ... } }
-        ↓
-Webhook handler:
-  1. Verifies X-Signature with LEMON_WEBHOOK_SECRET
-  2. Extracts customer name, email, product name
-  3. Looks up install packages from PRODUCT_MAP
-  4. Sends email with GitHub token + npm install command
-        ↓
-Customer receives email:
-  - .npmrc config with GitHub token
-  - npm install command for their purchased packages
-  - Link to docs
-        ↓
-Customer installs:
-  npm install @micrographics-js/react @micrographics-js/core
+
+### Find order by email
+```sql
+SELECT * FROM micrographics_orders
+WHERE customer_email = 'someone@example.com';
+```
+
+### Orders where email failed
+```sql
+SELECT * FROM micrographics_orders
+WHERE email_sent = false AND license_key IS NOT NULL;
 ```
 
 ---
 
-## Agent Prompt (copy this when working on erginturk.com)
+## Revoking a License
+
+If someone shares their key:
+
+1. Go to LemonSqueezy dashboard → Orders → find the order
+2. Click the license key → Disable it
+3. The validation API will return `valid: false` for that key
+4. Customer sees console warning, can't suppress it
+
+---
+
+## Testing
+
+### 1. Local test
+
+```bash
+node scripts/test-webhook.mjs
+```
+
+### 2. End-to-end test
+
+1. Enable license keys on your LemonSqueezy product
+2. Create a 100% discount code
+3. Purchase with the code ($0)
+4. Check Supabase — order should appear
+5. Check email — license key should arrive
+6. Test in a new project:
+   ```bash
+   npm install @micrographics-js/react @micrographics-js/core
+   echo "NEXT_PUBLIC_MICROGRAPHICS_KEY=your-received-key" > .env.local
+   ```
+7. Import a component — no console warning = success
+
+---
+
+## Agent Prompt (copy when working on erginturk.com)
 
 ```
-Implement the Micrographics LemonSqueezy webhook handler.
+Implement the Micrographics LemonSqueezy webhook with Supabase.
 
-Read the full spec at: /path/to/micrographs/docs/webhook-implementation.md
+Full spec: [path to micrographs]/docs/webhook-implementation.md
 
-Create POST /api/lemon-webhook that:
-1. Verifies X-Signature header using HMAC-SHA256 with LEMON_WEBHOOK_SECRET
-2. Parses order_created events
-3. Maps product name to npm packages
-4. Sends email with GitHub Packages token and install instructions
-5. Uses Resend (or whatever email service is configured)
+Summary:
+1. Create Supabase table "micrographics_orders" (schema in the doc)
+2. Create POST /api/lemon-webhook that:
+   - Verifies X-Signature with HMAC-SHA256
+   - Fetches license key from LemonSqueezy API
+   - Stores order in Supabase
+   - Sends email with license key via Resend
+3. Env vars: LEMON_WEBHOOK_SECRET, LEMON_API_KEY, SUPABASE_URL,
+   SUPABASE_SERVICE_KEY, RESEND_API_KEY, EMAIL_FROM
 
-Env vars needed: LEMON_WEBHOOK_SECRET, CUSTOMER_GITHUB_TOKEN, RESEND_API_KEY, EMAIL_FROM
+No GitHub tokens needed. Packages are public on npm.
+License validation happens client-side via @micrographics-js/core.
+```
+
+---
+
+## File Structure (on erginturk.com)
+
+```
+app/
+  api/
+    lemon-webhook/
+      route.ts          ← webhook handler (code above)
+.env.local              ← secrets
+  LEMON_WEBHOOK_SECRET=3b348d6084b3f08b829f683a02531f75b9bb3ee6
+  LEMON_API_KEY=eyJ...
+  SUPABASE_URL=https://xxx.supabase.co
+  SUPABASE_SERVICE_KEY=eyJ...
+  RESEND_API_KEY=re_xxx
+  EMAIL_FROM=Micrographics <support@erginturk.com>
 ```
