@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0d0e17"/>
+  <pattern id="grid-orb" width="30" height="30" patternUnits="userSpaceOnUse">
+    <circle cx="15" cy="15" r="0.5" fill="#555566" opacity="0.3"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid-orb)"/>
+  <line x1="0" y1="30" x2="0" y2="0" stroke="#555566" stroke-width="2"/>
+  <line x1="0" y1="0" x2="30" y2="0" stroke="#555566" stroke-width="2"/>
+  <line x1="1170" y1="0" x2="1200" y2="0" stroke="#555566" stroke-width="2"/>
+  <line x1="1200" y1="0" x2="1200" y2="30" stroke="#555566" stroke-width="2"/>
+  <line x1="0" y1="600" x2="0" y2="630" stroke="#555566" stroke-width="2"/>
+  <line x1="0" y1="630" x2="30" y2="630" stroke="#555566" stroke-width="2"/>
+  <line x1="1200" y1="600" x2="1200" y2="630" stroke="#555566" stroke-width="2"/>
+  <line x1="1170" y1="630" x2="1200" y2="630" stroke="#555566" stroke-width="2"/>
+  <text x="50" y="45" fill="#555566" font-family="monospace" font-size="12" letter-spacing="3">MICROGRAPHICS</text>
+  <!-- Title -->
+  <text x="600" y="85" text-anchor="middle" fill="#3ecf8e" font-family="monospace" font-size="42" font-weight="bold" letter-spacing="4">ORBIT &amp; NAV PACK</text>
+  <text x="600" y="120" text-anchor="middle" fill="#9a9aaa" font-family="monospace" font-size="18" letter-spacing="2">8 COMPONENTS</text>
+  <!-- Orbit system - large -->
+  <circle cx="320" cy="350" r="120" fill="none" stroke="#555566" stroke-width="0.5" stroke-dasharray="3 3"/>
+  <circle cx="320" cy="350" r="80" fill="none" stroke="#555566" stroke-width="0.5" stroke-dasharray="3 3"/>
+  <circle cx="320" cy="350" r="40" fill="none" stroke="#555566" stroke-width="0.5" stroke-dasharray="3 3"/>
+  <circle cx="320" cy="350" r="12" fill="#3ecf8e"/>
+  <text x="312" y="354" fill="#0d0e17" font-family="monospace" font-size="8" font-weight="bold">SYS</text>
+  <circle cx="408" cy="290" r="6" fill="#f5a623"/>
+  <text x="418" y="286" fill="#f5a623" font-family="monospace" font-size="8">A</text>
+  <circle cx="240" cy="400" r="6" fill="#3ecf8e" opacity="0.8"/>
+  <text x="226" y="418" fill="#3ecf8e" font-family="monospace" font-size="8">B</text>
+  <circle cx="380" cy="430" r="5" fill="#60cfff"/>
+  <text x="390" y="434" fill="#60cfff" font-family="monospace" font-size="8">C</text>
+  <!-- Crosshair target -->
+  <line x1="700" y1="240" x2="700" y2="280" stroke="#3ecf8e" stroke-width="1"/>
+  <line x1="700" y1="310" x2="700" y2="350" stroke="#3ecf8e" stroke-width="1"/>
+  <line x1="650" y1="295" x2="690" y2="295" stroke="#3ecf8e" stroke-width="1"/>
+  <line x1="710" y1="295" x2="750" y2="295" stroke="#3ecf8e" stroke-width="1"/>
+  <circle cx="700" cy="295" r="25" fill="none" stroke="#3ecf8e" stroke-width="1"/>
+  <circle cx="700" cy="295" r="8" fill="none" stroke="#3ecf8e" stroke-width="0.5"/>
+  <text x="755" y="290" fill="#555566" font-family="monospace" font-size="10">CROSSHAIR</text>
+  <!-- Radar reticle -->
+  <circle cx="900" cy="300" r="60" fill="none" stroke="#555566" stroke-width="0.5"/>
+  <circle cx="900" cy="300" r="40" fill="none" stroke="#555566" stroke-width="0.5"/>
+  <circle cx="900" cy="300" r="20" fill="none" stroke="#555566" stroke-width="0.5"/>
+  <line x1="840" y1="300" x2="960" y2="300" stroke="#555566" stroke-width="0.3"/>
+  <line x1="900" y1="240" x2="900" y2="360" stroke="#555566" stroke-width="0.3"/>
+  <line x1="900" y1="300" x2="945" y2="265" stroke="#3ecf8e" stroke-width="1.5"/>
+  <circle cx="900" cy="300" r="3" fill="#3ecf8e"/>
+  <circle cx="920" cy="280" r="3" fill="#3ecf8e" opacity="0.7"/>
+  <circle cx="880" cy="320" r="3" fill="#3ecf8e" opacity="0.4"/>
+  <text x="900" y="380" text-anchor="middle" fill="#555566" font-family="monospace" font-size="10">RADAR RETICLE</text>
+  <!-- Mission status -->
+  <rect x="660" y="400" width="180" height="24" fill="none" stroke="#555566" stroke-width="0.5"/>
+  <text x="670" y="416" fill="#555566" font-family="monospace" font-size="10">MISSION</text>
+  <text x="730" y="416" fill="#3ecf8e" font-family="monospace" font-size="10">ECHO-7</text>
+  <rect x="660" y="430" width="180" height="16" fill="none" stroke="#3ecf8e" stroke-width="0.5"/>
+  <text x="720" y="443" fill="#3ecf8e" font-family="monospace" font-size="10">ACTIVE</text>
+  <rect x="660" y="454" width="180" height="8" fill="#13141f" stroke="#555566" stroke-width="0.5"/>
+  <rect x="660" y="454" width="108" height="8" fill="#3ecf8e" opacity="0.5"/>
+  <text x="670" y="476" fill="#555566" font-family="monospace" font-size="9">PHASE 3/5</text>
+  <!-- Priority badges -->
+  <rect x="880" y="400" width="30" height="24" fill="none" stroke="#e05252" stroke-width="1"/>
+  <text x="895" y="416" text-anchor="middle" fill="#e05252" font-family="monospace" font-size="12" font-weight="bold">A</text>
+  <rect x="916" y="400" width="30" height="24" fill="none" stroke="#f5a623" stroke-width="1"/>
+  <text x="931" y="416" text-anchor="middle" fill="#f5a623" font-family="monospace" font-size="12" font-weight="bold">B</text>
+  <rect x="952" y="400" width="30" height="24" fill="none" stroke="#3ecf8e" stroke-width="1"/>
+  <text x="967" y="416" text-anchor="middle" fill="#3ecf8e" font-family="monospace" font-size="12" font-weight="bold">C</text>
+  <text x="916" y="440" fill="#555566" font-family="monospace" font-size="9">PRIORITY</text>
+  <!-- Bottom -->
+  <text x="600" y="560" text-anchor="middle" fill="#555566" font-family="monospace" font-size="12" letter-spacing="2">OrbitSystem · TargetReticle · RadarReticle · CrosshairTarget · MissionStatus · PriorityBadge · RegistrationMark · ArchiveTag</text>
+  <text x="600" y="590" text-anchor="middle" fill="#555566" font-family="monospace" font-size="18" letter-spacing="1">$24</text>
+  <rect x="50" y="600" width="2" height="12" fill="#555566"/>
+  <rect x="54" y="600" width="1" height="12" fill="#555566"/>
+  <rect x="57" y="600" width="2" height="12" fill="#555566"/>
+  <rect x="61" y="600" width="1" height="12" fill="#555566"/>
+  <rect x="1100" y="598" width="8" height="8" fill="#3ecf8e"/>
+  <rect x="1112" y="598" width="8" height="8" fill="#f5a623"/>
+  <rect x="1124" y="598" width="8" height="8" fill="#e05252"/>
+</svg>

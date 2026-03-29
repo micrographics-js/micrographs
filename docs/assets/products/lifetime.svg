@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0d0e17"/>
+  <pattern id="grid-life" width="30" height="30" patternUnits="userSpaceOnUse">
+    <circle cx="15" cy="15" r="0.5" fill="#3ecf8e" opacity="0.15"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid-life)"/>
+  <!-- Glowing corner ornaments -->
+  <line x1="0" y1="40" x2="0" y2="0" stroke="#3ecf8e" stroke-width="2.5"/>
+  <line x1="0" y1="0" x2="40" y2="0" stroke="#3ecf8e" stroke-width="2.5"/>
+  <line x1="1160" y1="0" x2="1200" y2="0" stroke="#3ecf8e" stroke-width="2.5"/>
+  <line x1="1200" y1="0" x2="1200" y2="40" stroke="#3ecf8e" stroke-width="2.5"/>
+  <line x1="0" y1="590" x2="0" y2="630" stroke="#3ecf8e" stroke-width="2.5"/>
+  <line x1="0" y1="630" x2="40" y2="630" stroke="#3ecf8e" stroke-width="2.5"/>
+  <line x1="1200" y1="590" x2="1200" y2="630" stroke="#3ecf8e" stroke-width="2.5"/>
+  <line x1="1160" y1="630" x2="1200" y2="630" stroke="#3ecf8e" stroke-width="2.5"/>
+  <text x="50" y="45" fill="#3ecf8e" font-family="monospace" font-size="12" letter-spacing="3">MICROGRAPHICS</text>
+  <!-- Infinity symbol -->
+  <text x="600" y="140" text-anchor="middle" fill="#3ecf8e" font-family="monospace" font-size="60" opacity="0.3">&#8734;</text>
+  <!-- Main title -->
+  <text x="600" y="230" text-anchor="middle" fill="#3ecf8e" font-family="monospace" font-size="56" font-weight="bold" letter-spacing="6">LIFETIME</text>
+  <text x="600" y="275" text-anchor="middle" fill="#9a9aaa" font-family="monospace" font-size="20" letter-spacing="3">ALL CURRENT + ALL FUTURE COMPONENTS</text>
+  <!-- Features -->
+  <text x="600" y="340" text-anchor="middle" fill="#e8e8e8" font-family="monospace" font-size="14" letter-spacing="1">84 components today · React · Vue · Svelte · Vanilla</text>
+  <text x="600" y="365" text-anchor="middle" fill="#3ecf8e" font-family="monospace" font-size="14" letter-spacing="1">+ every future pack and framework adapter, forever</text>
+  <!-- Bullet points -->
+  <rect x="380" y="400" width="6" height="6" fill="#3ecf8e"/>
+  <text x="396" y="408" fill="#9a9aaa" font-family="monospace" font-size="13">All 84 current components</text>
+  <rect x="380" y="424" width="6" height="6" fill="#3ecf8e"/>
+  <text x="396" y="432" fill="#9a9aaa" font-family="monospace" font-size="13">All 4 framework adapters</text>
+  <rect x="380" y="448" width="6" height="6" fill="#3ecf8e"/>
+  <text x="396" y="456" fill="#9a9aaa" font-family="monospace" font-size="13">All future packs — free forever</text>
+  <rect x="380" y="472" width="6" height="6" fill="#3ecf8e"/>
+  <text x="396" y="480" fill="#9a9aaa" font-family="monospace" font-size="13">Priority support</text>
+  <!-- Price -->
+  <text x="600" y="550" text-anchor="middle" fill="#e8e8e8" font-family="monospace" font-size="64" font-weight="bold">$199</text>
+  <text x="600" y="585" text-anchor="middle" fill="#555566" font-family="monospace" font-size="13" letter-spacing="2">RECOMMENDED FOR AGENCIES &amp; FREELANCERS</text>
+  <!-- Status -->
+  <rect x="1100" y="592" width="8" height="8" fill="#3ecf8e"/>
+  <rect x="1112" y="592" width="8" height="8" fill="#3ecf8e"/>
+  <rect x="1124" y="592" width="8" height="8" fill="#3ecf8e"/>
+</svg>

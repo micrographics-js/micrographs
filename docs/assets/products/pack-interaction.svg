@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid-i" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="0.5" fill="#1a1b2e"/>
+    </pattern>
+    <filter id="blur-i">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0d0e17"/>
+  <rect width="1200" height="630" fill="url(#grid-i)"/>
+
+  <!-- Corner ornaments -->
+  <g stroke="#555566" stroke-width="1.5" fill="none">
+    <polyline points="20,50 20,20 50,20"/>
+    <polyline points="1150,20 1180,20 1180,50"/>
+    <polyline points="1180,580 1180,610 1150,610"/>
+    <polyline points="50,610 20,610 20,580"/>
+  </g>
+
+  <text x="60" y="42" font-family="monospace" font-size="10" fill="#555566" letter-spacing="3">MICROGRAPHICS</text>
+
+  <ellipse cx="600" cy="260" rx="400" ry="150" fill="#3ecf8e" opacity="0.015" filter="url(#blur-i)"/>
+
+  <!-- === TOGGLE SWITCH (ON state) === -->
+  <g transform="translate(120, 190)">
+    <text x="0" y="-15" font-family="monospace" font-size="10" fill="#555566">SYSTEM POWER</text>
+    <!-- Track -->
+    <rect x="0" y="0" width="80" height="36" rx="18" fill="#3ecf8e" opacity="0.2" stroke="#3ecf8e" stroke-width="1"/>
+    <!-- Knob (ON position) -->
+    <circle cx="58" cy="18" r="14" fill="#3ecf8e"/>
+    <circle cx="58" cy="18" r="10" fill="#0d0e17"/>
+    <circle cx="58" cy="18" r="4" fill="#3ecf8e"/>
+    <text x="20" y="23" font-family="monospace" font-size="10" fill="#3ecf8e" opacity="0.6">ON</text>
+
+    <!-- OFF state (dimmed) -->
+    <g transform="translate(120,0)">
+      <rect x="0" y="0" width="80" height="36" rx="18" fill="#1a1b2e" stroke="#555566" stroke-width="1"/>
+      <circle cx="22" cy="18" r="14" fill="#555566"/>
+      <circle cx="22" cy="18" r="10" fill="#0d0e17"/>
+      <circle cx="22" cy="18" r="4" fill="#555566" opacity="0.5"/>
+      <text x="50" y="23" font-family="monospace" font-size="10" fill="#555566">OFF</text>
+    </g>
+
+    <text x="100" y="65" font-family="monospace" font-size="11" fill="#9a9aaa" text-anchor="middle">TOGGLE SWITCH</text>
+  </g>
+
+  <!-- === NUMERIC STEPPER === -->
+  <g transform="translate(420, 185)">
+    <text x="0" y="-15" font-family="monospace" font-size="10" fill="#555566">THRESHOLD</text>
+    <!-- Decrease button -->
+    <rect x="0" y="0" width="40" height="40" rx="3" fill="#1a1b2e" stroke="#555566" stroke-width="1"/>
+    <text x="20" y="27" font-family="monospace" font-size="22" fill="#9a9aaa" text-anchor="middle">-</text>
+    <!-- Value display -->
+    <rect x="45" y="0" width="80" height="40" rx="3" fill="#0d0e17" stroke="#3ecf8e" stroke-width="1"/>
+    <text x="85" y="28" font-family="monospace" font-size="24" fill="#3ecf8e" text-anchor="middle">042</text>
+    <!-- Increase button -->
+    <rect x="130" y="0" width="40" height="40" rx="3" fill="#1a1b2e" stroke="#555566" stroke-width="1"/>
+    <text x="150" y="27" font-family="monospace" font-size="22" fill="#9a9aaa" text-anchor="middle">+</text>
+
+    <text x="85" y="65" font-family="monospace" font-size="11" fill="#9a9aaa" text-anchor="middle">NUMERIC STEPPER</text>
+  </g>
+
+  <!-- === SEGMENTED PROGRESS BAR === -->
+  <g transform="translate(680, 185)">
+    <text x="0" y="-15" font-family="monospace" font-size="10" fill="#555566">UPLOAD PROGRESS</text>
+    <!-- Segments -->
+    <rect x="0" y="0" width="30" height="40" rx="2" fill="#3ecf8e"/>
+    <rect x="34" y="0" width="30" height="40" rx="2" fill="#3ecf8e"/>
+    <rect x="68" y="0" width="30" height="40" rx="2" fill="#3ecf8e"/>
+    <rect x="102" y="0" width="30" height="40" rx="2" fill="#3ecf8e"/>
+    <rect x="136" y="0" width="30" height="40" rx="2" fill="#3ecf8e"/>
+    <rect x="170" y="0" width="30" height="40" rx="2" fill="#3ecf8e" opacity="0.6"/>
+    <rect x="204" y="0" width="30" height="40" rx="2" fill="#3ecf8e" opacity="0.3"/>
+    <rect x="238" y="0" width="30" height="40" rx="2" fill="#1a1b2e" stroke="#555566" stroke-width="0.5"/>
+    <rect x="272" y="0" width="30" height="40" rx="2" fill="#1a1b2e" stroke="#555566" stroke-width="0.5"/>
+    <rect x="306" y="0" width="30" height="40" rx="2" fill="#1a1b2e" stroke="#555566" stroke-width="0.5"/>
+
+    <text x="168" y="65" font-family="monospace" font-size="11" fill="#9a9aaa" text-anchor="middle">SEGMENTED BAR  ·  70%</text>
+  </g>
+
+  <!-- === RATING DOTS (diamonds) === -->
+  <g transform="translate(180, 310)">
+    <text x="0" y="-12" font-family="monospace" font-size="10" fill="#555566">RATING</text>
+    <!-- Filled diamonds -->
+    <polygon points="15,0 30,15 15,30 0,15" fill="#f5a623"/>
+    <polygon points="50,0 65,15 50,30 35,15" fill="#f5a623"/>
+    <polygon points="85,0 100,15 85,30 70,15" fill="#f5a623"/>
+    <polygon points="120,0 135,15 120,30 105,15" fill="#f5a623" opacity="0.4"/>
+    <!-- Empty diamond -->
+    <polygon points="155,0 170,15 155,30 140,15" fill="none" stroke="#555566" stroke-width="1"/>
+
+    <text x="85" y="55" font-family="monospace" font-size="11" fill="#9a9aaa" text-anchor="middle">RATING DOTS  ·  3.5 / 5</text>
+  </g>
+
+  <!-- === COPY BUTTON === -->
+  <g transform="translate(520, 305)">
+    <text x="0" y="-12" font-family="monospace" font-size="10" fill="#555566">CLIPBOARD</text>
+    <rect x="0" y="0" width="160" height="36" rx="3" fill="#1a1b2e" stroke="#3ecf8e" stroke-width="1"/>
+    <!-- Copy icon (two overlapping rectangles) -->
+    <rect x="12" y="8" width="14" height="16" rx="1" fill="none" stroke="#3ecf8e" stroke-width="1"/>
+    <rect x="18" y="12" width="14" height="16" rx="1" fill="#1a1b2e" stroke="#3ecf8e" stroke-width="1"/>
+    <text x="46" y="23" font-family="monospace" font-size="12" fill="#3ecf8e">COPY</text>
+    <!-- Checkmark version -->
+    <g transform="translate(180,0)">
+      <rect x="0" y="0" width="160" height="36" rx="3" fill="#3ecf8e" opacity="0.15" stroke="#3ecf8e" stroke-width="1"/>
+      <polyline points="14,18 22,26 36,10" fill="none" stroke="#3ecf8e" stroke-width="2"/>
+      <text x="50" y="23" font-family="monospace" font-size="12" fill="#3ecf8e">COPIED!</text>
+    </g>
+    <text x="170" y="60" font-family="monospace" font-size="11" fill="#9a9aaa" text-anchor="middle">COPY BUTTON</text>
+  </g>
+
+  <!-- Title -->
+  <text x="600" y="460" font-family="monospace" font-size="48" fill="#3ecf8e" text-anchor="middle" font-weight="bold" letter-spacing="6">INTERACTION PACK</text>
+  <text x="600" y="495" font-family="monospace" font-size="20" fill="#9a9aaa" text-anchor="middle" letter-spacing="4">5 Components</text>
+
+  <line x1="380" y1="510" x2="820" y2="510" stroke="#3ecf8e" stroke-width="1" opacity="0.2"/>
+
+  <text x="600" y="570" font-family="monospace" font-size="11" fill="#555566" text-anchor="middle" letter-spacing="1">ToggleSwitch  ·  NumericStepper  ·  SegmentedBar  ·  CopyButton  ·  RatingDots</text>
+</svg>

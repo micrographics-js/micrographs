@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid-g" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="0.5" fill="#1a1b2e"/>
+    </pattern>
+    <filter id="blur-g">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0d0e17"/>
+  <rect width="1200" height="630" fill="url(#grid-g)"/>
+
+  <!-- Corner ornaments -->
+  <g stroke="#555566" stroke-width="1.5" fill="none">
+    <polyline points="20,50 20,20 50,20"/>
+    <polyline points="1150,20 1180,20 1180,50"/>
+    <polyline points="1180,580 1180,610 1150,610"/>
+    <polyline points="50,610 20,610 20,580"/>
+  </g>
+
+  <text x="60" y="42" font-family="monospace" font-size="10" fill="#555566" letter-spacing="3">MICROGRAPHICS</text>
+
+  <ellipse cx="600" cy="260" rx="400" ry="150" fill="#3ecf8e" opacity="0.015" filter="url(#blur-g)"/>
+
+  <!-- === DIAL GAUGE (semicircular) === -->
+  <g transform="translate(200, 280)">
+    <!-- Outer arc -->
+    <path d="M-90,0 A90,90 0 0,1 90,0" fill="none" stroke="#555566" stroke-width="1"/>
+    <path d="M-80,0 A80,80 0 0,1 80,0" fill="none" stroke="#555566" stroke-width="0.5"/>
+
+    <!-- Colored arc segments -->
+    <path d="M-85,0 A85,85 0 0,1 -60,-60" fill="none" stroke="#3ecf8e" stroke-width="4" opacity="0.8"/>
+    <path d="M-60,-60 A85,85 0 0,1 0,-85" fill="none" stroke="#3ecf8e" stroke-width="4" opacity="0.6"/>
+    <path d="M0,-85 A85,85 0 0,1 60,-60" fill="none" stroke="#f5a623" stroke-width="4" opacity="0.8"/>
+    <path d="M60,-60 A85,85 0 0,1 85,0" fill="none" stroke="#e05252" stroke-width="4" opacity="0.8"/>
+
+    <!-- Tick marks -->
+    <line x1="-90" y1="0" x2="-75" y2="0" stroke="#e8e8e8" stroke-width="1"/>
+    <line x1="-63" y1="-63" x2="-53" y2="-53" stroke="#e8e8e8" stroke-width="1"/>
+    <line x1="0" y1="-90" x2="0" y2="-75" stroke="#e8e8e8" stroke-width="1"/>
+    <line x1="63" y1="-63" x2="53" y2="-53" stroke="#e8e8e8" stroke-width="1"/>
+    <line x1="90" y1="0" x2="75" y2="0" stroke="#e8e8e8" stroke-width="1"/>
+
+    <!-- Needle pointing to ~70% -->
+    <line x1="0" y1="0" x2="42" y2="-62" stroke="#e8e8e8" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="0" cy="0" r="5" fill="#e8e8e8"/>
+    <circle cx="0" cy="0" r="2" fill="#0d0e17"/>
+
+    <!-- Labels -->
+    <text x="-90" y="18" font-family="monospace" font-size="9" fill="#9a9aaa" text-anchor="middle">0</text>
+    <text x="0" y="-95" font-family="monospace" font-size="9" fill="#9a9aaa" text-anchor="middle">50</text>
+    <text x="90" y="18" font-family="monospace" font-size="9" fill="#9a9aaa" text-anchor="middle">100</text>
+
+    <text x="0" y="22" font-family="monospace" font-size="18" fill="#3ecf8e" text-anchor="middle">72</text>
+    <text x="0" y="50" font-family="monospace" font-size="11" fill="#9a9aaa" text-anchor="middle">DIAL GAUGE</text>
+  </g>
+
+  <!-- === SPEEDOMETER ARC === -->
+  <g transform="translate(480, 270)">
+    <!-- Speed arc background -->
+    <path d="M-80,10 A85,85 0 0,1 80,10" fill="none" stroke="#1a1b2e" stroke-width="8" stroke-linecap="round"/>
+    <!-- Speed arc filled -->
+    <path d="M-80,10 A85,85 0 0,1 35,-78" fill="none" stroke="#3ecf8e" stroke-width="8" stroke-linecap="round"/>
+
+    <!-- Speed value -->
+    <text x="0" y="5" font-family="monospace" font-size="36" fill="#e8e8e8" text-anchor="middle" font-weight="bold">187</text>
+    <text x="0" y="22" font-family="monospace" font-size="10" fill="#555566" text-anchor="middle">KM/H</text>
+
+    <!-- Minor ticks around the arc -->
+    <g stroke="#555566" stroke-width="0.5">
+      <line x1="-82" y1="-10" x2="-72" y2="-8" />
+      <line x1="-75" y1="-35" x2="-65" y2="-30" />
+      <line x1="-58" y1="-58" x2="-50" y2="-50" />
+      <line x1="-35" y1="-75" x2="-30" y2="-65" />
+      <line x1="0" y1="-85" x2="0" y2="-75" />
+      <line x1="35" y1="-75" x2="30" y2="-65" />
+      <line x1="58" y1="-58" x2="50" y2="-50" />
+      <line x1="75" y1="-35" x2="65" y2="-30" />
+    </g>
+
+    <text x="0" y="50" font-family="monospace" font-size="11" fill="#9a9aaa" text-anchor="middle">SPEEDOMETER</text>
+  </g>
+
+  <!-- === COMPASS ROSE === -->
+  <g transform="translate(740, 240)">
+    <!-- Outer circle -->
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#555566" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#555566" stroke-width="0.5"/>
+
+    <!-- Cardinal lines -->
+    <line x1="0" y1="-65" x2="0" y2="-50" stroke="#e8e8e8" stroke-width="1.5"/>
+    <line x1="0" y1="50" x2="0" y2="65" stroke="#555566" stroke-width="1"/>
+    <line x1="-65" y1="0" x2="-50" y2="0" stroke="#555566" stroke-width="1"/>
+    <line x1="50" y1="0" x2="65" y2="0" stroke="#555566" stroke-width="1"/>
+
+    <!-- Intercardinal lines -->
+    <line x1="42" y1="-42" x2="48" y2="-48" stroke="#555566" stroke-width="0.5"/>
+    <line x1="-42" y1="-42" x2="-48" y2="-48" stroke="#555566" stroke-width="0.5"/>
+    <line x1="42" y1="42" x2="48" y2="48" stroke="#555566" stroke-width="0.5"/>
+    <line x1="-42" y1="42" x2="-48" y2="48" stroke="#555566" stroke-width="0.5"/>
+
+    <!-- Direction pointer (N) -->
+    <polygon points="0,-45 -6,-25 0,-30 6,-25" fill="#e05252" opacity="0.9"/>
+    <polygon points="0,45 -6,25 0,30 6,25" fill="#e8e8e8" opacity="0.4"/>
+
+    <!-- Labels -->
+    <text x="0" y="-76" font-family="monospace" font-size="12" fill="#e05252" text-anchor="middle" font-weight="bold">N</text>
+    <text x="0" y="86" font-family="monospace" font-size="10" fill="#555566" text-anchor="middle">S</text>
+    <text x="-78" y="4" font-family="monospace" font-size="10" fill="#555566" text-anchor="middle">W</text>
+    <text x="78" y="4" font-family="monospace" font-size="10" fill="#555566" text-anchor="middle">E</text>
+
+    <!-- Center -->
+    <circle cx="0" cy="0" r="3" fill="#e8e8e8"/>
+
+    <!-- Bearing readout -->
+    <text x="0" y="16" font-family="monospace" font-size="9" fill="#9a9aaa" text-anchor="middle">342°</text>
+    <text x="0" y="105" font-family="monospace" font-size="11" fill="#9a9aaa" text-anchor="middle">COMPASS ROSE</text>
+  </g>
+
+  <!-- === TANK LEVEL === -->
+  <g transform="translate(920, 160)">
+    <!-- Tank outline -->
+    <rect x="0" y="0" width="50" height="150" rx="4" fill="none" stroke="#555566" stroke-width="1"/>
+
+    <!-- Liquid level -->
+    <rect x="2" y="50" width="46" height="98" rx="3" fill="#3ecf8e" opacity="0.15"/>
+    <rect x="2" y="50" width="46" height="98" rx="3" fill="none" stroke="#3ecf8e" stroke-width="0.5"/>
+    <!-- Wave top -->
+    <path d="M2,50 Q14,44 25,50 Q36,56 48,50" fill="none" stroke="#3ecf8e" stroke-width="1" opacity="0.6"/>
+
+    <!-- Level marks -->
+    <line x1="52" y1="0" x2="60" y2="0" stroke="#555566" stroke-width="0.5"/>
+    <text x="63" y="4" font-family="monospace" font-size="8" fill="#555566">100</text>
+    <line x1="52" y1="37" x2="60" y2="37" stroke="#555566" stroke-width="0.5"/>
+    <text x="63" y="41" font-family="monospace" font-size="8" fill="#555566">75</text>
+    <line x1="52" y1="75" x2="60" y2="75" stroke="#555566" stroke-width="0.5"/>
+    <text x="63" y="79" font-family="monospace" font-size="8" fill="#555566">50</text>
+    <line x1="52" y1="112" x2="60" y2="112" stroke="#555566" stroke-width="0.5"/>
+    <text x="63" y="116" font-family="monospace" font-size="8" fill="#555566">25</text>
+    <line x1="52" y1="150" x2="60" y2="150" stroke="#555566" stroke-width="0.5"/>
+    <text x="63" y="154" font-family="monospace" font-size="8" fill="#555566">0</text>
+
+    <!-- Level indicator -->
+    <text x="25" y="105" font-family="monospace" font-size="14" fill="#3ecf8e" text-anchor="middle">67%</text>
+
+    <text x="45" y="180" font-family="monospace" font-size="11" fill="#9a9aaa" text-anchor="middle">TANK LEVEL</text>
+  </g>
+
+  <!-- === PRESSURE GAUGE (small) === -->
+  <g transform="translate(1060, 180)">
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#555566" stroke-width="0.5"/>
+    <path d="M-40,15 A45,45 0 0,1 40,15" fill="none" stroke="#f5a623" stroke-width="3" opacity="0.6"/>
+    <line x1="0" y1="0" x2="25" y2="-32" stroke="#e8e8e8" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="3" fill="#e8e8e8"/>
+    <text x="0" y="20" font-family="monospace" font-size="12" fill="#f5a623" text-anchor="middle">3.2</text>
+    <text x="0" y="32" font-family="monospace" font-size="8" fill="#555566" text-anchor="middle">BAR</text>
+    <text x="0" y="65" font-family="monospace" font-size="10" fill="#9a9aaa" text-anchor="middle">PRESSURE</text>
+  </g>
+
+  <!-- Title -->
+  <text x="600" y="460" font-family="monospace" font-size="52" fill="#3ecf8e" text-anchor="middle" font-weight="bold" letter-spacing="6">GAUGES PACK</text>
+  <text x="600" y="495" font-family="monospace" font-size="20" fill="#9a9aaa" text-anchor="middle" letter-spacing="4">8 Components</text>
+
+  <line x1="380" y1="510" x2="820" y2="510" stroke="#3ecf8e" stroke-width="1" opacity="0.2"/>
+
+  <text x="600" y="570" font-family="monospace" font-size="11" fill="#555566" text-anchor="middle" letter-spacing="1">DialGauge  ·  Speedometer  ·  CompassRose  ·  PressureGauge  ·  TankLevel...</text>
+</svg>
