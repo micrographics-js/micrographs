@@ -124,16 +124,14 @@ export default function Page() {
 ## Setup
 
 1. Purchase at [recursivevoid.lemonsqueezy.com](https://recursivevoid.lemonsqueezy.com)
-2. Add your license key to `.env`:
+2. Install: `npm install @micrographics-js/react @micrographics-js/core`
+3. Add your license key in your app entry point:
 
-```bash
-MICROGRAPHICS_KEY=your-license-key
-
-# Next.js: NEXT_PUBLIC_MICROGRAPHICS_KEY=your-license-key
-# Vite: VITE_MICROGRAPHICS_KEY=your-license-key
+```tsx
+// app/layout.tsx (Next.js) or src/main.tsx (Vite)
+import { initLicense } from "@micrographics-js/core";
+initLicense("your-license-key");
 ```
-
-3. Install (no tokens, no .npmrc needed):
 
 ## Design Principles
 

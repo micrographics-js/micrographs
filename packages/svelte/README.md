@@ -45,16 +45,14 @@ Full component list: [documentation](https://github.com/micrographics-js/microgr
 ## Setup
 
 1. Purchase at [recursivevoid.lemonsqueezy.com](https://recursivevoid.lemonsqueezy.com)
-2. Add your license key to `.env`:
+2. Install: `npm install @micrographics-js/svelte @micrographics-js/core`
+3. Add your license key in your app entry:
 
-```bash
-MICROGRAPHICS_KEY=your-license-key
-
-# Next.js: NEXT_PUBLIC_MICROGRAPHICS_KEY=your-license-key
-# Vite: VITE_MICROGRAPHICS_KEY=your-license-key
+```ts
+// src/routes/+layout.svelte or src/main.ts
+import { initLicense } from "@micrographics-js/core";
+initLicense("your-license-key");
 ```
-
-3. Install (no tokens, no .npmrc needed):
 
 ## Tech
 

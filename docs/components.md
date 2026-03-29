@@ -43,12 +43,16 @@ Most components also accept a `color` prop for per-instance override:
 npm install @micrographics-js/react @micrographics-js/core
 ```
 
-```env
-# .env
-MICROGRAPHICS_KEY=your-license-key
-# Next.js: NEXT_PUBLIC_MICROGRAPHICS_KEY=your-license-key
-# Vite: VITE_MICROGRAPHICS_KEY=your-license-key
+Add this **once** in your app entry point:
+
+```tsx
+// Next.js: app/layout.tsx
+// Vite: src/main.tsx
+import { initLicense } from "@micrographics-js/core";
+initLicense("your-license-key");
 ```
+
+> **Note:** `initLicense()` is the recommended approach for all frameworks. Environment variables (`VITE_MICROGRAPHICS_KEY`) work in Vite but NOT in Next.js (env vars aren't accessible from `node_modules`).
 
 ---
 

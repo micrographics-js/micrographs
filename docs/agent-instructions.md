@@ -183,15 +183,13 @@ Step 1 — Install (no tokens or .npmrc needed):
   # npm install @micrographics-js/svelte @micrographics-js/core
   # npm install @micrographics-js/vanilla @micrographics-js/core
 
-Step 2 — Add your license key to .env:
+Step 2 — Add your license key in your app entry point:
 
-  MICROGRAPHICS_KEY=${licenseKey}
-
-  # For Next.js:
-  NEXT_PUBLIC_MICROGRAPHICS_KEY=${licenseKey}
-
-  # For Vite:
-  VITE_MICROGRAPHICS_KEY=${licenseKey}
+  // Next.js: app/layout.tsx
+  // Vite: src/main.tsx
+  // Any framework: your root/entry file
+  import { initLicense } from "@micrographics-js/core";
+  initLicense("${licenseKey}");
 
 Step 3 — Use components:
 

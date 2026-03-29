@@ -71,18 +71,24 @@ npm install @micrographics-js/vanilla @micrographics-js/core
 npm install @micrographics-js/tailwind
 ```
 
-> After purchasing, add your license key to `.env` — that's it. No tokens, no `.npmrc`.
+> After purchasing, add your license key — that's it. No tokens, no `.npmrc`.
 
 ### Add License Key
 
+Add this **once** in your app entry point:
+
+```tsx
+// Next.js: app/layout.tsx
+// Vite: src/main.tsx
+// Any React: your root file
+import { initLicense } from "@micrographics-js/core";
+initLicense("your-license-key");
+```
+
+Or set via environment variable (Vite only — Next.js requires `initLicense()`):
+
 ```bash
-# .env (or .env.local)
-MICROGRAPHICS_KEY=your-license-key
-
-# Next.js
-NEXT_PUBLIC_MICROGRAPHICS_KEY=your-license-key
-
-# Vite
+# .env (Vite projects)
 VITE_MICROGRAPHICS_KEY=your-license-key
 ```
 
