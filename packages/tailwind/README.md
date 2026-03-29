@@ -1,133 +1,90 @@
-# @micrographics/tailwind
+# @micrographics-js/tailwind
 
-Tailwind CSS plugin + preset for the Micrographics component library.
+Tailwind CSS plugin + preset for the [Micrographics](https://github.com/micrographics-js/micrographs) component library. Injects dark terminal theme tokens, utility classes, animations, and layout helpers.
+
+**Free and open source** (MIT). Works standalone or alongside `@micrographics-js/react` etc.
 
 ## Install
 
 ```bash
-npm install @micrographics/tailwind
+npm install @micrographics-js/tailwind
 ```
 
 ## Usage
 
-### Option A — Plugin only
-
-```js
-// tailwind.config.js
-const micrographics = require("@micrographics/tailwind");
-
-module.exports = {
-  content: ["./src/**/*.{js,ts,jsx,tsx,vue,svelte}"],
-  plugins: [micrographics.plugin],
-};
-```
-
-### Option B — Full preset (recommended)
+### Full preset (recommended)
 
 ```js
 // tailwind.config.js
 module.exports = {
-  presets: [require("@micrographics/tailwind/preset")],
+  presets: [require("@micrographics-js/tailwind/preset")],
   content: ["./src/**/*.{js,ts,jsx,tsx,vue,svelte}"],
 };
 ```
 
-## What it provides
+### Plugin only
 
-### CSS variables (auto-injected on `:root`)
+```js
+const micrographics = require("@micrographics-js/tailwind");
+module.exports = { plugins: [micrographics.plugin] };
+```
+
+## What you get
+
+### Theme tokens (auto-injected on `:root`)
 
 | Variable | Default | Description |
 |---|---|---|
-| `--mg-bg` | `#0d0e17` | Dark background |
-| `--mg-bg-secondary` | `#13141f` | Card/panel background |
-| `--mg-fg` | `#e8e8e8` | Primary text |
-| `--mg-fg-dim` | `#9a9aaa` | Secondary text |
-| `--mg-fg-dimmer` | `#555566` | Muted text |
 | `--mg-accent` | `#3ecf8e` | Primary accent (green) |
-| `--mg-accent-amber` | `#f5a623` | Warning amber |
-| `--mg-accent-red` | `#e05252` | Error/alert red |
-| `--mg-border` | `rgba(255,255,255,0.07)` | Subtle border |
-| `--mg-border-strong` | `rgba(255,255,255,0.15)` | Strong border |
-
-Also aliases without the `mg-` prefix (`--bg`, `--fg`, `--accent`, etc.) so Micrographics components work without extra config.
+| `--mg-accent-amber` | `#f5a623` | Warning |
+| `--mg-accent-red` | `#e05252` | Error |
+| `--mg-bg` | `#0d0e17` | Dark background |
+| `--mg-fg` | `#e8e8e8` | Primary text |
 
 ### Utility classes
 
 ```html
-<!-- Backgrounds -->
-<div class="bg-mg-bg">
-<div class="bg-mg-bg-secondary">
+<!-- Text & colors -->
+<span class="text-mg-accent">ACTIVE</span>
+<span class="text-mg-accent-amber">WARNING</span>
+<div class="bg-mg-bg font-mg">Monospace dark panel</div>
 
-<!-- Text colours -->
-<span class="text-mg-fg">Primary text</span>
-<span class="text-mg-fg-dim">Secondary text</span>
-<span class="text-mg-accent">Active / OK</span>
-<span class="text-mg-accent-amber">Warning</span>
-<span class="text-mg-accent-red">Error</span>
-
-<!-- Borders -->
-<div class="border border-mg">
-<div class="border border-mg-strong">
-
-<!-- Font -->
-<p class="font-mg">Monospace terminal text</p>
-
-<!-- Components shells -->
+<!-- Component shells -->
 <div class="mg-card">...</div>
+<div class="mg-panel"><div class="mg-panel-header">TITLE</div><div class="mg-panel-body">Content</div></div>
 
-<div class="mg-panel">
-  <div class="mg-panel-header">SYSTEM STATUS <span>●</span></div>
-  <div class="mg-panel-body">...</div>
-</div>
-
-<!-- Status badges -->
+<!-- Badges -->
 <span class="mg-badge mg-badge-active">ONLINE</span>
 <span class="mg-badge mg-badge-warn">DEGRADED</span>
 <span class="mg-badge mg-badge-error">FAILED</span>
 
-<!-- HUD corners -->
-<div class="mg-hud p-8">
-  <div class="mg-hud-corner mg-hud-corner-tl"></div>
-  <div class="mg-hud-corner mg-hud-corner-tr"></div>
-  <div class="mg-hud-corner mg-hud-corner-bl"></div>
-  <div class="mg-hud-corner mg-hud-corner-br"></div>
-  Content here
-</div>
-
-<!-- Scanline overlay -->
-<div class="mg-scanlines bg-mg-bg">
-  <img src="..." />
-</div>
-
-<!-- Pixel display text -->
-<span class="mg-display text-mg-accent text-2xl">042.7</span>
-
-<!-- Glowing text -->
-<span class="mg-glow">ACTIVE</span>
-<span class="mg-glow-amber">WARNING</span>
-<span class="mg-glow-red">CRITICAL</span>
+<!-- Effects -->
+<span class="mg-glow">Glowing text</span>
+<div class="mg-scanlines">CRT scanline overlay</div>
+<div class="mg-hud"><div class="mg-hud-corner mg-hud-corner-tl"></div></div>
 
 <!-- Animations (from preset) -->
-<span class="animate-mg-pulse">●</span>
-<div class="animate-mg-blink">_</div>
+<span class="animate-mg-pulse">pulsing</span>
+<span class="animate-mg-blink">blinking cursor</span>
 ```
 
-### Overriding the accent colour
-
-Use the `mg-accent-*` dynamic utility with any Tailwind colour:
+### Override accent color
 
 ```html
-<!-- Override accent to violet for this section -->
 <div class="[--mg-accent:#8b5cf6] [--accent:#8b5cf6]">
-  <SignalMeter />  <!-- will render in violet -->
+  <!-- all Micrographics components here render in violet -->
 </div>
 ```
 
-Or via CSS:
+## Part of Micrographics
 
-```css
-.my-dashboard {
-  --mg-accent: #f59e0b;    /* amber theme */
-  --accent: var(--mg-accent);
-}
-```
+84 animated micro-UI components for React, Vue, Svelte & Vanilla.
+
+- [`@micrographics-js/react`](https://github.com/micrographics-js/micrographs/tree/main/packages/react)
+- [`@micrographics-js/vue`](https://github.com/micrographics-js/micrographs/tree/main/packages/vue)
+- [`@micrographics-js/svelte`](https://github.com/micrographics-js/micrographs/tree/main/packages/svelte)
+- [`@micrographics-js/vanilla`](https://github.com/micrographics-js/micrographs/tree/main/packages/vanilla)
+
+## License
+
+MIT

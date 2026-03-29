@@ -10,11 +10,11 @@ Dark industrial terminal aesthetic. Pure SVG. CSS custom properties. Zero runtim
 ### React
 
 ```bash
-npm install @micrographics/react @micrographics/core
+npm install @micrographics-js/react @micrographics-js/core
 ```
 
 ```tsx
-import { SignalMeter, PulseTag, RadarSweep } from "@micrographics/react";
+import { SignalMeter, PulseTag, RadarSweep } from "@micrographics-js/react";
 
 export default function Dashboard() {
   return (
@@ -30,12 +30,12 @@ export default function Dashboard() {
 ### Vue 3
 
 ```bash
-npm install @micrographics/vue @micrographics/core
+npm install @micrographics-js/vue @micrographics-js/core
 ```
 
 ```vue
 <script setup>
-import { SignalMeter, PulseTag, RadarSweep } from "@micrographics/vue";
+import { SignalMeter, PulseTag, RadarSweep } from "@micrographics-js/vue";
 </script>
 <template>
   <div style="background: #0d0e17; padding: 20px">
@@ -49,12 +49,12 @@ import { SignalMeter, PulseTag, RadarSweep } from "@micrographics/vue";
 ### Svelte 5
 
 ```bash
-npm install @micrographics/svelte @micrographics/core
+npm install @micrographics-js/svelte @micrographics-js/core
 ```
 
 ```svelte
 <script>
-import { SignalMeter, PulseTag, RadarSweep } from "@micrographics/svelte";
+import { SignalMeter, PulseTag, RadarSweep } from "@micrographics-js/svelte";
 </script>
 <div style="background: #0d0e17; padding: 20px">
   <SignalMeter bars={5} speed={180} />
@@ -66,12 +66,12 @@ import { SignalMeter, PulseTag, RadarSweep } from "@micrographics/svelte";
 ### Vanilla (Web Components)
 
 ```bash
-npm install @micrographics/vanilla @micrographics/core
+npm install @micrographics-js/vanilla @micrographics-js/core
 ```
 
 ```html
 <script type="module">
-  import "@micrographics/vanilla";
+  import "@micrographics-js/vanilla";
 </script>
 
 <div style="background: #0d0e17; padding: 20px">
@@ -143,14 +143,14 @@ Most components accept a `color` prop:
 ## Tailwind CSS Integration
 
 ```bash
-npm install @micrographics/tailwind
+npm install @micrographics-js/tailwind
 ```
 
 ### Option A — Plugin only
 
 ```js
 // tailwind.config.js
-const micrographics = require("@micrographics/tailwind");
+const micrographics = require("@micrographics-js/tailwind");
 
 module.exports = {
   plugins: [micrographics.plugin],
@@ -162,7 +162,7 @@ module.exports = {
 ```js
 // tailwind.config.js
 module.exports = {
-  presets: [require("@micrographics/tailwind/preset")],
+  presets: [require("@micrographics-js/tailwind/preset")],
 };
 ```
 
@@ -354,7 +354,7 @@ apps/
 
 1. **Pure SVG** — all visual components render `<svg>` elements, pixel-crisp with `shapeRendering="crispEdges"`
 2. **CSS Custom Properties** — no hardcoded colors, fully themeable
-3. **Zero runtime deps** — only `@micrographics/core` (tiny, shared utilities)
+3. **Zero runtime deps** — only `@micrographics-js/core` (tiny, shared utilities)
 4. **Monospace first** — designed for `JetBrains Mono` / monospace fonts
 5. **Subtle animations** — looping, non-distracting micro-animations via `createTicker()`
 6. **Framework parity** — same component API across React/Vue/Svelte/Vanilla
@@ -366,7 +366,7 @@ apps/
 ### Composing components
 
 ```tsx
-import { Barcode, KanaTag, DataLabel, SpinDial, PanelTitle } from "@micrographics/react";
+import { Barcode, KanaTag, DataLabel, SpinDial, PanelTitle } from "@micrographics-js/react";
 
 function CustomPanel({ title, children }) {
   return (
@@ -387,7 +387,7 @@ function CustomPanel({ title, children }) {
 ### Using MicroStrip as a section header
 
 ```tsx
-import { MicroStrip } from "@micrographics/react";
+import { MicroStrip } from "@micrographics-js/react";
 
 <MicroStrip section="about" />
 <MicroStrip section="projects" done />
@@ -396,7 +396,7 @@ import { MicroStrip } from "@micrographics/react";
 ### Building a HUD overlay
 
 ```tsx
-import { CornerOrnament, CoordLabel, RadarSweep, MissionStatus } from "@micrographics/react";
+import { CornerOrnament, CoordLabel, RadarSweep, MissionStatus } from "@micrographics-js/react";
 
 function HUD() {
   return (
@@ -423,7 +423,7 @@ All React components include `"use client"` — they work in Next.js without ext
 
 ```tsx
 // app/dashboard/page.tsx
-import { SignalMeter, PixelClock, DialGauge } from "@micrographics/react";
+import { SignalMeter, PixelClock, DialGauge } from "@micrographics-js/react";
 
 export default function DashboardPage() {
   return (

@@ -25,13 +25,13 @@ Components accept `color`, `width`, `height` props. Colors use CSS vars like `va
 
 **Prompt:**
 ```
-Install @micrographics/react and @micrographics/core. Add the CSS variables
+Install @micrographics-js/react and @micrographics-js/core. Add the CSS variables
 to my global stylesheet. Create a dashboard section using SignalMeter, DialGauge,
 RadarSweep, PulseTag, and PixelClock. Use the dark terminal aesthetic.
 ```
 
 **What the agent should do:**
-1. Run `npm install @micrographics/react @micrographics/core`
+1. Run `npm install @micrographics-js/react @micrographics-js/core`
 2. Add CSS variables to `globals.css` or `index.css`
 3. Add JetBrains Mono font import
 4. Create the dashboard component using the imported components
@@ -40,13 +40,13 @@ RadarSweep, PulseTag, and PixelClock. Use the dark terminal aesthetic.
 
 **Prompt:**
 ```
-Install @micrographics/tailwind and add it as a preset to my tailwind.config.
+Install @micrographics-js/tailwind and add it as a preset to my tailwind.config.
 Then use mg-card, mg-badge, mg-glow classes in my dashboard layout.
 ```
 
 **What the agent should do:**
-1. Run `npm install @micrographics/tailwind`
-2. Add `presets: [require("@micrographics/tailwind/preset")]` to tailwind config
+1. Run `npm install @micrographics-js/tailwind`
+2. Add `presets: [require("@micrographics-js/tailwind/preset")]` to tailwind config
 3. Use the utility classes in the component
 
 ### 3. Create a custom theme
@@ -119,7 +119,7 @@ step. Use <mg-signal-meter>, <mg-dial-gauge>, <mg-radar-sweep> etc.
 ```
 
 **What the agent should do:**
-1. Add script tag: `<script type="module" src="https://unpkg.com/@micrographics/vanilla"></script>`
+1. Add script tag: `<script type="module" src="https://unpkg.com/@micrographics-js/vanilla"></script>`
 2. Add CSS variables to a `<style>` block
 3. Use custom elements directly in HTML
 
@@ -131,15 +131,15 @@ All components follow this pattern:
 
 ```tsx
 // React
-import { ComponentName } from "@micrographics/react";
+import { ComponentName } from "@micrographics-js/react";
 <ComponentName prop1={value} prop2={value} color="var(--accent)" />
 
 // Vue
-import { ComponentName } from "@micrographics/vue";
+import { ComponentName } from "@micrographics-js/vue";
 <ComponentName :prop1="value" :prop2="value" color="var(--accent)" />
 
 // Svelte
-import { ComponentName } from "@micrographics/svelte";
+import { ComponentName } from "@micrographics-js/svelte";
 <ComponentName prop1={value} prop2={value} color="var(--accent)" />
 
 // Vanilla
@@ -184,7 +184,7 @@ a mini network graph with 4 nodes connected by lines. Nodes pulse when
 ```tsx
 "use client";
 import { useEffect, useState } from "react";
-import { createTicker } from "@micrographics/core";
+import { createTicker } from "@micrographics-js/core";
 
 export interface NewComponentProps {
   width?: number;
@@ -215,7 +215,7 @@ export function NewComponent({
 - [ ] Props interface exported
 - [ ] Default colors use CSS vars (`var(--accent)`, `var(--fg-dimmer)`)
 - [ ] SVG rendering with `shapeRendering="crispEdges"`
-- [ ] Animation via `createTicker` from `@micrographics/core`
+- [ ] Animation via `createTicker` from `@micrographics-js/core`
 - [ ] Cleanup function returned from `useEffect`
 - [ ] Added to `packages/react/src/index.ts`
 
@@ -224,16 +224,16 @@ export function NewComponent({
 ## Troubleshooting
 
 ### "Components render but no colors"
-Missing CSS variables. Add the `:root` variables or install `@micrographics/tailwind`.
+Missing CSS variables. Add the `:root` variables or install `@micrographics-js/tailwind`.
 
 ### "Components don't animate"
-Check that `@micrographics/core` is installed. The `createTicker()` function lives there.
+Check that `@micrographics-js/core` is installed. The `createTicker()` function lives there.
 
 ### "SSR error in Next.js"
 All components have `"use client"` — but if you're importing in a server component, wrap with `dynamic(() => import(...), { ssr: false })`.
 
 ### "Vanilla components not registering"
-Import the package with side effects: `import "@micrographics/vanilla"` (not just types).
+Import the package with side effects: `import "@micrographics-js/vanilla"` (not just types).
 
 ---
 

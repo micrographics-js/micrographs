@@ -8,10 +8,10 @@ How to add a live Micrographics demo section to your website.
 
 ```bash
 # For a React/Next.js site
-npm install @micrographics/react @micrographics/core
+npm install @micrographics-js/react @micrographics-js/core
 
 # Optional: Tailwind integration
-npm install @micrographics/tailwind
+npm install @micrographics-js/tailwind
 ```
 
 ## 2. Add CSS Variables
@@ -60,7 +60,7 @@ import {
   Typewriter, GlitchText, MatrixRain, ScrollingText,
   Barcode, DataLabel, CornerOrnament, CoordLabel, RulerTick,
   CopyButton, ToggleSwitch, SegmentedBar,
-} from "@micrographics/react";
+} from "@micrographics-js/react";
 
 function DemoCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -223,7 +223,7 @@ export default function MicrographicsDemo() {
         </DemoCard>
 
         <DemoCard title="Copy Button">
-          <CopyButton text="npm install @micrographics/react" />
+          <CopyButton text="npm install @micrographics-js/react" />
         </DemoCard>
 
         <DemoCard title="Toggle">
@@ -265,7 +265,7 @@ export default function MicrographicsDemo() {
 ### Option B — Inline widget (embed in existing page)
 
 ```tsx
-import { SignalMeter, PulseTag, DialGauge, RadarSweep, PixelClock } from "@micrographics/react";
+import { SignalMeter, PulseTag, DialGauge, RadarSweep, PixelClock } from "@micrographics-js/react";
 
 function MiniWidget() {
   return (
@@ -298,7 +298,7 @@ function MiniWidget() {
 
 ```html
 <script type="module">
-  import "https://unpkg.com/@micrographics/vanilla";
+  import "https://unpkg.com/@micrographics-js/vanilla";
 </script>
 
 <style>
@@ -342,7 +342,7 @@ const MicrographicsDemo = dynamic(() => import("./MicrographicsDemo"), { ssr: fa
 
 ```ts
 import type { Config } from "tailwindcss";
-import micrographicsPreset from "@micrographics/tailwind/preset";
+import micrographicsPreset from "@micrographics-js/tailwind/preset";
 
 const config: Config = {
   presets: [micrographicsPreset],

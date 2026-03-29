@@ -1,17 +1,33 @@
 {
   "name": "@micrographics-js/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "Shared utilities for Micrographics — RNG, easing, tickers, glitch effects",
   "license": "MIT",
-  "repository": { "type": "git", "url": "https://github.com/micrographics-js/micrographs", "directory": "packages/core" },
-  "keywords": ["micrographics", "micro-ui", "animation", "utilities"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/micrographics-js/micrographs",
+    "directory": "packages/core"
+  },
+  "keywords": [
+    "micrographics",
+    "micro-ui",
+    "animation",
+    "utilities"
+  ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" }
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
   },
-  "files": ["dist", "src"],
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist"

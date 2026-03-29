@@ -4,18 +4,18 @@
 
 ```
 FREE (npmjs.org — public, no auth needed)
-├── @micrographics/core
-└── @micrographics/tailwind
+├── @micrographics-js/core
+└── @micrographics-js/tailwind
 
 PAID (GitHub Packages — private, token-gated)
-├── @micrographics/react
-├── @micrographics/vue
-├── @micrographics/svelte
-└── @micrographics/vanilla
+├── @micrographics-js/react
+├── @micrographics-js/vue
+├── @micrographics-js/svelte
+└── @micrographics-js/vanilla
 ```
 
 **How it works:**
-- Free packages are on npmjs.org — anyone can `npm install @micrographics/core`
+- Free packages are on npmjs.org — anyone can `npm install @micrographics-js/core`
 - Paid packages are on GitHub Packages — requires a GitHub token
 - After LemonSqueezy purchase → customer gets a GitHub token → adds to `.npmrc` → installs normally
 - Core + tailwind are ALSO published to GitHub Packages so paid customers only need one registry config
@@ -169,20 +169,20 @@ Step 2 — Add .npmrc to .gitignore:
 
 Step 3 — Install your packages:
 
-  npm install @micrographics/react @micrographics/core
+  npm install @micrographics-js/react @micrographics-js/core
 
   # or for Vue:
-  npm install @micrographics/vue @micrographics/core
+  npm install @micrographics-js/vue @micrographics-js/core
 
   # or for Svelte:
-  npm install @micrographics/svelte @micrographics/core
+  npm install @micrographics-js/svelte @micrographics-js/core
 
   # or for Vanilla Web Components:
-  npm install @micrographics/vanilla @micrographics/core
+  npm install @micrographics-js/vanilla @micrographics-js/core
 
 Optional — Tailwind integration:
 
-  npm install @micrographics/tailwind
+  npm install @micrographics-js/tailwind
 
 Docs & gallery: https://micrographics.dev
 ```
@@ -222,28 +222,28 @@ pnpm publish:gh-free
 ```ts
 const VARIANT_MAP: Record<string, string[]> = {
   // Framework bundles (most common purchase)
-  "react_bundle":   ["@micrographics/react", "@micrographics/core"],
-  "vue_bundle":     ["@micrographics/vue", "@micrographics/core"],
-  "svelte_bundle":  ["@micrographics/svelte", "@micrographics/core"],
-  "vanilla_bundle": ["@micrographics/vanilla", "@micrographics/core"],
+  "react_bundle":   ["@micrographics-js/react", "@micrographics-js/core"],
+  "vue_bundle":     ["@micrographics-js/vue", "@micrographics-js/core"],
+  "svelte_bundle":  ["@micrographics-js/svelte", "@micrographics-js/core"],
+  "vanilla_bundle": ["@micrographics-js/vanilla", "@micrographics-js/core"],
 
   // Full library
   "full_library": [
-    "@micrographics/react", "@micrographics/vue",
-    "@micrographics/svelte", "@micrographics/vanilla",
-    "@micrographics/core"
+    "@micrographics-js/react", "@micrographics-js/vue",
+    "@micrographics-js/svelte", "@micrographics-js/vanilla",
+    "@micrographics-js/core"
   ],
 
   // Lifetime (same as full, just different license terms)
   "lifetime": [
-    "@micrographics/react", "@micrographics/vue",
-    "@micrographics/svelte", "@micrographics/vanilla",
-    "@micrographics/core"
+    "@micrographics-js/react", "@micrographics-js/vue",
+    "@micrographics-js/svelte", "@micrographics-js/vanilla",
+    "@micrographics-js/core"
   ],
 };
 ```
 
-> **Note:** Since we publish ONE package per framework (not per-pack), the variant mapping is simpler. All customers who buy any React pack get the full `@micrographics/react` package. The pricing tiers are about perceived value, not technical access control.
+> **Note:** Since we publish ONE package per framework (not per-pack), the variant mapping is simpler. All customers who buy any React pack get the full `@micrographics-js/react` package. The pricing tiers are about perceived value, not technical access control.
 
 ---
 
