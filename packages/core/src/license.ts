@@ -2,8 +2,7 @@
  * Micrographics License Validation
  *
  * Validates license keys against the LemonSqueezy License API.
- * Runs once per session, caches the result, and shows a console
- * warning if no valid license is found.
+ * Unlicensed usage gets a 60-second trial, then components stop rendering.
  *
  * Usage:
  *   import { initLicense } from "@micrographics-js/core";
@@ -16,17 +15,23 @@
  */
 
 const VALIDATION_URL = "https://api.lemonsqueezy.com/v1/licenses/validate";
+const TRIAL_DURATION_MS = 60_000; // 60 seconds
 
-let _licenseStatus: "unchecked" | "valid" | "invalid" | "checking" = "unchecked";
+let _licenseStatus: "unchecked" | "valid" | "invalid" | "checking" | "expired" = "unchecked";
 let _licenseKey: string | null = null;
 let _validated = false;
 let _suppressWarning = false;
+let _trialStart: number | null = null;
+let _trialTimerId: ReturnType<typeof setTimeout> | null = null;
+let _trialWarningShown = false;
+let _onExpireCallbacks: Array<() => void> = [];
 
 /** Set the license key and trigger validation */
 export function initLicense(key: string) {
   _licenseKey = key;
   _licenseStatus = "unchecked";
   _validated = false;
+  _clearTrial();
   _checkLicense();
 }
 
@@ -36,7 +41,7 @@ export function suppressLicenseWarning() {
 }
 
 /** Get current license status */
-export function getLicenseStatus(): "unchecked" | "valid" | "invalid" | "checking" {
+export function getLicenseStatus(): "unchecked" | "valid" | "invalid" | "checking" | "expired" {
   return _licenseStatus;
 }
 
@@ -45,10 +50,51 @@ export function isLicensed(): boolean {
   return _licenseStatus === "valid";
 }
 
+/**
+ * Check if components should render.
+ * Returns true if licensed OR within trial period.
+ * Returns false if trial has expired.
+ * Call this from components to decide whether to render.
+ */
+export function shouldRender(): boolean {
+  if (_licenseStatus === "valid") return true;
+  if (_licenseStatus === "expired") return false;
+  if (_licenseStatus === "unchecked" || _licenseStatus === "checking") return true; // allow during check
+
+  // Invalid license — check trial timer
+  if (_trialStart === null) {
+    _startTrial();
+    return true;
+  }
+
+  const elapsed = Date.now() - _trialStart;
+  if (elapsed >= TRIAL_DURATION_MS) {
+    _expireTrial();
+    return false;
+  }
+
+  return true;
+}
+
+/** Register a callback for when the trial expires (used by framework adapters to force re-render) */
+export function onTrialExpire(cb: () => void) {
+  _onExpireCallbacks.push(cb);
+  return () => {
+    _onExpireCallbacks = _onExpireCallbacks.filter(c => c !== cb);
+  };
+}
+
+/** Get remaining trial seconds (returns null if licensed or no trial active) */
+export function getTrialRemaining(): number | null {
+  if (_licenseStatus === "valid") return null;
+  if (_trialStart === null) return null;
+  const remaining = Math.max(0, TRIAL_DURATION_MS - (Date.now() - _trialStart));
+  return Math.ceil(remaining / 1000);
+}
+
 function _resolveKey(): string | null {
   if (_licenseKey) return _licenseKey;
 
-  // Try environment variables (works in Node.js, Vite, Next.js, etc.)
   try {
     const p = (globalThis as any).process;
     if (p?.env) {
@@ -56,7 +102,6 @@ function _resolveKey(): string | null {
     }
   } catch {}
 
-  // Try Vite's import.meta.env (client-side)
   try {
     // @ts-ignore — Vite-specific
     if (typeof import.meta !== "undefined" && import.meta.env) {
@@ -74,7 +119,7 @@ async function _checkLicense() {
   const key = _resolveKey();
   if (!key) {
     _licenseStatus = "invalid";
-    _showWarning();
+    _showTrialWarning();
     return;
   }
 
@@ -89,7 +134,7 @@ async function _checkLicense() {
 
     if (!res.ok) {
       _licenseStatus = "invalid";
-      _showWarning();
+      _showTrialWarning();
       return;
     }
 
@@ -97,23 +142,93 @@ async function _checkLicense() {
     if (data.valid === true) {
       _licenseStatus = "valid";
       _validated = true;
+      _clearTrial();
     } else {
       _licenseStatus = "invalid";
-      _showWarning();
+      _showTrialWarning();
     }
   } catch {
-    // Network error — allow offline usage, don't block
+    // Network error — allow offline usage
     _licenseStatus = "valid";
     _validated = true;
+    _clearTrial();
   }
 }
 
-function _showWarning() {
-  if (_suppressWarning) return;
+function _startTrial() {
+  if (_trialStart !== null) return;
+  _trialStart = Date.now();
+
+  if (typeof console !== "undefined" && !_suppressWarning) {
+    console.log(
+      "%c[Micrographics]%c Trial mode — components will stop rendering in 60 seconds.\n" +
+      "Purchase at https://recursivevoid.lemonsqueezy.com",
+      "color: #3ecf8e; font-weight: bold;",
+      "color: #f5a623;"
+    );
+  }
+
+  // Set timer to expire
+  _trialTimerId = setTimeout(() => {
+    _expireTrial();
+  }, TRIAL_DURATION_MS);
+
+  // Log countdown at 30s and 10s
+  setTimeout(() => {
+    if (_licenseStatus !== "valid" && _licenseStatus !== "expired" && !_suppressWarning) {
+      console.warn(
+        "%c[Micrographics]%c 30 seconds remaining. Add your license key to continue using components.",
+        "color: #3ecf8e; font-weight: bold;",
+        "color: #f5a623;"
+      );
+    }
+  }, 30_000);
+
+  setTimeout(() => {
+    if (_licenseStatus !== "valid" && _licenseStatus !== "expired" && !_suppressWarning) {
+      console.warn(
+        "%c[Micrographics]%c 10 seconds remaining!",
+        "color: #3ecf8e; font-weight: bold;",
+        "color: #e05252;"
+      );
+    }
+  }, 50_000);
+}
+
+function _expireTrial() {
+  if (_licenseStatus === "valid") return; // don't expire if validated in the meantime
+  _licenseStatus = "expired";
+
+  if (typeof console !== "undefined" && !_suppressWarning) {
+    console.warn(
+      "%c[Micrographics]%c Trial expired. Components will no longer render.\n" +
+      "Purchase at https://recursivevoid.lemonsqueezy.com\n" +
+      "Then add MICROGRAPHICS_KEY=your-key to your .env file and restart.",
+      "color: #3ecf8e; font-weight: bold;",
+      "color: #e05252;"
+    );
+  }
+
+  // Notify all registered callbacks (triggers re-render in React/Vue/Svelte)
+  _onExpireCallbacks.forEach(cb => { try { cb(); } catch {} });
+}
+
+function _clearTrial() {
+  if (_trialTimerId !== null) {
+    clearTimeout(_trialTimerId);
+    _trialTimerId = null;
+  }
+  _trialStart = null;
+}
+
+function _showTrialWarning() {
+  if (_trialWarningShown || _suppressWarning) return;
+  _trialWarningShown = true;
+
   if (typeof console === "undefined") return;
 
   console.warn(
-    "%c[Micrographics]%c License key missing or invalid.\n" +
+    "%c[Micrographics]%c License key missing or invalid. Running in trial mode (60s).\n" +
     "Purchase at https://recursivevoid.lemonsqueezy.com\n" +
     "Then add: MICROGRAPHICS_KEY=your-key to your .env file.",
     "color: #3ecf8e; font-weight: bold;",
@@ -123,7 +238,6 @@ function _showWarning() {
 
 // Auto-check on import (non-blocking)
 if (typeof globalThis !== "undefined") {
-  // Small delay so the app can call initLicense() first
   setTimeout(() => {
     if (_licenseStatus === "unchecked") {
       _checkLicense();
