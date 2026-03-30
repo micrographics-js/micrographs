@@ -76,7 +76,7 @@ body {
 
 .components-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 12px;
 }
 
@@ -88,11 +88,23 @@ body {
   flex-direction: column;
   gap: 10px;
   min-height: 90px;
+  overflow: hidden;
   transition: border-color 0.15s;
 }
 
 .component-card:hover {
   border-color: var(--border-strong);
+}
+
+/* Wide card — spans 2 columns for complex components */
+.component-card.wide {
+  grid-column: span 2;
+}
+
+@media (max-width: 600px) {
+  .component-card.wide {
+    grid-column: span 1;
+  }
 }
 
 .component-name {
@@ -110,6 +122,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.component-preview > * {
+  max-width: 100%;
+  flex-shrink: 0;
+}
+
+/* Wider cards for complex components */
+.component-preview svg {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Prop editor */

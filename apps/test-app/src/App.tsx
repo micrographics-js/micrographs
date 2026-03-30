@@ -135,6 +135,7 @@ interface ComponentEntry {
   render: (props: Record<string, unknown>) => React.ReactNode;
   defaultProps: Record<string, unknown>;
   editableProps?: PropDef[];
+  wide?: boolean;
 }
 
 interface Pack {
@@ -187,7 +188,7 @@ function ComponentCard({ entry }: { entry: ComponentEntry }) {
   const hasEditable = entry.editableProps && entry.editableProps.length > 0;
 
   return (
-    <div className={`component-card ${open ? "open" : ""}`}>
+    <div className={`component-card ${open ? "open" : ""} ${entry.wide ? "wide" : ""}`}>
       <div className="component-name">
         {entry.name}
         {hasEditable && (
@@ -611,16 +612,16 @@ const packs: Pack[] = [
   {
     name: "Pack 9 — Censorship",
     components: [
-      { name: "RedactedText", render: (p) => <RedactedText redactRatio={(p.redactRatio as number) ?? 0.4} />, defaultProps: { redactRatio: 0.4 }, editableProps: [{ key: "redactRatio", type: "number", label: "redact %", min: 0, max: 1, step: 0.1, default: 0.4 }] },
+      { name: "RedactedText", wide: true, render: (p) => <RedactedText redactRatio={(p.redactRatio as number) ?? 0.4} />, defaultProps: { redactRatio: 0.4 }, editableProps: [{ key: "redactRatio", type: "number", label: "redact %", min: 0, max: 1, step: 0.1, default: 0.4 }] },
       { name: "ClassifiedStamp TS", render: () => <ClassifiedStamp level="top-secret" />, defaultProps: {} },
       { name: "ClassifiedStamp", render: (p) => <ClassifiedStamp level={(p.level as "confidential" | "secret" | "top-secret" | "eyes-only") ?? "secret"} />, defaultProps: { level: "secret" }, editableProps: [{ key: "level", type: "select", label: "level", options: ["confidential", "secret", "top-secret", "eyes-only"], default: "secret" }] },
       { name: "CensorBar", render: (p) => <CensorBar width={(p.width as number) ?? 120} animated />, defaultProps: { width: 120 }, editableProps: [{ key: "width", type: "number", label: "width", min: 40, max: 200, step: 10, default: 120 }] },
-      { name: "DocumentHeader", render: () => <DocumentHeader classification="TOP SECRET" docId="TS-2026-0847" department="CIA/OPS" />, defaultProps: {} },
-      { name: "SanitizedBlock", render: (p) => <SanitizedBlock lines={(p.lines as number) ?? 4} redactChance={(p.redactChance as number) ?? 0.3} />, defaultProps: { lines: 4, redactChance: 0.3 }, editableProps: [{ key: "lines", type: "number", label: "lines", min: 2, max: 8, step: 1, default: 4 }, { key: "redactChance", type: "number", label: "redact", min: 0, max: 0.9, step: 0.1, default: 0.3 }] },
-      { name: "CaseFile", render: (p) => <CaseFile caseId="CF-7742" subject="OPERATION NIGHTFALL" status={(p.status as "open" | "closed" | "classified") ?? "open"} priority={(p.priority as "low" | "medium" | "high" | "critical") ?? "high"} />, defaultProps: { status: "open", priority: "high" }, editableProps: [{ key: "status", type: "select", label: "status", options: ["open", "closed", "classified"], default: "open" }, { key: "priority", type: "select", label: "priority", options: ["low", "medium", "high", "critical"], default: "high" }] },
+      { name: "DocumentHeader", wide: true, render: () => <DocumentHeader classification="TOP SECRET" docId="TS-2026-0847" department="CIA/OPS" />, defaultProps: {} },
+      { name: "SanitizedBlock", wide: true, render: (p) => <SanitizedBlock lines={(p.lines as number) ?? 4} redactChance={(p.redactChance as number) ?? 0.3} />, defaultProps: { lines: 4, redactChance: 0.3 }, editableProps: [{ key: "lines", type: "number", label: "lines", min: 2, max: 8, step: 1, default: 4 }, { key: "redactChance", type: "number", label: "redact", min: 0, max: 0.9, step: 0.1, default: 0.3 }] },
+      { name: "CaseFile", wide: true, render: (p) => <CaseFile caseId="CF-7742" subject="OPERATION NIGHTFALL" status={(p.status as "open" | "closed" | "classified") ?? "open"} priority={(p.priority as "low" | "medium" | "high" | "critical") ?? "high"} />, defaultProps: { status: "open", priority: "high" }, editableProps: [{ key: "status", type: "select", label: "status", options: ["open", "closed", "classified"], default: "open" }, { key: "priority", type: "select", label: "priority", options: ["low", "medium", "high", "critical"], default: "high" }] },
       { name: "Declassified", render: () => <Declassified date="2026-03-15" authority="EXEC ORDER 14233" />, defaultProps: {} },
       { name: "Watermark", render: () => <Watermark text="CLASSIFIED" width={160} height={60} />, defaultProps: {} },
-      { name: "IntelBadge", render: () => <IntelBadge agency="CIA" clearance="TS/SCI" holder="J. ████████" />, defaultProps: {} },
+      { name: "IntelBadge", wide: true, render: () => <IntelBadge agency="CIA" clearance="TS/SCI" holder="J. ████████" />, defaultProps: {} },
       { name: "SignatureRedact", render: () => <SignatureRedact witnessCount={2} />, defaultProps: {} },
       { name: "EyesOnly", render: () => <EyesOnly recipients={["POTUS", "DNI", "████"]} />, defaultProps: {} },
       { name: "Codeword", render: () => <Codeword word="UMBRA" classification="TOP SECRET" animated />, defaultProps: {} },
@@ -629,19 +630,19 @@ const packs: Pack[] = [
   {
     name: "Pack 10 — Drone Warfare",
     components: [
-      { name: "DroneHUD", render: (p) => <DroneHUD altitude={(p.altitude as number) ?? 120} speed={(p.speed as number) ?? 45} heading={(p.heading as number) ?? 270} />, defaultProps: { altitude: 120, speed: 45, heading: 270 }, editableProps: [{ key: "altitude", type: "number", label: "alt", min: 0, max: 500, step: 10, default: 120 }, { key: "speed", type: "number", label: "spd", min: 0, max: 200, step: 5, default: 45 }, { key: "heading", type: "number", label: "hdg", min: 0, max: 359, step: 5, default: 270 }] },
+      { name: "DroneHUD", wide: true, render: (p) => <DroneHUD altitude={(p.altitude as number) ?? 120} speed={(p.speed as number) ?? 45} heading={(p.heading as number) ?? 270} />, defaultProps: { altitude: 120, speed: 45, heading: 270 }, editableProps: [{ key: "altitude", type: "number", label: "alt", min: 0, max: 500, step: 10, default: 120 }, { key: "speed", type: "number", label: "spd", min: 0, max: 200, step: 5, default: 45 }, { key: "heading", type: "number", label: "hdg", min: 0, max: 359, step: 5, default: 270 }] },
       { name: "AltitudeLadder", render: (p) => <AltitudeLadder altitude={(p.altitude as number) ?? 120} animated />, defaultProps: { altitude: 120 }, editableProps: [{ key: "altitude", type: "number", label: "alt", min: 0, max: 500, step: 10, default: 120 }] },
       { name: "TargetLock search", render: () => <TargetLock status="searching" targetId="TGT-01" />, defaultProps: {} },
       { name: "TargetLock locked", render: () => <TargetLock status="locked" targetId="TGT-01" />, defaultProps: {} },
       { name: "ThermalOverlay", render: (p) => <ThermalOverlay cols={(p.cols as number) ?? 12} rows={(p.rows as number) ?? 8} hotspots={(p.hotspots as number) ?? 3} />, defaultProps: { cols: 12, rows: 8, hotspots: 3 }, editableProps: [{ key: "cols", type: "number", label: "cols", min: 6, max: 20, step: 1, default: 12 }, { key: "hotspots", type: "number", label: "hotspots", min: 0, max: 6, step: 1, default: 3 }] },
-      { name: "TelemetryStrip", render: () => <TelemetryStrip altitude={120} speed={45} heading={270} lat={34.0522} lon={-118.2437} animated />, defaultProps: {} },
+      { name: "TelemetryStrip", wide: true, render: () => <TelemetryStrip altitude={120} speed={45} heading={270} lat={34.0522} lon={-118.2437} animated />, defaultProps: {} },
       { name: "WeaponStatus safe", render: () => <WeaponStatus status="safe" weapon="HELLFIRE" rounds={4} />, defaultProps: {} },
       { name: "WeaponStatus armed", render: () => <WeaponStatus status="armed" weapon="HELLFIRE" rounds={2} />, defaultProps: {} },
       { name: "GimbalIndicator", render: (p) => <GimbalIndicator pitch={(p.pitch as number) ?? -30} yaw={(p.yaw as number) ?? 15} zoom={(p.zoom as number) ?? 4} />, defaultProps: { pitch: -30, yaw: 15, zoom: 4 }, editableProps: [{ key: "pitch", type: "number", label: "pitch", min: -90, max: 0, step: 5, default: -30 }, { key: "yaw", type: "number", label: "yaw", min: -180, max: 180, step: 5, default: 15 }, { key: "zoom", type: "number", label: "zoom", min: 1, max: 20, step: 1, default: 4 }] },
       { name: "FlightPath", render: (p) => <FlightPath waypoints={(p.waypoints as number) ?? 5} currentWaypoint={(p.currentWaypoint as number) ?? 2} />, defaultProps: { waypoints: 5, currentWaypoint: 2 }, editableProps: [{ key: "currentWaypoint", type: "number", label: "current", min: 0, max: 4, step: 1, default: 2 }] },
       { name: "LatLongDisplay", render: () => <LatLongDisplay lat={34.0522} lon={-118.2437} alt={120} animated />, defaultProps: {} },
       { name: "TransmissionBar", render: () => <TransmissionBar quality={85} delay={42} encrypted />, defaultProps: {} },
-      { name: "StrikeConfirm", render: (p) => <StrikeConfirm confirmed={(p.confirmed as boolean) ?? false} />, defaultProps: { confirmed: false }, editableProps: [{ key: "confirmed", type: "boolean", label: "confirmed", default: false }] },
+      { name: "StrikeConfirm", wide: true, render: (p) => <StrikeConfirm confirmed={(p.confirmed as boolean) ?? false} />, defaultProps: { confirmed: false }, editableProps: [{ key: "confirmed", type: "boolean", label: "confirmed", default: false }] },
       { name: "MissionTimer", render: () => <MissionTimer label="OP NIGHTFALL" />, defaultProps: {} },
     ],
   },
