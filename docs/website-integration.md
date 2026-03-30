@@ -51,6 +51,9 @@ Micrographics looks best with JetBrains Mono:
 ```tsx
 // components/MicrographicsDemo.tsx
 "use client";
+import { initLicense } from "@micrographics-js/core";
+initLicense(process.env.NEXT_PUBLIC_MICROGRAPHICS_KEY!); // or hardcode your key
+
 import {
   SignalMeter, PulseTag, StatusLight, HeartbeatLine, BatteryMeter,
   DialGauge, TankLevel, Speedometer, CompassRose, PressureGauge,
@@ -265,6 +268,8 @@ export default function MicrographicsDemo() {
 ### Option B — Inline widget (embed in existing page)
 
 ```tsx
+import { initLicense } from "@micrographics-js/core";
+initLicense("your-license-key");
 import { SignalMeter, PulseTag, DialGauge, RadarSweep, PixelClock } from "@micrographics-js/react";
 
 function MiniWidget() {
@@ -298,6 +303,8 @@ function MiniWidget() {
 
 ```html
 <script type="module">
+  import { initLicense } from "https://unpkg.com/@micrographics-js/core";
+  initLicense("your-license-key");
   import "https://unpkg.com/@micrographics-js/vanilla";
 </script>
 

@@ -14,6 +14,12 @@ npm install @micrographics-js/react @micrographics-js/core
 ```
 
 ```tsx
+// app/layout.tsx or src/main.tsx — call once at startup
+import { initLicense } from "@micrographics-js/core";
+initLicense("your-license-key");
+```
+
+```tsx
 import { SignalMeter, PulseTag, RadarSweep } from "@micrographics-js/react";
 
 export default function Dashboard() {
@@ -31,6 +37,12 @@ export default function Dashboard() {
 
 ```bash
 npm install @micrographics-js/vue @micrographics-js/core
+```
+
+```ts
+// main.ts — call once at startup
+import { initLicense } from "@micrographics-js/core";
+initLicense("your-license-key");
 ```
 
 ```vue
@@ -54,7 +66,9 @@ npm install @micrographics-js/svelte @micrographics-js/core
 
 ```svelte
 <script>
+import { initLicense } from "@micrographics-js/core";
 import { SignalMeter, PulseTag, RadarSweep } from "@micrographics-js/svelte";
+initLicense("your-license-key"); // call once in root layout
 </script>
 <div style="background: #0d0e17; padding: 20px">
   <SignalMeter bars={5} speed={180} />
@@ -71,6 +85,8 @@ npm install @micrographics-js/vanilla @micrographics-js/core
 
 ```html
 <script type="module">
+  import { initLicense } from "@micrographics-js/core";
+  initLicense("your-license-key");
   import "@micrographics-js/vanilla";
 </script>
 

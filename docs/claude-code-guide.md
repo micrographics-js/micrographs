@@ -11,13 +11,14 @@ When starting a conversation about Micrographics, paste this context block or re
 ```
 I'm integrating Micrographics — a commercial micro-animation component library.
 Repo: https://github.com/micrographics-js/micrographs
-npm scope: @micrographics-js (hosted on GitHub Packages)
+npm scope: @micrographics-js (public on npmjs.org)
 Monorepo: pnpm workspaces. Packages: core, react, vue, svelte, vanilla, tailwind.
 84 SVG-based animated components across 8 packs.
 Tech: TypeScript, CSS custom properties, zero runtime deps.
 Components accept `color`, `width`, `height` props. Colors use CSS vars like `var(--accent)`.
 Install: npm install @micrographics-js/react @micrographics-js/core
-Requires .npmrc with GitHub Packages token for paid packages.
+License: call initLicense("key") once in app entry point (app/layout.tsx or main.tsx).
+Without a license key, components render for 60 seconds then stop (trial mode).
 Free packages: @micrographics-js/core, @micrographics-js/tailwind
 ```
 
@@ -36,9 +37,10 @@ RadarSweep, PulseTag, and PixelClock. Use the dark terminal aesthetic.
 
 **What the agent should do:**
 1. Run `npm install @micrographics-js/react @micrographics-js/core`
-2. Add CSS variables to `globals.css` or `index.css`
-3. Add JetBrains Mono font import
-4. Create the dashboard component using the imported components
+2. Add `initLicense("key")` call in `app/layout.tsx` or `src/main.tsx`
+3. Add CSS variables to `globals.css` or `index.css`
+4. Add JetBrains Mono font import
+5. Create the dashboard component using the imported components
 
 ### 2. Add Tailwind integration
 

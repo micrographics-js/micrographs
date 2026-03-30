@@ -23,10 +23,24 @@ npm install @micrographics-js/core
 | `animations/typewriter` | `typeIn(text, speed)` | Character-by-character text reveal |
 | `animations/glitch` | `glitchText(text, intensity)`, `scramble(text)` | Text distortion effects |
 
+## License Validation
+
+After purchasing Micrographics, add this once in your app entry point:
+
+```ts
+import { initLicense } from "@micrographics-js/core";
+initLicense("your-license-key");
+```
+
+Components render for 60 seconds without a license (trial mode), then stop. Valid license = renders forever.
+
 ## Usage
 
 ```ts
-import { createTicker, seeded, glitchText } from "@micrographics-js/core";
+import { createTicker, seeded, glitchText, initLicense } from "@micrographics-js/core";
+
+// License (call once at app startup)
+initLicense("your-license-key");
 
 // Animation loop — returns cleanup function
 const stop = createTicker(200, () => {
