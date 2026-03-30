@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>text { font-family: 'JetBrains Mono', 'Courier New', monospace; }</style>
+    <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.5" fill="#555566" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#0d0e17"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <!-- Corner ornaments -->
+  <path d="M20,20 L20,50 M20,20 L50,20" stroke="#555566" stroke-width="2" fill="none"/>
+  <path d="M1180,20 L1180,50 M1180,20 L1150,20" stroke="#555566" stroke-width="2" fill="none"/>
+  <path d="M20,610 L20,580 M20,610 L50,610" stroke="#555566" stroke-width="2" fill="none"/>
+  <path d="M1180,610 L1180,580 M1180,610 L1150,610" stroke="#555566" stroke-width="2" fill="none"/>
+  <text x="40" y="50" fill="#555566" font-size="10" letter-spacing="2" opacity="0.5">MICROGRAPHICS</text>
+  <!-- Title -->
+  <text x="600" y="100" text-anchor="middle" fill="#3ecf8e" font-size="48" font-weight="700" letter-spacing="6">DATA VIZ PACK</text>
+  <text x="600" y="130" text-anchor="middle" fill="#555566" font-size="16">11 Components</text>
+  <!-- Radar (large) -->
+  <circle cx="250" cy="300" r="100" stroke="#3ecf8e" stroke-width="0.8" fill="none" opacity="0.3"/>
+  <circle cx="250" cy="300" r="70" stroke="#3ecf8e" stroke-width="0.6" fill="none" opacity="0.3"/>
+  <circle cx="250" cy="300" r="40" stroke="#3ecf8e" stroke-width="0.5" fill="none" opacity="0.3"/>
+  <line x1="150" y1="300" x2="350" y2="300" stroke="#555566" stroke-width="0.5"/>
+  <line x1="250" y1="200" x2="250" y2="400" stroke="#555566" stroke-width="0.5"/>
+  <line x1="250" y1="300" x2="330" y2="230" stroke="#3ecf8e" stroke-width="1.5" opacity="0.7"/>
+  <path d="M250,300 L330,230 A100,100 0 0,0 250,200 Z" fill="#3ecf8e" opacity="0.05"/>
+  <circle cx="300" cy="260" r="4" fill="#3ecf8e"/>
+  <circle cx="220" cy="340" r="3" fill="#f5a623"/>
+  <circle cx="280" cy="320" r="3" fill="#60cfff"/>
+  <circle cx="210" cy="270" r="2.5" fill="#e05252"/>
+  <text x="250" y="420" text-anchor="middle" fill="#555566" font-size="12">RADAR SCOPE</text>
+  <!-- Heat grid (large) -->
+  <g transform="translate(500, 200)">
+    <rect x="0" y="0" width="28" height="28" fill="#3ecf8e" opacity="0.9" rx="2"/>
+    <rect x="32" y="0" width="28" height="28" fill="#3ecf8e" opacity="0.6" rx="2"/>
+    <rect x="64" y="0" width="28" height="28" fill="#f5a623" opacity="0.8" rx="2"/>
+    <rect x="96" y="0" width="28" height="28" fill="#e05252" opacity="0.7" rx="2"/>
+    <rect x="128" y="0" width="28" height="28" fill="#e05252" opacity="0.9" rx="2"/>
+    <rect x="0" y="32" width="28" height="28" fill="#f5a623" opacity="0.7" rx="2"/>
+    <rect x="32" y="32" width="28" height="28" fill="#e05252" opacity="0.9" rx="2"/>
+    <rect x="64" y="32" width="28" height="28" fill="#f5a623" opacity="0.5" rx="2"/>
+    <rect x="96" y="32" width="28" height="28" fill="#3ecf8e" opacity="0.4" rx="2"/>
+    <rect x="128" y="32" width="28" height="28" fill="#3ecf8e" opacity="0.7" rx="2"/>
+    <rect x="0" y="64" width="28" height="28" fill="#3ecf8e" opacity="0.3" rx="2"/>
+    <rect x="32" y="64" width="28" height="28" fill="#f5a623" opacity="0.6" rx="2"/>
+    <rect x="64" y="64" width="28" height="28" fill="#e05252" opacity="0.8" rx="2"/>
+    <rect x="96" y="64" width="28" height="28" fill="#f5a623" opacity="0.9" rx="2"/>
+    <rect x="128" y="64" width="28" height="28" fill="#3ecf8e" opacity="0.5" rx="2"/>
+    <rect x="0" y="96" width="28" height="28" fill="#e05252" opacity="0.5" rx="2"/>
+    <rect x="32" y="96" width="28" height="28" fill="#3ecf8e" opacity="0.8" rx="2"/>
+    <rect x="64" y="96" width="28" height="28" fill="#3ecf8e" opacity="0.9" rx="2"/>
+    <rect x="96" y="96" width="28" height="28" fill="#f5a623" opacity="0.6" rx="2"/>
+    <rect x="128" y="96" width="28" height="28" fill="#e05252" opacity="0.4" rx="2"/>
+    <rect x="0" y="128" width="28" height="28" fill="#f5a623" opacity="0.8" rx="2"/>
+    <rect x="32" y="128" width="28" height="28" fill="#3ecf8e" opacity="0.5" rx="2"/>
+    <rect x="64" y="128" width="28" height="28" fill="#f5a623" opacity="0.4" rx="2"/>
+    <rect x="96" y="128" width="28" height="28" fill="#e05252" opacity="0.8" rx="2"/>
+    <rect x="128" y="128" width="28" height="28" fill="#3ecf8e" opacity="0.6" rx="2"/>
+  </g>
+  <text x="580" y="420" text-anchor="middle" fill="#555566" font-size="12">HEAT MAP</text>
+  <!-- Frequency bars (large) -->
+  <rect x="810" y="340" width="16" height="30" fill="#3ecf8e" opacity="0.5" rx="2"/>
+  <rect x="832" y="310" width="16" height="60" fill="#3ecf8e" opacity="0.6" rx="2"/>
+  <rect x="854" y="260" width="16" height="110" fill="#3ecf8e" opacity="0.7" rx="2"/>
+  <rect x="876" y="220" width="16" height="150" fill="#3ecf8e" opacity="0.9" rx="2"/>
+  <rect x="898" y="250" width="16" height="120" fill="#3ecf8e" opacity="0.8" rx="2"/>
+  <rect x="920" y="280" width="16" height="90" fill="#3ecf8e" opacity="0.7" rx="2"/>
+  <rect x="942" y="300" width="16" height="70" fill="#3ecf8e" opacity="0.6" rx="2"/>
+  <rect x="964" y="240" width="16" height="130" fill="#3ecf8e" opacity="0.8" rx="2"/>
+  <rect x="986" y="270" width="16" height="100" fill="#3ecf8e" opacity="0.7" rx="2"/>
+  <rect x="1008" y="320" width="16" height="50" fill="#3ecf8e" opacity="0.5" rx="2"/>
+  <rect x="1030" y="290" width="16" height="80" fill="#3ecf8e" opacity="0.6" rx="2"/>
+  <text x="920" y="420" text-anchor="middle" fill="#555566" font-size="12">FREQUENCY SPECTRUM</text>
+  <!-- Bottom -->
+  <line x1="40" y1="580" x2="1160" y2="580" stroke="#555566" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.3"/>
+  <text x="600" y="600" text-anchor="middle" fill="#555566" font-size="11" letter-spacing="3">MICROGRAPHICS — DATA VIZ PACK — 11 ANIMATED COMPONENTS</text>
+</svg>

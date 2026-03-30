@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="100" viewBox="0 0 240 100">
+  <defs>
+    <style>text { font-family: 'JetBrains Mono', 'Courier New', monospace; }</style>
+  </defs>
+  <rect width="240" height="100" fill="#13141f" rx="3"/>
+  <!-- Title -->
+  <text x="12" y="16" fill="#555566" font-size="8" letter-spacing="1">SIGNAL METER</text>
+  <!-- 5 ascending bars -->
+  <rect x="12" y="38" width="6" height="8" fill="#3ecf8e" rx="1"/>
+  <rect x="21" y="34" width="6" height="12" fill="#3ecf8e" rx="1"/>
+  <rect x="30" y="29" width="6" height="17" fill="#3ecf8e" rx="1"/>
+  <rect x="39" y="23" width="6" height="23" fill="#3ecf8e" rx="1"/>
+  <rect x="48" y="17" width="6" height="29" fill="#3ecf8e" rx="1" opacity="0.4"/>
+  <!-- Waveform label and line -->
+  <text x="75" y="24" fill="#555566" font-size="7">WAVEFORM</text>
+  <polyline points="75,34 82,30 89,38 96,28 103,36 110,32 117,40 124,30 131,35 138,33" stroke="#3ecf8e" stroke-width="1.5" fill="none"/>
+  <!-- Heartbeat ECG line -->
+  <text x="12" y="58" fill="#555566" font-size="7">HEARTBEAT</text>
+  <polyline points="12,68 30,68 35,68 38,58 41,78 44,68 50,68 68,68 73,68 76,56 79,80 82,68 88,68 106,68" stroke="#e05252" stroke-width="1.5" fill="none"/>
+  <!-- Status dot + ONLINE -->
+  <circle cx="150" y="68" r="3" fill="#3ecf8e" cy="68"/>
+  <text x="157" y="71" fill="#3ecf8e" font-size="7">ONLINE</text>
+  <!-- Bottom label -->
+  <text x="120" y="93" text-anchor="middle" fill="#555566" font-size="7" letter-spacing="0.5">PACK 1 — SIGNALS · 23 COMPONENTS</text>
+</svg>

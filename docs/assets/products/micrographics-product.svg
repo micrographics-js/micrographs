@@ -1,0 +1,230 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>text { font-family: 'JetBrains Mono', 'Courier New', monospace; }</style>
+    <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.5" fill="#555566" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#0d0e17"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <!-- Corner ornaments -->
+  <path d="M20,20 L20,50 M20,20 L50,20" stroke="#3ecf8e" stroke-width="2" fill="none"/>
+  <path d="M1180,20 L1180,50 M1180,20 L1150,20" stroke="#3ecf8e" stroke-width="2" fill="none"/>
+  <path d="M20,610 L20,580 M20,610 L50,610" stroke="#3ecf8e" stroke-width="2" fill="none"/>
+  <path d="M1180,610 L1180,580 M1180,610 L1150,610" stroke="#3ecf8e" stroke-width="2" fill="none"/>
+  <text x="40" y="50" fill="#555566" font-size="10" letter-spacing="2" opacity="0.5">MICROGRAPHICS</text>
+  <!-- Main title -->
+  <text x="600" y="75" text-anchor="middle" fill="#3ecf8e" font-size="48" font-weight="700" letter-spacing="8">MICROGRAPHICS</text>
+  <text x="600" y="105" text-anchor="middle" fill="#555566" font-size="14" letter-spacing="3">84 ANIMATED MICRO-UI COMPONENTS</text>
+  <!-- Price badge -->
+  <rect x="475" y="120" width="250" height="40" fill="#3ecf8e" rx="4" opacity="0.1"/>
+  <rect x="475" y="120" width="250" height="40" fill="none" stroke="#3ecf8e" stroke-width="1" rx="4"/>
+  <text x="600" y="147" text-anchor="middle" fill="#3ecf8e" font-size="22" font-weight="700">$49 ONE-TIME</text>
+  <!-- Framework badges -->
+  <g transform="translate(310, 175)">
+    <rect x="0" y="0" width="90" height="26" fill="none" stroke="#60cfff" stroke-width="1.5" rx="4"/>
+    <text x="45" y="18" text-anchor="middle" fill="#60cfff" font-size="11" font-weight="700">REACT</text>
+    <rect x="100" y="0" width="90" height="26" fill="none" stroke="#3ecf8e" stroke-width="1.5" rx="4"/>
+    <text x="145" y="18" text-anchor="middle" fill="#3ecf8e" font-size="11" font-weight="700">VUE</text>
+    <rect x="200" y="0" width="90" height="26" fill="none" stroke="#f5a623" stroke-width="1.5" rx="4"/>
+    <text x="245" y="18" text-anchor="middle" fill="#f5a623" font-size="11" font-weight="700">SVELTE</text>
+    <rect x="300" y="0" width="90" height="26" fill="none" stroke="#a78bfa" stroke-width="1.5" rx="4"/>
+    <text x="345" y="18" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="700">VANILLA</text>
+  </g>
+  <!-- Component showcase - Row 1 -->
+  <!-- Signal bars -->
+  <g transform="translate(60, 240)">
+    <rect x="0" y="40" width="10" height="16" fill="#3ecf8e" rx="1"/>
+    <rect x="14" y="32" width="10" height="24" fill="#3ecf8e" rx="1"/>
+    <rect x="28" y="22" width="10" height="34" fill="#3ecf8e" rx="1"/>
+    <rect x="42" y="12" width="10" height="44" fill="#3ecf8e" rx="1"/>
+    <rect x="56" y="0" width="10" height="56" fill="#3ecf8e" rx="1"/>
+    <text x="33" y="72" text-anchor="middle" fill="#555566" font-size="7">SIGNALS</text>
+  </g>
+  <!-- Heartbeat -->
+  <g transform="translate(150, 260)">
+    <polyline points="0,18 18,18 24,6 30,30 36,18 55,18 73,18 79,4 85,32 91,18 110,18" stroke="#e05252" stroke-width="2" fill="none"/>
+    <text x="55" y="50" text-anchor="middle" fill="#555566" font-size="7">HEARTBEAT</text>
+  </g>
+  <!-- Waveform -->
+  <g transform="translate(290, 258)">
+    <polyline points="0,18 10,10 20,26 30,8 40,22 50,14 60,20 70,10 80,24 90,16" stroke="#3ecf8e" stroke-width="1.5" fill="none"/>
+    <text x="45" y="48" text-anchor="middle" fill="#555566" font-size="7">WAVEFORM</text>
+  </g>
+  <!-- Radar -->
+  <g transform="translate(420, 255)">
+    <circle cx="22" cy="22" r="22" stroke="#3ecf8e" stroke-width="0.6" fill="none" opacity="0.4"/>
+    <circle cx="22" cy="22" r="14" stroke="#3ecf8e" stroke-width="0.4" fill="none" opacity="0.3"/>
+    <line x1="22" y1="22" x2="38" y2="8" stroke="#3ecf8e" stroke-width="1"/>
+    <circle cx="34" cy="12" r="2" fill="#3ecf8e"/>
+    <circle cx="15" cy="30" r="1.5" fill="#f5a623"/>
+    <text x="22" y="55" text-anchor="middle" fill="#555566" font-size="7">RADAR</text>
+  </g>
+  <!-- Heat grid -->
+  <g transform="translate(500, 255)">
+    <rect x="0" y="0" width="10" height="10" fill="#3ecf8e" rx="1" opacity="0.8"/>
+    <rect x="12" y="0" width="10" height="10" fill="#f5a623" rx="1" opacity="0.7"/>
+    <rect x="24" y="0" width="10" height="10" fill="#e05252" rx="1"/>
+    <rect x="36" y="0" width="10" height="10" fill="#3ecf8e" rx="1" opacity="0.5"/>
+    <rect x="0" y="12" width="10" height="10" fill="#f5a623" rx="1"/>
+    <rect x="12" y="12" width="10" height="10" fill="#e05252" rx="1" opacity="0.6"/>
+    <rect x="24" y="12" width="10" height="10" fill="#3ecf8e" rx="1" opacity="0.9"/>
+    <rect x="36" y="12" width="10" height="10" fill="#f5a623" rx="1" opacity="0.4"/>
+    <rect x="0" y="24" width="10" height="10" fill="#e05252" rx="1" opacity="0.5"/>
+    <rect x="12" y="24" width="10" height="10" fill="#3ecf8e" rx="1" opacity="0.7"/>
+    <rect x="24" y="24" width="10" height="10" fill="#f5a623" rx="1" opacity="0.8"/>
+    <rect x="36" y="24" width="10" height="10" fill="#e05252" rx="1" opacity="0.9"/>
+    <text x="23" y="48" text-anchor="middle" fill="#555566" font-size="7">HEATMAP</text>
+  </g>
+  <!-- Clock -->
+  <g transform="translate(590, 260)">
+    <text x="0" y="20" fill="#3ecf8e" font-size="22" font-weight="700">14:32:07</text>
+    <text x="55" y="45" text-anchor="middle" fill="#555566" font-size="7">CLOCK</text>
+  </g>
+  <!-- Gauge -->
+  <g transform="translate(730, 260)">
+    <path d="M0,35 A30,30 0 0,1 60,35" stroke="#555566" stroke-width="1.5" fill="none"/>
+    <path d="M0,35 A30,30 0 0,1 45,10" stroke="#3ecf8e" stroke-width="2.5" fill="none"/>
+    <line x1="30" y1="35" x2="40" y2="14" stroke="#3ecf8e" stroke-width="1.5"/>
+    <circle cx="30" cy="35" r="2.5" fill="#3ecf8e"/>
+    <text x="30" y="55" text-anchor="middle" fill="#555566" font-size="7">GAUGE</text>
+  </g>
+  <!-- Compass -->
+  <g transform="translate(830, 255)">
+    <circle cx="22" cy="22" r="20" stroke="#555566" stroke-width="0.8" fill="none"/>
+    <text x="22" y="8" text-anchor="middle" fill="#e05252" font-size="8" font-weight="700">N</text>
+    <polygon points="22,10 19,22 25,22" fill="#e05252" opacity="0.7"/>
+    <polygon points="22,34 19,22 25,22" fill="#555566" opacity="0.4"/>
+    <text x="22" y="55" text-anchor="middle" fill="#555566" font-size="7">COMPASS</text>
+  </g>
+  <!-- Typewriter -->
+  <g transform="translate(910, 265)">
+    <text x="0" y="16" fill="#3ecf8e" font-size="16">SYSTEM_</text>
+    <rect x="82" y="3" width="10" height="17" fill="#3ecf8e" opacity="0.6"/>
+    <text x="46" y="42" text-anchor="middle" fill="#555566" font-size="7">TYPEWRITER</text>
+  </g>
+  <!-- Orbit -->
+  <g transform="translate(1050, 255)">
+    <circle cx="22" cy="22" r="20" stroke="#555566" stroke-width="0.5" fill="none" stroke-dasharray="3,3"/>
+    <circle cx="22" cy="22" r="12" stroke="#555566" stroke-width="0.5" fill="none" stroke-dasharray="2,2"/>
+    <circle cx="22" cy="22" r="5" fill="#3ecf8e"/>
+    <circle cx="42" cy="22" r="3" fill="#60cfff"/>
+    <circle cx="12" cy="8" r="2.5" fill="#f5a623"/>
+    <text x="22" y="55" text-anchor="middle" fill="#555566" font-size="7">ORBIT</text>
+  </g>
+  <!-- Row 2: More components -->
+  <!-- Toggle -->
+  <g transform="translate(60, 355)">
+    <rect x="0" y="0" width="44" height="22" fill="#3ecf8e" rx="11" opacity="0.3"/>
+    <circle cx="31" cy="11" r="8" fill="#3ecf8e"/>
+    <text x="22" y="38" text-anchor="middle" fill="#555566" font-size="7">TOGGLE</text>
+  </g>
+  <!-- Progress -->
+  <g transform="translate(130, 358)">
+    <rect x="0" y="0" width="80" height="12" fill="#555566" rx="3" opacity="0.3"/>
+    <rect x="0" y="0" width="56" height="12" fill="#3ecf8e" rx="3"/>
+    <text x="40" y="28" text-anchor="middle" fill="#555566" font-size="7">PROGRESS</text>
+  </g>
+  <!-- Barcode -->
+  <g transform="translate(240, 350)">
+    <rect x="0" y="0" width="3" height="30" fill="#3ecf8e"/>
+    <rect x="5" y="0" width="1.5" height="30" fill="#3ecf8e"/>
+    <rect x="9" y="0" width="4" height="30" fill="#3ecf8e"/>
+    <rect x="15" y="0" width="2" height="30" fill="#3ecf8e"/>
+    <rect x="19" y="0" width="3" height="30" fill="#3ecf8e"/>
+    <rect x="24" y="0" width="1.5" height="30" fill="#3ecf8e"/>
+    <rect x="28" y="0" width="4" height="30" fill="#3ecf8e"/>
+    <rect x="34" y="0" width="2" height="30" fill="#3ecf8e"/>
+    <rect x="38" y="0" width="3" height="30" fill="#3ecf8e"/>
+    <rect x="43" y="0" width="1.5" height="30" fill="#3ecf8e"/>
+    <rect x="47" y="0" width="4" height="30" fill="#3ecf8e"/>
+    <text x="25" y="45" text-anchor="middle" fill="#555566" font-size="7">BARCODE</text>
+  </g>
+  <!-- Status dots -->
+  <g transform="translate(340, 358)">
+    <circle cx="6" cy="6" r="6" fill="#3ecf8e"/>
+    <text x="18" y="10" fill="#3ecf8e" font-size="9">ON</text>
+    <circle cx="56" cy="6" r="6" fill="#e05252"/>
+    <text x="68" y="10" fill="#e05252" font-size="9">ERR</text>
+    <text x="46" y="30" text-anchor="middle" fill="#555566" font-size="7">STATUS</text>
+  </g>
+  <!-- Crosshair -->
+  <g transform="translate(440, 350)">
+    <circle cx="18" cy="18" r="16" stroke="#3ecf8e" stroke-width="0.8" fill="none"/>
+    <circle cx="18" cy="18" r="8" stroke="#3ecf8e" stroke-width="0.5" fill="none" opacity="0.5"/>
+    <line x1="0" y1="18" x2="36" y2="18" stroke="#3ecf8e" stroke-width="0.4"/>
+    <line x1="18" y1="0" x2="18" y2="36" stroke="#3ecf8e" stroke-width="0.4"/>
+    <circle cx="18" cy="18" r="2" fill="#3ecf8e"/>
+    <text x="18" y="48" text-anchor="middle" fill="#555566" font-size="7">CROSSHAIR</text>
+  </g>
+  <!-- Spectrum -->
+  <g transform="translate(520, 350)">
+    <rect x="0" y="22" width="6" height="12" fill="#3ecf8e" rx="1"/>
+    <rect x="8" y="14" width="6" height="20" fill="#3ecf8e" rx="1"/>
+    <rect x="16" y="6" width="6" height="28" fill="#3ecf8e" rx="1"/>
+    <rect x="24" y="10" width="6" height="24" fill="#3ecf8e" rx="1"/>
+    <rect x="32" y="16" width="6" height="18" fill="#3ecf8e" rx="1"/>
+    <rect x="40" y="8" width="6" height="26" fill="#3ecf8e" rx="1"/>
+    <rect x="48" y="18" width="6" height="16" fill="#3ecf8e" rx="1"/>
+    <text x="27" y="48" text-anchor="middle" fill="#555566" font-size="7">SPECTRUM</text>
+  </g>
+  <!-- Glitch text -->
+  <g transform="translate(600, 355)">
+    <text x="0" y="14" fill="#3ecf8e" font-size="16" opacity="0.8">GLITCH</text>
+    <text x="2" y="12" fill="#e05252" font-size="16" opacity="0.2">GLITCH</text>
+    <text x="-2" y="16" fill="#60cfff" font-size="16" opacity="0.2">GLITCH</text>
+    <text x="35" y="38" text-anchor="middle" fill="#555566" font-size="7">GLITCH</text>
+  </g>
+  <!-- Binary -->
+  <g transform="translate(720, 352)">
+    <text x="0" y="12" fill="#3ecf8e" font-size="11" opacity="0.7">01001010</text>
+    <text x="0" y="26" fill="#3ecf8e" font-size="11" opacity="0.5">10110100</text>
+    <text x="35" y="42" text-anchor="middle" fill="#555566" font-size="7">BINARY</text>
+  </g>
+  <!-- Stepper -->
+  <g transform="translate(830, 355)">
+    <rect x="0" y="0" width="24" height="22" fill="none" stroke="#3ecf8e" stroke-width="1" rx="2"/>
+    <text x="12" y="16" text-anchor="middle" fill="#3ecf8e" font-size="14">-</text>
+    <rect x="28" y="0" width="40" height="22" fill="none" stroke="#3ecf8e" stroke-width="1" rx="2"/>
+    <text x="48" y="16" text-anchor="middle" fill="#3ecf8e" font-size="13" font-weight="700">42</text>
+    <rect x="72" y="0" width="24" height="22" fill="none" stroke="#3ecf8e" stroke-width="1" rx="2"/>
+    <text x="84" y="16" text-anchor="middle" fill="#3ecf8e" font-size="14">+</text>
+    <text x="48" y="36" text-anchor="middle" fill="#555566" font-size="7">STEPPER</text>
+  </g>
+  <!-- Rating -->
+  <g transform="translate(960, 358)">
+    <circle cx="6" cy="6" r="5" fill="#3ecf8e"/>
+    <circle cx="20" cy="6" r="5" fill="#3ecf8e"/>
+    <circle cx="34" cy="6" r="5" fill="#3ecf8e"/>
+    <circle cx="48" cy="6" r="5" fill="#3ecf8e"/>
+    <circle cx="62" cy="6" r="5" fill="none" stroke="#555566" stroke-width="1"/>
+    <text x="34" y="26" text-anchor="middle" fill="#555566" font-size="7">RATING</text>
+  </g>
+  <!-- Countdown -->
+  <g transform="translate(1060, 355)">
+    <text x="0" y="16" fill="#f5a623" font-size="18" font-weight="700">03:42</text>
+    <text x="30" y="34" text-anchor="middle" fill="#555566" font-size="7">COUNTDOWN</text>
+  </g>
+  <!-- Feature list -->
+  <g transform="translate(100, 430)">
+    <text x="0" y="0" fill="#3ecf8e" font-size="13">+</text>
+    <text x="20" y="0" fill="#555566" font-size="13">84 animated micro-UI components</text>
+    <text x="0" y="28" fill="#3ecf8e" font-size="13">+</text>
+    <text x="20" y="28" fill="#555566" font-size="13">8 themed packs (Signals, Data, Text, Chrome, Clocks, Gauges, Interaction, Orbit)</text>
+    <text x="0" y="56" fill="#3ecf8e" font-size="13">+</text>
+    <text x="20" y="56" fill="#555566" font-size="13">5 color themes: Phosphor, Amber, Ice, Violet, Crimson</text>
+    <text x="0" y="84" fill="#3ecf8e" font-size="13">+</text>
+    <text x="20" y="84" fill="#555566" font-size="13">Full TypeScript support, tree-shakeable, zero dependencies, SSR compatible</text>
+    <text x="0" y="112" fill="#3ecf8e" font-size="13">+</text>
+    <text x="20" y="112" fill="#555566" font-size="13">Dark terminal aesthetic — perfect for dashboards, dev tools, and creative projects</text>
+  </g>
+  <!-- Bottom -->
+  <line x1="40" y1="580" x2="1160" y2="580" stroke="#555566" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.3"/>
+  <!-- Barcode left -->
+  <rect x="40" y="590" width="2" height="14" fill="#555566" opacity="0.5"/>
+  <rect x="44" y="590" width="1" height="14" fill="#555566" opacity="0.5"/>
+  <rect x="47" y="590" width="3" height="14" fill="#555566" opacity="0.5"/>
+  <rect x="52" y="590" width="1" height="14" fill="#555566" opacity="0.5"/>
+  <rect x="55" y="590" width="2" height="14" fill="#555566" opacity="0.5"/>
+  <text x="600" y="602" text-anchor="middle" fill="#555566" font-size="11" letter-spacing="3">MICROGRAPHICS — $49 ONE-TIME — REACT · VUE · SVELTE · VANILLA</text>
+</svg>

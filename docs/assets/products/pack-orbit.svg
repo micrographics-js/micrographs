@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>text { font-family: 'JetBrains Mono', 'Courier New', monospace; }</style>
+    <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.5" fill="#555566" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#0d0e17"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <path d="M20,20 L20,50 M20,20 L50,20" stroke="#555566" stroke-width="2" fill="none"/>
+  <path d="M1180,20 L1180,50 M1180,20 L1150,20" stroke="#555566" stroke-width="2" fill="none"/>
+  <path d="M20,610 L20,580 M20,610 L50,610" stroke="#555566" stroke-width="2" fill="none"/>
+  <path d="M1180,610 L1180,580 M1180,610 L1150,610" stroke="#555566" stroke-width="2" fill="none"/>
+  <text x="40" y="50" fill="#555566" font-size="10" letter-spacing="2" opacity="0.5">MICROGRAPHICS</text>
+  <text x="600" y="100" text-anchor="middle" fill="#3ecf8e" font-size="48" font-weight="700" letter-spacing="4">ORBIT &amp; NAV PACK</text>
+  <text x="600" y="130" text-anchor="middle" fill="#555566" font-size="16">8 Components</text>
+  <!-- Orbit system (large) -->
+  <g transform="translate(250, 310)">
+    <circle cx="0" cy="0" r="40" stroke="#555566" stroke-width="0.8" fill="none" stroke-dasharray="4,4"/>
+    <circle cx="0" cy="0" r="80" stroke="#555566" stroke-width="0.8" fill="none" stroke-dasharray="6,6"/>
+    <circle cx="0" cy="0" r="120" stroke="#555566" stroke-width="0.8" fill="none" stroke-dasharray="8,8"/>
+    <circle cx="0" cy="0" r="10" fill="#3ecf8e"/>
+    <circle cx="40" cy="0" r="6" fill="#60cfff"/>
+    <circle cx="-56" cy="-56" r="5" fill="#f5a623"/>
+    <circle cx="0" cy="120" r="7" fill="#e05252"/>
+    <circle cx="100" cy="-66" r="4" fill="#a78bfa"/>
+    <circle cx="-110" cy="45" r="5" fill="#3ecf8e" opacity="0.6"/>
+    <text x="0" y="150" text-anchor="middle" fill="#555566" font-size="12">ORBIT SYSTEM</text>
+  </g>
+  <!-- Crosshair target (large) -->
+  <g transform="translate(600, 310)">
+    <circle cx="0" cy="0" r="60" stroke="#3ecf8e" stroke-width="1" fill="none"/>
+    <circle cx="0" cy="0" r="40" stroke="#3ecf8e" stroke-width="0.8" fill="none" opacity="0.6"/>
+    <circle cx="0" cy="0" r="20" stroke="#3ecf8e" stroke-width="0.5" fill="none" opacity="0.4"/>
+    <line x1="-75" y1="0" x2="75" y2="0" stroke="#3ecf8e" stroke-width="0.8" opacity="0.6"/>
+    <line x1="0" y1="-75" x2="0" y2="75" stroke="#3ecf8e" stroke-width="0.8" opacity="0.6"/>
+    <circle cx="0" cy="0" r="4" fill="#3ecf8e"/>
+    <circle cx="15" cy="-20" r="3" fill="#e05252"/>
+    <text x="0" y="90" text-anchor="middle" fill="#555566" font-size="12">CROSSHAIR TARGET</text>
+  </g>
+  <!-- Mini radar -->
+  <g transform="translate(880, 280)">
+    <circle cx="0" cy="0" r="50" stroke="#3ecf8e" stroke-width="0.8" fill="none" opacity="0.3"/>
+    <circle cx="0" cy="0" r="35" stroke="#3ecf8e" stroke-width="0.5" fill="none" opacity="0.3"/>
+    <circle cx="0" cy="0" r="20" stroke="#3ecf8e" stroke-width="0.5" fill="none" opacity="0.3"/>
+    <line x1="0" y1="0" x2="35" y2="-35" stroke="#3ecf8e" stroke-width="1.5" opacity="0.7"/>
+    <circle cx="20" cy="-15" r="3" fill="#3ecf8e"/>
+    <circle cx="-10" cy="25" r="2.5" fill="#f5a623"/>
+    <text x="0" y="70" text-anchor="middle" fill="#555566" font-size="12">RADAR</text>
+  </g>
+  <!-- Mission status panel -->
+  <g transform="translate(800, 400)">
+    <rect x="0" y="0" width="280" height="130" fill="none" stroke="#555566" stroke-width="1" rx="3"/>
+    <text x="140" y="22" text-anchor="middle" fill="#555566" font-size="11" letter-spacing="2">MISSION STATUS</text>
+    <line x1="10" y1="30" x2="270" y2="30" stroke="#555566" stroke-width="0.5"/>
+    <circle cx="25" cy="48" r="4" fill="#3ecf8e"/>
+    <text x="40" y="52" fill="#3ecf8e" font-size="11">PROPULSION</text>
+    <text x="220" y="52" fill="#3ecf8e" font-size="11">NOMINAL</text>
+    <circle cx="25" cy="70" r="4" fill="#3ecf8e"/>
+    <text x="40" y="74" fill="#3ecf8e" font-size="11">NAVIGATION</text>
+    <text x="220" y="74" fill="#3ecf8e" font-size="11">ACTIVE</text>
+    <circle cx="25" cy="92" r="4" fill="#f5a623"/>
+    <text x="40" y="96" fill="#f5a623" font-size="11">COMMS</text>
+    <text x="220" y="96" fill="#f5a623" font-size="11">DEGRADED</text>
+    <circle cx="25" cy="114" r="4" fill="#e05252"/>
+    <text x="40" y="118" fill="#e05252" font-size="11">SHIELDS</text>
+    <text x="220" y="118" fill="#e05252" font-size="11">CRITICAL</text>
+  </g>
+  <line x1="40" y1="580" x2="1160" y2="580" stroke="#555566" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.3"/>
+  <text x="600" y="600" text-anchor="middle" fill="#555566" font-size="11" letter-spacing="3">MICROGRAPHICS — ORBIT &amp; NAV PACK — 8 ANIMATED COMPONENTS</text>
+</svg>

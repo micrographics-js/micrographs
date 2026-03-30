@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>text { font-family: 'JetBrains Mono', 'Courier New', monospace; }</style>
+    <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.5" fill="#555566" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#0d0e17"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <!-- Corner ornaments -->
+  <path d="M20,20 L20,50 M20,20 L50,20" stroke="#555566" stroke-width="2" fill="none"/>
+  <path d="M1180,20 L1180,50 M1180,20 L1150,20" stroke="#555566" stroke-width="2" fill="none"/>
+  <path d="M20,610 L20,580 M20,610 L50,610" stroke="#555566" stroke-width="2" fill="none"/>
+  <path d="M1180,610 L1180,580 M1180,610 L1150,610" stroke="#555566" stroke-width="2" fill="none"/>
+  <!-- Watermark -->
+  <text x="40" y="50" fill="#555566" font-size="10" letter-spacing="2" opacity="0.5">MICROGRAPHICS</text>
+  <!-- Title -->
+  <text x="600" y="100" text-anchor="middle" fill="#3ecf8e" font-size="48" font-weight="700" letter-spacing="6">SIGNALS PACK</text>
+  <text x="600" y="130" text-anchor="middle" fill="#555566" font-size="16">23 Components</text>
+  <!-- Signal bars (large) -->
+  <rect x="100" y="250" width="30" height="50" fill="#3ecf8e" rx="2"/>
+  <rect x="140" y="220" width="30" height="80" fill="#3ecf8e" rx="2"/>
+  <rect x="180" y="190" width="30" height="110" fill="#3ecf8e" rx="2"/>
+  <rect x="220" y="160" width="30" height="140" fill="#3ecf8e" rx="2"/>
+  <rect x="260" y="200" width="30" height="100" fill="#3ecf8e" rx="2" opacity="0.4"/>
+  <text x="190" y="330" text-anchor="middle" fill="#555566" font-size="12">SIGNAL METER</text>
+  <!-- Heartbeat ECG -->
+  <polyline points="400,280 450,280 470,280 480,230 490,330 500,280 520,280 570,280 590,280 600,230 610,330 620,280 640,280 690,280" stroke="#e05252" stroke-width="3" fill="none"/>
+  <text x="545" y="330" text-anchor="middle" fill="#555566" font-size="12">HEARTBEAT</text>
+  <!-- Waveform -->
+  <polyline points="780,250 800,230 820,270 840,220 860,280 880,240 900,260 920,230 940,270 960,240 980,260 1000,235 1020,265 1040,245 1060,255" stroke="#3ecf8e" stroke-width="2.5" fill="none"/>
+  <text x="920" y="330" text-anchor="middle" fill="#555566" font-size="12">WAVEFORM</text>
+  <!-- Status dots row -->
+  <circle cx="200" cy="420" r="12" fill="#3ecf8e"/>
+  <text x="220" y="425" fill="#3ecf8e" font-size="14">ONLINE</text>
+  <circle cx="400" cy="420" r="12" fill="#f5a623"/>
+  <text x="420" y="425" fill="#f5a623" font-size="14">PENDING</text>
+  <circle cx="600" cy="420" r="12" fill="#e05252"/>
+  <text x="620" y="425" fill="#e05252" font-size="14">CRITICAL</text>
+  <circle cx="800" cy="420" r="12" fill="#555566"/>
+  <text x="820" y="425" fill="#555566" font-size="14">OFFLINE</text>
+  <!-- Signal strength variations -->
+  <rect x="150" y="480" width="8" height="12" fill="#3ecf8e" rx="1" opacity="0.5"/>
+  <rect x="162" y="474" width="8" height="18" fill="#3ecf8e" rx="1" opacity="0.6"/>
+  <rect x="174" y="466" width="8" height="26" fill="#3ecf8e" rx="1" opacity="0.7"/>
+  <rect x="186" y="456" width="8" height="36" fill="#3ecf8e" rx="1" opacity="0.8"/>
+  <rect x="198" y="446" width="8" height="46" fill="#3ecf8e" rx="1"/>
+  <text x="180" y="510" text-anchor="middle" fill="#555566" font-size="10">5 BARS</text>
+  <rect x="320" y="480" width="8" height="12" fill="#f5a623" rx="1"/>
+  <rect x="332" y="474" width="8" height="18" fill="#f5a623" rx="1"/>
+  <rect x="344" y="466" width="8" height="26" fill="#f5a623" rx="1"/>
+  <rect x="356" y="474" width="8" height="18" fill="#555566" rx="1" opacity="0.3"/>
+  <rect x="368" y="480" width="8" height="12" fill="#555566" rx="1" opacity="0.3"/>
+  <text x="348" y="510" text-anchor="middle" fill="#555566" font-size="10">3 BARS</text>
+  <!-- Pulse indicator -->
+  <circle cx="600" cy="490" r="15" stroke="#3ecf8e" stroke-width="1" fill="none" opacity="0.3"/>
+  <circle cx="600" cy="490" r="10" stroke="#3ecf8e" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <circle cx="600" cy="490" r="5" fill="#3ecf8e"/>
+  <text x="600" y="520" text-anchor="middle" fill="#555566" font-size="10">PULSE</text>
+  <!-- Spectrum analyzer -->
+  <rect x="780" y="480" width="6" height="14" fill="#3ecf8e" rx="1"/>
+  <rect x="790" y="468" width="6" height="26" fill="#3ecf8e" rx="1"/>
+  <rect x="800" y="456" width="6" height="38" fill="#3ecf8e" rx="1"/>
+  <rect x="810" y="462" width="6" height="32" fill="#3ecf8e" rx="1"/>
+  <rect x="820" y="472" width="6" height="22" fill="#3ecf8e" rx="1"/>
+  <rect x="830" y="460" width="6" height="34" fill="#3ecf8e" rx="1"/>
+  <rect x="840" y="474" width="6" height="20" fill="#3ecf8e" rx="1"/>
+  <rect x="850" y="482" width="6" height="12" fill="#3ecf8e" rx="1"/>
+  <text x="820" y="510" text-anchor="middle" fill="#555566" font-size="10">SPECTRUM</text>
+  <!-- Bottom line -->
+  <line x1="40" y1="580" x2="1160" y2="580" stroke="#555566" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.3"/>
+  <text x="600" y="600" text-anchor="middle" fill="#555566" font-size="11" letter-spacing="3">MICROGRAPHICS — SIGNALS PACK — 23 ANIMATED COMPONENTS</text>
+</svg>

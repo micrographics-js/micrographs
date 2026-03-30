@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="100" viewBox="0 0 240 100">
+  <defs>
+    <style>text { font-family: 'JetBrains Mono', 'Courier New', monospace; }</style>
+  </defs>
+  <rect width="240" height="100" fill="#13141f" rx="3"/>
+  <!-- Radar circles with sweep line and ping dots -->
+  <circle cx="50" cy="42" r="25" stroke="#3ecf8e" stroke-width="0.5" fill="none" opacity="0.3"/>
+  <circle cx="50" cy="42" r="17" stroke="#3ecf8e" stroke-width="0.5" fill="none" opacity="0.3"/>
+  <circle cx="50" cy="42" r="9" stroke="#3ecf8e" stroke-width="0.5" fill="none" opacity="0.3"/>
+  <line x1="50" y1="42" x2="70" y2="28" stroke="#3ecf8e" stroke-width="1" opacity="0.7"/>
+  <circle cx="60" cy="35" r="2" fill="#3ecf8e" opacity="0.9"/>
+  <circle cx="42" cy="50" r="1.5" fill="#3ecf8e" opacity="0.6"/>
+  <circle cx="58" cy="48" r="1.5" fill="#f5a623" opacity="0.8"/>
+  <line x1="25" y1="42" x2="75" y2="42" stroke="#555566" stroke-width="0.3"/>
+  <line x1="50" y1="17" x2="50" y2="67" stroke="#555566" stroke-width="0.3"/>
+  <!-- Heat grid -->
+  <rect x="95" y="18" width="8" height="8" fill="#3ecf8e" opacity="0.9" rx="1"/>
+  <rect x="105" y="18" width="8" height="8" fill="#3ecf8e" opacity="0.6" rx="1"/>
+  <rect x="115" y="18" width="8" height="8" fill="#f5a623" opacity="0.8" rx="1"/>
+  <rect x="125" y="18" width="8" height="8" fill="#e05252" opacity="0.5" rx="1"/>
+  <rect x="95" y="28" width="8" height="8" fill="#f5a623" opacity="0.7" rx="1"/>
+  <rect x="105" y="28" width="8" height="8" fill="#e05252" opacity="0.9" rx="1"/>
+  <rect x="115" y="28" width="8" height="8" fill="#f5a623" opacity="0.5" rx="1"/>
+  <rect x="125" y="28" width="8" height="8" fill="#3ecf8e" opacity="0.4" rx="1"/>
+  <rect x="95" y="38" width="8" height="8" fill="#3ecf8e" opacity="0.3" rx="1"/>
+  <rect x="105" y="38" width="8" height="8" fill="#f5a623" opacity="0.6" rx="1"/>
+  <rect x="115" y="38" width="8" height="8" fill="#e05252" opacity="0.7" rx="1"/>
+  <rect x="125" y="38" width="8" height="8" fill="#3ecf8e" opacity="0.8" rx="1"/>
+  <rect x="95" y="48" width="8" height="8" fill="#e05252" opacity="0.4" rx="1"/>
+  <rect x="105" y="48" width="8" height="8" fill="#3ecf8e" opacity="0.7" rx="1"/>
+  <rect x="115" y="48" width="8" height="8" fill="#3ecf8e" opacity="0.9" rx="1"/>
+  <rect x="125" y="48" width="8" height="8" fill="#f5a623" opacity="0.6" rx="1"/>
+  <!-- Frequency bars -->
+  <rect x="155" y="50" width="5" height="8" fill="#3ecf8e" opacity="0.7" rx="1"/>
+  <rect x="163" y="40" width="5" height="18" fill="#3ecf8e" opacity="0.8" rx="1"/>
+  <rect x="171" y="30" width="5" height="28" fill="#3ecf8e" opacity="0.9" rx="1"/>
+  <rect x="179" y="35" width="5" height="23" fill="#3ecf8e" opacity="0.7" rx="1"/>
+  <rect x="187" y="42" width="5" height="16" fill="#3ecf8e" opacity="0.6" rx="1"/>
+  <rect x="195" y="48" width="5" height="10" fill="#3ecf8e" opacity="0.5" rx="1"/>
+  <rect x="203" y="44" width="5" height="14" fill="#3ecf8e" opacity="0.6" rx="1"/>
+  <rect x="211" y="38" width="5" height="20" fill="#3ecf8e" opacity="0.8" rx="1"/>
+  <rect x="219" y="46" width="5" height="12" fill="#3ecf8e" opacity="0.5" rx="1"/>
+  <!-- Labels -->
+  <text x="50" y="76" text-anchor="middle" fill="#555566" font-size="6">RADAR</text>
+  <text x="112" y="66" text-anchor="middle" fill="#555566" font-size="6">HEATMAP</text>
+  <text x="190" y="66" text-anchor="middle" fill="#555566" font-size="6">SPECTRUM</text>
+  <!-- Bottom label -->
+  <text x="120" y="93" text-anchor="middle" fill="#555566" font-size="7" letter-spacing="0.5">PACK 2 — DATA VIZ · 11 COMPONENTS</text>
+</svg>

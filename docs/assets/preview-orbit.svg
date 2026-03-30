@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="100" viewBox="0 0 240 100">
+  <defs>
+    <style>text { font-family: 'JetBrains Mono', 'Courier New', monospace; }</style>
+  </defs>
+  <rect width="240" height="100" fill="#13141f" rx="3"/>
+  <!-- Orbit system -->
+  <circle cx="55" cy="45" r="10" stroke="#555566" stroke-width="0.5" fill="none" stroke-dasharray="2,2"/>
+  <circle cx="55" cy="45" r="20" stroke="#555566" stroke-width="0.5" fill="none" stroke-dasharray="3,3"/>
+  <circle cx="55" cy="45" r="30" stroke="#555566" stroke-width="0.5" fill="none" stroke-dasharray="4,4"/>
+  <circle cx="55" cy="45" r="3" fill="#3ecf8e"/>
+  <circle cx="75" cy="45" r="2.5" fill="#60cfff"/>
+  <circle cx="55" cy="25" r="2" fill="#f5a623"/>
+  <circle cx="35" cy="55" r="2" fill="#e05252"/>
+  <circle cx="68" cy="25" r="1.5" fill="#a78bfa"/>
+  <!-- Crosshair target -->
+  <circle cx="135" cy="42" r="14" stroke="#3ecf8e" stroke-width="0.8" fill="none"/>
+  <circle cx="135" cy="42" r="7" stroke="#3ecf8e" stroke-width="0.5" fill="none" opacity="0.5"/>
+  <line x1="118" y1="42" x2="152" y2="42" stroke="#3ecf8e" stroke-width="0.5" opacity="0.6"/>
+  <line x1="135" y1="25" x2="135" y2="59" stroke="#3ecf8e" stroke-width="0.5" opacity="0.6"/>
+  <circle cx="135" cy="42" r="2" fill="#3ecf8e"/>
+  <!-- Mission status box -->
+  <rect x="168" y="16" width="60" height="56" stroke="#555566" stroke-width="0.5" fill="none" rx="2"/>
+  <text x="172" y="26" fill="#555566" font-size="6">MISSION</text>
+  <circle cx="174" cy="34" r="2" fill="#3ecf8e"/>
+  <text x="180" y="37" fill="#3ecf8e" font-size="6">ACTIVE</text>
+  <circle cx="174" cy="44" r="2" fill="#f5a623"/>
+  <text x="180" y="47" fill="#f5a623" font-size="6">PENDING</text>
+  <circle cx="174" cy="54" r="2" fill="#e05252"/>
+  <text x="180" y="57" fill="#e05252" font-size="6">ALERT</text>
+  <circle cx="174" cy="64" r="2" fill="#555566"/>
+  <text x="180" y="67" fill="#555566" font-size="6">OFFLINE</text>
+  <!-- Labels -->
+  <text x="55" y="82" text-anchor="middle" fill="#555566" font-size="6">ORBIT</text>
+  <text x="135" y="82" text-anchor="middle" fill="#555566" font-size="6">CROSSHAIR</text>
+  <text x="198" y="82" text-anchor="middle" fill="#555566" font-size="6">STATUS</text>
+  <!-- Bottom label -->
+  <text x="120" y="93" text-anchor="middle" fill="#555566" font-size="7" letter-spacing="0.5">PACK 8 — ORBIT &amp; NAV · 8 COMPONENTS</text>
+</svg>

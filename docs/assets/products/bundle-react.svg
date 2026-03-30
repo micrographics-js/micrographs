@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>text { font-family: 'JetBrains Mono', 'Courier New', monospace; }</style>
+    <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.5" fill="#555566" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#0d0e17"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <path d="M20,20 L20,50 M20,20 L50,20" stroke="#555566" stroke-width="2" fill="none"/>
+  <path d="M1180,20 L1180,50 M1180,20 L1150,20" stroke="#555566" stroke-width="2" fill="none"/>
+  <path d="M20,610 L20,580 M20,610 L50,610" stroke="#555566" stroke-width="2" fill="none"/>
+  <path d="M1180,610 L1180,580 M1180,610 L1150,610" stroke="#555566" stroke-width="2" fill="none"/>
+  <text x="40" y="50" fill="#555566" font-size="10" letter-spacing="2" opacity="0.5">MICROGRAPHICS</text>
+  <!-- Title -->
+  <text x="600" y="80" text-anchor="middle" fill="#3ecf8e" font-size="42" font-weight="700" letter-spacing="4">REACT BUNDLE</text>
+  <text x="600" y="110" text-anchor="middle" fill="#555566" font-size="14">ALL 84 COMPONENTS — ONE FRAMEWORK</text>
+  <!-- Price -->
+  <text x="600" y="170" text-anchor="middle" fill="#3ecf8e" font-size="56" font-weight="700">$79</text>
+  <rect x="490" y="180" width="220" height="28" fill="#3ecf8e" rx="4" opacity="0.15"/>
+  <text x="600" y="200" text-anchor="middle" fill="#3ecf8e" font-size="14" font-weight="700">SAVES $113</text>
+  <!-- React badge -->
+  <rect x="540" y="225" width="120" height="30" fill="none" stroke="#60cfff" stroke-width="1.5" rx="4"/>
+  <text x="600" y="245" text-anchor="middle" fill="#60cfff" font-size="14" font-weight="700">REACT</text>
+  <!-- Component showcase row -->
+  <!-- Signal bars -->
+  <g transform="translate(60, 300)">
+    <rect x="0" y="30" width="8" height="14" fill="#3ecf8e" rx="1"/>
+    <rect x="11" y="22" width="8" height="22" fill="#3ecf8e" rx="1"/>
+    <rect x="22" y="14" width="8" height="30" fill="#3ecf8e" rx="1"/>
+    <rect x="33" y="6" width="8" height="38" fill="#3ecf8e" rx="1"/>
+    <rect x="44" y="0" width="8" height="44" fill="#3ecf8e" rx="1"/>
+    <text x="26" y="60" text-anchor="middle" fill="#555566" font-size="8">SIGNALS</text>
+  </g>
+  <!-- Heartbeat -->
+  <g transform="translate(130, 310)">
+    <polyline points="0,20 15,20 22,8 28,32 35,20 50,20 65,20 72,5 78,35 85,20 100,20" stroke="#e05252" stroke-width="2" fill="none"/>
+    <text x="50" y="50" text-anchor="middle" fill="#555566" font-size="8">HEARTBEAT</text>
+  </g>
+  <!-- Radar -->
+  <g transform="translate(280, 310)">
+    <circle cx="25" cy="20" r="20" stroke="#3ecf8e" stroke-width="0.5" fill="none" opacity="0.4"/>
+    <circle cx="25" cy="20" r="12" stroke="#3ecf8e" stroke-width="0.5" fill="none" opacity="0.4"/>
+    <line x1="25" y1="20" x2="40" y2="8" stroke="#3ecf8e" stroke-width="1"/>
+    <circle cx="35" cy="13" r="2" fill="#3ecf8e"/>
+    <text x="25" y="50" text-anchor="middle" fill="#555566" font-size="8">RADAR</text>
+  </g>
+  <!-- Clock -->
+  <g transform="translate(380, 305)">
+    <text x="0" y="22" fill="#3ecf8e" font-size="22" font-weight="700">14:32</text>
+    <text x="35" y="50" text-anchor="middle" fill="#555566" font-size="8">CLOCK</text>
+  </g>
+  <!-- Gauge -->
+  <g transform="translate(490, 310)">
+    <path d="M0,30 A25,25 0 0,1 50,30" stroke="#555566" stroke-width="1.5" fill="none"/>
+    <path d="M0,30 A25,25 0 0,1 38,10" stroke="#3ecf8e" stroke-width="2.5" fill="none"/>
+    <circle cx="25" cy="30" r="2" fill="#3ecf8e"/>
+    <text x="25" y="50" text-anchor="middle" fill="#555566" font-size="8">GAUGE</text>
+  </g>
+  <!-- Toggle -->
+  <g transform="translate(590, 315)">
+    <rect x="0" y="0" width="40" height="20" fill="#3ecf8e" rx="10" opacity="0.3"/>
+    <circle cx="28" cy="10" r="8" fill="#3ecf8e"/>
+    <text x="20" y="38" text-anchor="middle" fill="#555566" font-size="8">TOGGLE</text>
+  </g>
+  <!-- Orbit -->
+  <g transform="translate(690, 310)">
+    <circle cx="25" cy="20" r="18" stroke="#555566" stroke-width="0.5" fill="none" stroke-dasharray="3,3"/>
+    <circle cx="25" cy="20" r="5" fill="#3ecf8e"/>
+    <circle cx="43" cy="20" r="3" fill="#60cfff"/>
+    <circle cx="15" cy="5" r="2.5" fill="#f5a623"/>
+    <text x="25" y="50" text-anchor="middle" fill="#555566" font-size="8">ORBIT</text>
+  </g>
+  <!-- Text effect -->
+  <g transform="translate(790, 310)">
+    <text x="0" y="20" fill="#3ecf8e" font-size="16">SYS_</text>
+    <rect x="50" y="7" width="10" height="18" fill="#3ecf8e" opacity="0.6"/>
+    <text x="30" y="50" text-anchor="middle" fill="#555566" font-size="8">TYPEWRITER</text>
+  </g>
+  <!-- Barcode -->
+  <g transform="translate(900, 308)">
+    <rect x="0" y="0" width="3" height="30" fill="#3ecf8e"/>
+    <rect x="5" y="0" width="1.5" height="30" fill="#3ecf8e"/>
+    <rect x="9" y="0" width="4" height="30" fill="#3ecf8e"/>
+    <rect x="15" y="0" width="1.5" height="30" fill="#3ecf8e"/>
+    <rect x="19" y="0" width="3" height="30" fill="#3ecf8e"/>
+    <rect x="24" y="0" width="1.5" height="30" fill="#3ecf8e"/>
+    <rect x="28" y="0" width="4" height="30" fill="#3ecf8e"/>
+    <rect x="34" y="0" width="2" height="30" fill="#3ecf8e"/>
+    <rect x="38" y="0" width="3" height="30" fill="#3ecf8e"/>
+    <text x="20" y="48" text-anchor="middle" fill="#555566" font-size="8">BARCODE</text>
+  </g>
+  <!-- Compass -->
+  <g transform="translate(1020, 310)">
+    <circle cx="20" cy="20" r="18" stroke="#555566" stroke-width="0.8" fill="none"/>
+    <text x="20" y="6" text-anchor="middle" fill="#e05252" font-size="7">N</text>
+    <polygon points="20,8 17,20 23,20" fill="#e05252" opacity="0.7"/>
+    <text x="20" y="50" text-anchor="middle" fill="#555566" font-size="8">COMPASS</text>
+  </g>
+  <!-- Feature list -->
+  <g transform="translate(150, 420)">
+    <text x="0" y="0" fill="#3ecf8e" font-size="12">+</text>
+    <text x="20" y="0" fill="#555566" font-size="12">8 Component packs included</text>
+    <text x="0" y="25" fill="#3ecf8e" font-size="12">+</text>
+    <text x="20" y="25" fill="#555566" font-size="12">TypeScript definitions</text>
+    <text x="0" y="50" fill="#3ecf8e" font-size="12">+</text>
+    <text x="20" y="50" fill="#555566" font-size="12">5 built-in themes</text>
+    <text x="450" y="0" fill="#3ecf8e" font-size="12">+</text>
+    <text x="470" y="0" fill="#555566" font-size="12">Tree-shakeable exports</text>
+    <text x="450" y="25" fill="#3ecf8e" font-size="12">+</text>
+    <text x="470" y="25" fill="#555566" font-size="12">SSR compatible</text>
+    <text x="450" y="50" fill="#3ecf8e" font-size="12">+</text>
+    <text x="470" y="50" fill="#555566" font-size="12">Lifetime updates</text>
+  </g>
+  <line x1="40" y1="580" x2="1160" y2="580" stroke="#555566" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.3"/>
+  <text x="600" y="600" text-anchor="middle" fill="#555566" font-size="11" letter-spacing="3">MICROGRAPHICS — REACT BUNDLE — 84 ANIMATED COMPONENTS</text>
+</svg>
