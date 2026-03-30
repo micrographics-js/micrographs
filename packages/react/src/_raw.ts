@@ -186,3 +186,57 @@ export type { WireFrameProps } from "./components/WireFrame.js";
 export type { HexGridProps } from "./components/HexGrid.js";
 export type { SignalQualityProps } from "./components/SignalQuality.js";
 export type { WatchdogTimerProps } from "./components/WatchdogTimer.js";
+
+// Pack — Censorship
+export { RedactedText } from "./components/RedactedText.js";
+export { ClassifiedStamp } from "./components/ClassifiedStamp.js";
+export { CensorBar } from "./components/CensorBar.js";
+export { DocumentHeader } from "./components/DocumentHeader.js";
+export { SanitizedBlock } from "./components/SanitizedBlock.js";
+export { CaseFile } from "./components/CaseFile.js";
+export { Declassified } from "./components/Declassified.js";
+export { Watermark } from "./components/Watermark.js";
+export { IntelBadge } from "./components/IntelBadge.js";
+export { SignatureRedact } from "./components/SignatureRedact.js";
+export { EyesOnly } from "./components/EyesOnly.js";
+export { Codeword } from "./components/Codeword.js";
+
+export type { RedactedTextProps } from "./components/RedactedText.js";
+export type { ClassifiedStampProps } from "./components/ClassifiedStamp.js";
+export type { CensorBarProps } from "./components/CensorBar.js";
+export type { DocumentHeaderProps } from "./components/DocumentHeader.js";
+export type { SanitizedBlockProps } from "./components/SanitizedBlock.js";
+export type { CaseFileProps } from "./components/CaseFile.js";
+export type { DeclassifiedProps } from "./components/Declassified.js";
+export type { WatermarkProps } from "./components/Watermark.js";
+export type { IntelBadgeProps } from "./components/IntelBadge.js";
+export type { SignatureRedactProps } from "./components/SignatureRedact.js";
+export type { EyesOnlyProps } from "./components/EyesOnly.js";
+export type { CodewordProps } from "./components/Codeword.js";
+
+// Pack — Drone Warfare
+export { DroneHUD } from "./components/DroneHUD.js";
+export { AltitudeLadder } from "./components/AltitudeLadder.js";
+export { TargetLock } from "./components/TargetLock.js";
+export { ThermalOverlay } from "./components/ThermalOverlay.js";
+export { TelemetryStrip } from "./components/TelemetryStrip.js";
+export { WeaponStatus } from "./components/WeaponStatus.js";
+export { GimbalIndicator } from "./components/GimbalIndicator.js";
+export { FlightPath } from "./components/FlightPath.js";
+export { LatLongDisplay } from "./components/LatLongDisplay.js";
+export { TransmissionBar } from "./components/TransmissionBar.js";
+export { StrikeConfirm } from "./components/StrikeConfirm.js";
+export { MissionTimer } from "./components/MissionTimer.js";
+
+export type { DroneHUDProps } from "./components/DroneHUD.js";
+export type { AltitudeLadderProps } from "./components/AltitudeLadder.js";
+export type { TargetLockProps } from "./components/TargetLock.js";
+export type { ThermalOverlayProps } from "./components/ThermalOverlay.js";
+export type { TelemetryStripProps } from "./components/TelemetryStrip.js";
+export type { WeaponStatusProps } from "./components/WeaponStatus.js";
+export type { GimbalIndicatorProps } from "./components/GimbalIndicator.js";
+export type { FlightPathProps } from "./components/FlightPath.js";
+export type { LatLongDisplayProps } from "./components/LatLongDisplay.js";
+export type { TransmissionBarProps } from "./components/TransmissionBar.js";
+export type { StrikeConfirmProps } from "./components/StrikeConfirm.js";
+export type { MissionTimerProps } from "./components/MissionTimer.js";
